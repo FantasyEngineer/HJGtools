@@ -1,25 +1,24 @@
 package com.hjg.base.util;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ArrayListUtils {
+public class ArrayListUtils<T> {
 
-    /**
-     * 将数组格式化以"，"为间隔的字符串
-     *
-     * @param array
-     * @return
-     */
-    public static String formatArray2StringWithComma(String[] array) {
-        if (array == null || array.length == 0) {
-            return "";
-        } else {
-            StringBuffer stringBuffer = new StringBuffer();
-            for (String bean : array) {
-                stringBuffer.append(bean).append(",");
-            }
-            return StrUtil.deleteEndComma(stringBuffer.toString());
-        }
+    public static ArrayList newArrayList() {
+        return new ArrayList();
+    }
+
+    public static LinkedList newLinkList() {
+        return new LinkedList();
     }
 
 
@@ -44,6 +43,50 @@ public class ArrayListUtils {
             }
         }
         return 0;
+    }
+
+
+    /**
+     * 删除list中特定条件的元素,具体数据类型可以参照学习
+     *
+     * @param list
+     * @return
+     */
+    public static List<String> deleteSpecialElement(List<String> list) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            list.removeIf(new Predicate<String>() {
+                @Override
+                public boolean test(String o) {
+                    if (o.equals("1"))
+                        return true;
+                    return false;
+                }
+
+            });
+        } else {
+            Iterator<String> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                String a = iterator.next();
+                // if(删除元素条件)
+                if (a.equals("1"))
+                    iterator.remove();
+            }
+        }
+        return list;
+    }
+
+
+    /**
+     * 将list转为数组
+     *
+     * @param list
+     * @return
+     */
+    public static String[] list2Array(ArrayList<String> list) {
+        String[] strings = new String[list.size()];
+        list.toArray(strings);
+        return strings;
+
     }
 
 }

@@ -59,7 +59,7 @@ public class StrUtil {
     }
 
     /**
-     * 描述：获取字符串的长度.
+     * 描述：获取字符串的长度
      *
      * @param str 指定的字符串
      * @return 字符串的长度（中文字符计2个）

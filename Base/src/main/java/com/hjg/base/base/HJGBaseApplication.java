@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.hjg.base.util.D;
 import com.hjg.base.util.L;
+import com.hjg.base.util.P;
 
 public class HJGBaseApplication extends Application {
 
@@ -20,6 +21,7 @@ public class HJGBaseApplication extends Application {
         //toast
         D.init(this);
         //sharepreference
+        P.init(this);
 
     }
 
