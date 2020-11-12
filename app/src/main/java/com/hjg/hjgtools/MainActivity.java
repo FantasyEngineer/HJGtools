@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -136,9 +137,11 @@ public class MainActivity extends HJGBaseActivity {
     public void open(View view) {
 //        ActivityUtils.INSTANCE.openApp2(this, "com.hjg.locationproject");
 //        ActivityUtils.INSTANCE.openAppActivity(this, "com.hjg.locationproject", "com.hjg.locationproject.MainActivity");
-        ActivityUtils.INSTANCE.goExplore(MainActivity.this, "http://www.baidu.com");
+//        ActivityUtils.INSTANCE.goExplore(MainActivity.this, "http://www.baidu.com");
 
 //        L.d( ActivityUtils.INSTANCE.hasBrowser(MainActivity.this));
+
+        ActivityUtils.INSTANCE.openAlbum(MainActivity.this, 2);
     }
 
 

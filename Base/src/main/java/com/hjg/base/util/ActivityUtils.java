@@ -10,6 +10,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.provider.MediaStore;
 
 import com.hjg.base.base.HJGBaseApplication;
 import com.hjg.base.manager.ActivityManager;
@@ -232,4 +233,35 @@ public enum ActivityUtils {
         return size > 0;
     }
 
+
+    /**
+     * 选择相机
+     */
+
+    private void openCamera(Context context) {
+//        // 跳转到系统照相机
+//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (cameraIntent.resolveActivity(context.getPackageManager()) != null) {
+//            // 设置系统相机拍照后的输出路径
+//            // 创建临时文件
+//            mTmpFile = OtherUtils.createFile(context.getApplicationContext());
+//
+//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
+//            context.(cameraIntent, REQUEST_CAMERA);
+//        } else {
+//        }
+    }
+
+
+    /**
+     * 打开相册
+     *
+     * @param activity
+     * @param REQUEST_ALBUM_OK
+     */
+    public void openAlbum(Activity activity, int REQUEST_ALBUM_OK) {
+        Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
+        albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        activity.startActivityForResult(albumIntent, REQUEST_ALBUM_OK);
+    }
 }
