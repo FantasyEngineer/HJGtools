@@ -150,18 +150,19 @@ public class DateUtils {
         return sundays;
     }
 
+    public enum Type {
+        TYPE_LINE,
+        TYPE_NO_LINE,
+        TYPE_DETAIL;
+    }
 
-    //有横线间隔的时间
-    public static final String TYPE_LINE = "add transverse line";
-    //没有横线间隔的时间
-    public static final String TYPE_NO_LINE = "no transverse line";
 
     /**
      * 获取现在的时间字符串（详细）
      *
      * @return
      */
-    public static String getNowDataString(String type) {
+    public static String getNowDataString(Type type) {
         Date now = new Date();
         switch (type) {
             case TYPE_LINE:
@@ -174,12 +175,12 @@ public class DateUtils {
     }
 
     /**
-     * 获取具体的时间字符串
+     * 获取当前具体的时间 年月日时分秒
      *
      * @return
      */
     public static String getNowDataString() {
-        return getNowDataString("");
+        return getNowDataString(Type.TYPE_DETAIL);
     }
 
 

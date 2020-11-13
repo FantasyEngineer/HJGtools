@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.annotation.StringRes;
 
-import com.hjg.base.base.HJGBaseApplication;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -123,7 +122,7 @@ public class StrUtil {
      * @return
      */
     public static String strId2String(@StringRes int resId) {
-        return HJGBaseApplication.getApp().getString(resId);
+        return Utils.getContext().getString(resId);
     }
 
 

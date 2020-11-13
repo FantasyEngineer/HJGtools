@@ -1,10 +1,13 @@
 package com.hjg.hjgtools;
 
-import com.hjg.base.base.HJGBaseApplication;
+import android.app.Application;
 
-public class MyApplication extends HJGBaseApplication {
+import com.hjg.base.util.Utils;
+
+public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Utils.init(this);
     }
 }

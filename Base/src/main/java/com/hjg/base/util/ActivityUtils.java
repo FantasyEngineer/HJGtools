@@ -10,9 +10,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.telephony.SmsManager;
 
-import com.hjg.base.base.HJGBaseApplication;
 import com.hjg.base.manager.ActivityManager;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import java.util.List;
  * 活动页面操作类
  */
 public enum ActivityUtils {
+
+    //枚举单例
     INSTANCE;
 
     /**
@@ -44,9 +47,9 @@ public enum ActivityUtils {
 
 
     /**
-     * 关闭所有页面
+     * 关闭所有activity
      */
-    public void finishAllBefore() {
+    public void finishAllActivity() {
         checkIsExtendsHJGBaseActivity();
 
         while (ActivityManager.get().getActivityList().size() > 0) {
@@ -55,7 +58,27 @@ public enum ActivityUtils {
     }
 
     /**
-     * 退出并杀死应用
+     * 获取launcher activity
+     *
+     * @param context     上下文
+     * @param packageName 包名
+     * @return launcher activity
+     */
+    public static String getLauncherActivity(Context context, String packageName) {
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
+        for (ResolveInfo info : infos) {
+            if (info.activityInfo.packageName.equals(packageName)) {
+                return info.activityInfo.name;
+            }
+        }
+        return "no " + packageName;
+    }
+
+    /**
+     * 退出所有activity并杀死应用
      *
      * @param context
      */
@@ -75,9 +98,13 @@ public enum ActivityUtils {
         }
     }
 
+    /**
+     * 获取最栈顶activity
+     *
+     * @return
+     */
     public static Activity getTopActivity() {
         checkIsExtendsHJGBaseActivity();
-
         Activity a;
         for (int i = ActivityManager.get().getActivityList().size(); i > 0; i--) {
             a = ActivityManager.get().getActivityList().get(i - 1);
@@ -91,37 +118,8 @@ public enum ActivityUtils {
 
 
     /**
-     * 前往某个页面
-     *
-     * @param fromActivity
-     * @param toClazz
-     * @param itt
+     * 检查是否继承了HJGbaseactivity
      */
-    public void goToActivity(Activity fromActivity, Class toClazz, Intent itt) {
-        checkIsExtendsHJGBaseActivity();
-
-        try {
-            ArrayList<Activity> als = new ArrayList<>();
-            for (Activity a : ActivityManager.get().getActivityList()) {
-                if (a.getClass().isAssignableFrom(fromActivity.getClass())) {
-                    continue;
-                }
-                als.add(a);
-            }
-            while (als.size() > 0) {
-                try {
-                    als.remove(0).finish();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            itt.setClass(fromActivity, toClazz);
-            fromActivity.startActivity(itt);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private static void checkIsExtendsHJGBaseActivity() {
         if (ActivityManager.get().getActivityList().size() == 0) {
             throw new IllegalArgumentException("请把所有的Activity都继承HJGBaseActivity");
@@ -130,138 +128,44 @@ public enum ActivityUtils {
 
 
     /**
-     * 根本包名打开应用
+     * 判断是否存在Activity
      *
-     * @param context
-     * @param packageName
-     * @return
+     * @param context     上下文
+     * @param packageName 包名
+     * @param className   activity全路径类名
+     * @return {@code true}: 是<br>{@code false}: 否
      */
-    public boolean openApp(Context context, String packageName) {
-        try {
-            PackageManager pm = context.getPackageManager();    //包管理者
-            Intent it = new Intent();                           //意图
-            it = pm.getLaunchIntentForPackage(packageName);   //值为应用的包名
-            if (null != it) {
-                context.startActivity(it);         //启动意图
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            L.d(e.getMessage());
-            return false;
-        }
+    public static boolean isActivityExists(Context context, String packageName, String className) {
+        Intent intent = new Intent();
+        intent.setClassName(packageName, className);
+        return !(context.getPackageManager().resolveActivity(intent, 0) == null ||
+                intent.resolveActivity(context.getPackageManager()) == null ||
+                context.getPackageManager().queryIntentActivities(intent, 0).size() == 0);
     }
-
 
     /**
-     * 根本包名打开应用，也可以直接跳转到对应的activity ， 不用设置export
+     * 打开Activity
      *
-     * @param context
-     * @param packageName
+     * @param context     上下文
+     * @param packageName 包名
+     * @param className   全类名
      */
-    public void openApp2(Context context, String packageName) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(packageName,
-                    PackageManager.GET_UNINSTALLED_PACKAGES | PackageManager.GET_ACTIVITIES);
-            ActivityInfo[] activityInfos = info.activities;
-            ActivityInfo activityInfo = activityInfos[activityInfos.length - 1];
-            Intent intent = new Intent();
-            intent.setClassName(packageName, activityInfo.name);
-            context.startActivity(intent);
-        } catch (Exception e) {
-            L.d(e.getMessage());
-        }
+    public static void launchActivity(Context context, String packageName, String className) {
+        launchActivity(context, packageName, className, null);
     }
-
 
     /**
-     * 打开某个应用的某个activity，不启动应用，
-     * 可以不是lauchActivity，但是非lauchactivity，必须设置export：true属性
+     * 打开Activity
      *
-     * @param context
-     * @param packageName     com.hjg.locationproject
-     * @param activityPackage com.hjg.locationproject.SecondActivity
-     * @return
+     * @param context     上下文
+     * @param packageName 包名
+     * @param className   全类名
+     * @param bundle      bundle
      */
-    public void openAppActivity(Context context, String packageName, String activityPackage) {
-        try {
-            ComponentName localComponentName = new ComponentName(
-                    packageName,
-                    activityPackage);
-            Intent localIntent = new Intent();
-            localIntent.setComponent(localComponentName);
-            context.startActivity(localIntent);
-        } catch (Exception e) {
-            L.d(e.getMessage());
-        }
+    public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
+        context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
     }
 
 
-    /**
-     * 跳转到浏览器打开网页(网址必须以http开头，否则会报错)
-     *
-     * @param url
-     */
-    public void goExplore(Context context, String url) {
-        if (hasBrowser(context)) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            Uri content_url = Uri.parse(url);
-            intent.setData(content_url);
-            context.startActivity(intent);
-        } else {
-            D.showShort("当前系统没有可用的浏览器");
-        }
 
-    }
-
-
-    /**
-     * 是否有浏览器
-     *
-     * @param context
-     * @return
-     */
-    public boolean hasBrowser(Context context) {
-        PackageManager pm = context.getPackageManager();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("http://"));
-
-        @SuppressLint("WrongConstant") List<ResolveInfo> list = pm.queryIntentActivities(intent, PackageManager.GET_INTENT_FILTERS);
-        final int size = (list == null) ? 0 : list.size();
-        return size > 0;
-    }
-
-
-    /**
-     * 选择相机
-     */
-
-    private void openCamera(Context context) {
-//        // 跳转到系统照相机
-//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (cameraIntent.resolveActivity(context.getPackageManager()) != null) {
-//            // 设置系统相机拍照后的输出路径
-//            // 创建临时文件
-//            mTmpFile = OtherUtils.createFile(context.getApplicationContext());
-//
-//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
-//            context.(cameraIntent, REQUEST_CAMERA);
-//        } else {
-//        }
-    }
-
-
-    /**
-     * 打开相册
-     *
-     * @param activity
-     * @param REQUEST_ALBUM_OK
-     */
-    public void openAlbum(Activity activity, int REQUEST_ALBUM_OK) {
-        Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
-        albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-        activity.startActivityForResult(albumIntent, REQUEST_ALBUM_OK);
-    }
 }

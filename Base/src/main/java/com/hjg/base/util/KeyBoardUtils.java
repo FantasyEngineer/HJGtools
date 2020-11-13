@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.hjg.base.base.HJGBaseApplication;
 import com.hjg.base.listener.OnSoftKeyBoardChangeListener;
 
 public class KeyBoardUtils {
@@ -82,7 +81,7 @@ public class KeyBoardUtils {
      */
     public static void openKeybord(EditText mEditText) {
         mEditText.requestFocus();
-        InputMethodManager imm = (InputMethodManager) HJGBaseApplication.getApp()
+        InputMethodManager imm = (InputMethodManager) Utils.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
@@ -94,7 +93,7 @@ public class KeyBoardUtils {
      * 关闭软键盘
      */
     public static void closeKeybord(EditText mEditText) {
-        InputMethodManager imm = (InputMethodManager) HJGBaseApplication.getApp()
+        InputMethodManager imm = (InputMethodManager) Utils.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }

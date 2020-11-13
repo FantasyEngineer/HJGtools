@@ -29,8 +29,8 @@ public class D {
     private static Context mContext;
     private static Handler handler;
 
-    public static void init(Context context) {
-        mContext = context;
+    static {
+        mContext = Utils.getContext();
         handler = new Handler();
     }
 

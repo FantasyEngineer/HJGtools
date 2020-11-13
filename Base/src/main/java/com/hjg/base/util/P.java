@@ -12,8 +12,9 @@ import android.content.SharedPreferences;
 public class P {
     public static SharedPreferences settings;
 
-    public static void init(Application application) {
-        settings = application.getSharedPreferences("lifeShelf", Context.MODE_PRIVATE);
+    static {
+        settings = Utils.getContext().getSharedPreferences("lifeShelf", Context.MODE_PRIVATE);
+
     }
 
     public static boolean contains(String key) {
