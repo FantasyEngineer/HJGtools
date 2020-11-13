@@ -8,6 +8,7 @@ import com.hjg.base.listener.OnSoftKeyBoardChangeListener;
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.AppUtils;
 import com.hjg.base.util.D;
+import com.hjg.base.util.DeviceUtils;
 import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.KeyBoardUtils;
 import com.hjg.base.util.L;
@@ -37,7 +38,7 @@ public class MainActivity extends HJGBaseActivity {
         //请求权限
         final RxPermissions rxPermissions = new RxPermissions(this); // where this is an Activity or Fragment instance
         // Must be done during an initialization phase like onCreate
-        Observable<Boolean> observableRequest = rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Observable<Boolean> observableRequest = rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
         observableRequest.subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean aBoolean) throws Throwable {
@@ -132,6 +133,7 @@ public class MainActivity extends HJGBaseActivity {
 //
 //
 //        L.d(StrUtil.getLenght("1900-00-00"));
+        DeviceUtils.printAllDeviceinfo();
 
 
     }
@@ -163,7 +165,7 @@ public class MainActivity extends HJGBaseActivity {
 //        FileUtils.getCachePath()
 
 
-        L.d(NetUtil.getMac());
+        DeviceUtils.printAllDeviceinfo();
     }
 
 
