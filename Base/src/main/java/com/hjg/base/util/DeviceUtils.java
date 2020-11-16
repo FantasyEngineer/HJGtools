@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 
+import com.hjg.base.util.log.androidlog.L;
+
 import java.io.File;
 import java.net.NetworkInterface;
 import java.util.Collections;

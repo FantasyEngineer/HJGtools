@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 
+import com.hjg.base.util.log.androidlog.L;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -13,6 +13,7 @@ import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.KeyBoardUtils;
 import com.hjg.base.util.NetUtil;
 import com.hjg.base.util.P;
+import com.hjg.base.util.log.androidlog.L;
 import com.tbruyelle.rxpermissions3.RxPermissions;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -78,7 +79,7 @@ public class MainActivity extends HJGBaseActivity {
 
         P.putString("nihao", "nnn");
 
-//        L.d(P.getString("nihao"));
+        L.d(P.getString("nihao"));
 
         D.showShort(P.getString("nihao"));
 //
