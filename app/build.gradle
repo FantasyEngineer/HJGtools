@@ -42,5 +42,5 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC0"
 
 
-//    implementation 'com.github.FantasyEngineer:HJGTools:1.0'
+//    implementation 'com.github.FantasyEngineer:HJGTools:1.2'
 }

@@ -28,7 +28,5 @@ dependencies {
     implementation rootProject.ext.androidXFragment
     implementation rootProject.ext.androidXAnnotation
     implementation rootProject.ext.androidXAppcompat
-    debugImplementation 'com.apkfuns.logutils:library:1.7.5'
-    releaseImplementation 'com.apkfuns.logutils:logutils-no-op:1.7.5'
 
 }

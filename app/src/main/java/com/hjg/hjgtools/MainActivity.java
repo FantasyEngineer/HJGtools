@@ -11,7 +11,6 @@ import com.hjg.base.util.D;
 import com.hjg.base.util.DeviceUtils;
 import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.KeyBoardUtils;
-import com.hjg.base.util.L;
 import com.hjg.base.util.NetUtil;
 import com.hjg.base.util.P;
 import com.tbruyelle.rxpermissions3.RxPermissions;
@@ -79,7 +78,7 @@ public class MainActivity extends HJGBaseActivity {
 
         P.putString("nihao", "nnn");
 
-        L.d(P.getString("nihao"));
+//        L.d(P.getString("nihao"));
 
         D.showShort(P.getString("nihao"));
 //
