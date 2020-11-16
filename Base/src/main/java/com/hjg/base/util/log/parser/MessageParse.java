@@ -1,4 +1,4 @@
-package com.hjg.base.util.log.androidlog.parser;
+package com.hjg.base.util.log.parser;
 
 import android.os.Message;
 
@@ -7,10 +7,8 @@ import androidx.annotation.NonNull;
 import com.hjg.base.util.log.Parser;
 import com.hjg.base.util.log.utils.ObjectUtil;
 
-import static com.hjg.base.util.log.Parser.LINE_SEPARATOR;
-
 /**
- * Created by pengwei on 2017/3/29.
+ *
  */
 
 class MessageParse implements Parser<Message> {

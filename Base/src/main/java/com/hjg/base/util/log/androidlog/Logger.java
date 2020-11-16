@@ -6,7 +6,7 @@ import android.util.Log;
 import com.hjg.base.util.log.LogLevel;
 import com.hjg.base.util.log.Parser;
 import com.hjg.base.util.log.Printer;
-import com.hjg.base.util.log.androidlog.parser.LocalParserManager;
+import com.hjg.base.util.log.parser.LocalParserManager;
 import com.hjg.base.util.log.file.LogFileParam;
 import com.hjg.base.util.log.utils.ObjectUtil;
 

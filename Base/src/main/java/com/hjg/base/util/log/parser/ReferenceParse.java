@@ -1,4 +1,4 @@
-package com.hjg.base.util.log.androidlog.parser;
+package com.hjg.base.util.log.parser;
 
 import com.hjg.base.util.log.Parser;
 import com.hjg.base.util.log.utils.ObjectUtil;

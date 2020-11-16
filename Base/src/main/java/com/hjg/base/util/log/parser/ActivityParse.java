@@ -1,4 +1,4 @@
-package com.hjg.base.util.log.androidlog.parser;
+package com.hjg.base.util.log.parser;
 
 import android.app.Activity;
 
