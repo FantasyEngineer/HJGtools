@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import static com.hjg.base.util.ConstUtils.SHAREPREFERENCENAME;
+
 
 /**
  * shareferenceUtils
@@ -13,7 +15,7 @@ public class P {
     public static SharedPreferences settings;
 
     static {
-        settings = Utils.getContext().getSharedPreferences("lifeShelf", Context.MODE_PRIVATE);
+        settings = Utils.getContext().getSharedPreferences(SHAREPREFERENCENAME, Context.MODE_PRIVATE);
 
     }
 

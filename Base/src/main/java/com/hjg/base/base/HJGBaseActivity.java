@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hjg.base.manager.ActivityManager;
 import com.hjg.base.receiver.NetworkChangeReceiver;
 import com.hjg.base.util.D;
+import com.hjg.base.util.log.androidlog.L;
 
 public abstract class HJGBaseActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public abstract class HJGBaseActivity extends AppCompatActivity {
             initViewAction();
         } catch (Exception e) {
             D.showShort(e.getMessage());
+            L.d(e.getMessage());
         }
     }
 

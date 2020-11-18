@@ -1,27 +1,29 @@
 package com.hjg.hjgtools;
 
 import android.Manifest;
+import android.location.Location;
+import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
+import android.widget.ImageView;
+
+import androidx.core.app.ActivityCompat;
 
 import com.hjg.base.base.HJGBaseActivity;
-import com.hjg.base.listener.OnSoftKeyBoardChangeListener;
-import com.hjg.base.util.ActivityUtils;
-import com.hjg.base.util.AppUtils;
 import com.hjg.base.util.D;
-import com.hjg.base.util.DeviceUtils;
-import com.hjg.base.util.FileUtils;
-import com.hjg.base.util.KeyBoardUtils;
-import com.hjg.base.util.NetUtil;
+import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.P;
+import com.hjg.base.util.RegexUtils;
 import com.hjg.base.util.log.androidlog.L;
-import com.tbruyelle.rxpermissions3.RxPermissions;
 
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.functions.Consumer;
+import java.util.List;
 
 
-public class MainActivity extends HJGBaseActivity {
+public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnReceiveMessageListener {
 
+
+    private HandlerUtils.HandlerHolder handlerHolder;
+    private ImageView image;
 
     @Override
     protected int getContentID() {
@@ -36,15 +38,19 @@ public class MainActivity extends HJGBaseActivity {
 //        setContentView(R.layout.activity_main);
 
         //请求权限
-        final RxPermissions rxPermissions = new RxPermissions(this); // where this is an Activity or Fragment instance
-        // Must be done during an initialization phase like onCreate
-        Observable<Boolean> observableRequest = rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
-        observableRequest.subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean aBoolean) throws Throwable {
+//        final RxPermissions rxPermissions = new RxPermissions(this); // where this is an Activity or Fragment instance
+//        // Must be done during an initialization phase like onCreate
+//        Observable<Boolean> observableRequest = rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.LOCATION_HARDWARE, Manifest.permission.ACCESS_COARSE_LOCATION);
+//        observableRequest.subscribe(new Consumer<Boolean>() {
+//            @Override
+//            public void accept(Boolean aBoolean) throws Throwable {
+//
+//            }
+//        });
+//
+        image = findViewById(R.id.image);
 
-            }
-        });
+//        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
 //        KeyBoardUtils.setListener(this, new OnSoftKeyBoardChangeListener() {
 //            @Override
@@ -77,12 +83,12 @@ public class MainActivity extends HJGBaseActivity {
 //
 //        L.d(DataUtils.addDateLine("19000101"));
 
-        P.putString("nihao", "nnn");
-
-        L.d(P.getString("nihao"));
-
-        D.showShort(P.getString("nihao"));
+//        P.putString("nihao", "nnn");
 //
+//        L.d(P.getString("nihao"));
+//
+//        D.showShort(P.getString("nihao"));
+////
 //        ArrayList list = ArrayListUtils.newArrayList();
 //        list.add("1");
 //        list.add("1");
@@ -133,12 +139,35 @@ public class MainActivity extends HJGBaseActivity {
 //
 //
 //        L.d(StrUtil.getLenght("1900-00-00"));
-        DeviceUtils.printAllDeviceinfo();
+//        DeviceUtils.printAllDeviceinfo();
 
 
+//        L.d();
+
+//        List list1 = null;
+
+
+//        L.d(EmptyUtils.isEmpty(list1));
+
+
+//        L.d("字符串--" + EmptyUtils.isEmpty(new String()));
+
+//        handlerHolder = new HandlerUtils.HandlerHolder(this);
+
+
+//        L.d(ImageUtils.bitmap2String(ImageUtils.drawable2Bitmap(ResUtils.getDrawable(R.drawable.ic_launcher))));
+
+
+//        L.d(RegexUtils.isEN("fasfasfasdfasdfasd&&&&&"));
+//        L.d(RegexUtils.isNum("11111"));
+//        L.d(RegexUtils.isEnAndNum("002232fdsjfhajkhfjkAAAA00"));
+//        L.d(RegexUtils.is0OrNotFirst0Num("00"));
+        L.d(RegexUtils.isUpperEN("A"));
     }
 
     public void open(View view) {
+//        image.setImageBitmap(ImageUtils.string2bitmap(ImageUtils.bitmap2String(ImageUtils.drawable2Bitmap(ResUtils.getDrawable(R.drawable.ic_launcher)))));
+//        handlerHolder.sendEmptyMessage(1);
 //        ActivityUtils.INSTANCE.openApp2(this, "com.hjg.locationproject");
 //        ActivityUtils.INSTANCE.openAppActivity(this, "com.hjg.locationproject", "com.hjg.locationproject.MainActivity");
 //        ActivityUtils.INSTANCE.goExplore(MainActivity.this, "http://www.baidu.com");
@@ -165,8 +194,12 @@ public class MainActivity extends HJGBaseActivity {
 //        FileUtils.getCachePath()
 
 
-        DeviceUtils.printAllDeviceinfo();
+//        DeviceUtils.printAllDeviceinfo();
+
     }
 
-
+    @Override
+    public void handlerMessage(Message msg) {
+        D.showShort(msg.what);
+    }
 }

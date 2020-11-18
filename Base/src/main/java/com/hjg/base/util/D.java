@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.StringRes;
+
 import com.hjg.base.R;
 
 
@@ -58,7 +60,11 @@ public class D {
             @Override
             public void run() {
                 hideToast();
-                toast = Toast.makeText(mContext, resId, length);
+                try {
+                    toast = Toast.makeText(mContext, resId, length);
+                } catch (Resources.NotFoundException e) {
+                    toast = Toast.makeText(mContext, String.valueOf(resId), length);
+                }
                 toast.show();
             }
         });
@@ -68,6 +74,7 @@ public class D {
         show(message, Toast.LENGTH_SHORT);
     }
 
+    //有可能是直接吐司的数字，这里要捕获异常
     public static void showShort(int message) {
         show(message, Toast.LENGTH_SHORT);
     }
