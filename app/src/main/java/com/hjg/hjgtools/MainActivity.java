@@ -4,17 +4,25 @@ import android.Manifest;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Message;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.hjg.base.base.HJGBaseActivity;
+import com.hjg.base.base.PdfWebViewActivity;
+import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.P;
 import com.hjg.base.util.RegexUtils;
+import com.hjg.base.util.ResUtils;
+import com.hjg.base.util.StrUtil;
+import com.hjg.base.util.TextSpanUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -24,11 +32,12 @@ import java.util.List;
 import io.reactivex.functions.Consumer;
 
 
-public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnReceiveMessageListener {
+public class MainActivity extends HJGBaseActivity {
 
 
-    private HandlerUtils.HandlerHolder handlerHolder;
+    //    private HandlerUtils.HandlerHolder handlerHolder;
     private ImageView image;
+    private TextView textView;
 
     @Override
     protected int getContentID() {
@@ -45,6 +54,20 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
 
 //
         image = findViewById(R.id.image);
+        textView = findViewById(R.id.textView);
+
+        textView.setText(TextSpanUtils.getBuilder("你好").setBold().setClickSpan(new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+
+                D.showShort("你好");
+            }
+        }).append("fafjsdjfasf").setClickSpan(new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                D.showShort("fafjsdjfasf");
+            }
+        }).create());
 
         RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
@@ -62,6 +85,9 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
 
             }
         });
+
+
+        L.d(StrUtil.idHide("341203199306042438"));
 
 //        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
@@ -179,6 +205,8 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
     }
 
     public void open(View view) {
+
+        ActivityUtils.startActivity(PdfWebViewActivity.class);
 //        image.setImageBitmap(ImageUtils.string2bitmap(ImageUtils.bitmap2String(ImageUtils.drawable2Bitmap(ResUtils.getDrawable(R.drawable.ic_launcher)))));
 //        handlerHolder.sendEmptyMessage(1);
 //        ActivityUtils.INSTANCE.openApp2(this, "com.hjg.locationproject");
@@ -211,8 +239,8 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
 
     }
 
-    @Override
-    public void handlerMessage(Message msg) {
-        D.showShort(msg.what);
-    }
+//    @Override
+//    public void handlerMessage(Message msg) {
+//        D.showShort(msg.what);
+//    }
 }

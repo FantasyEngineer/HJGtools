@@ -14,9 +14,9 @@ import static com.hjg.base.util.ConstUtils.SHAREPREFERENCENAME;
 public class P {
     public static SharedPreferences settings;
 
-    static {
-        settings = Utils.getContext().getSharedPreferences(SHAREPREFERENCENAME, Context.MODE_PRIVATE);
 
+    public static void initP(String spName) {
+        settings = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     public static boolean contains(String key) {

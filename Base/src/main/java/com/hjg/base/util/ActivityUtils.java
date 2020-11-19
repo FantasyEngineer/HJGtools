@@ -45,6 +45,38 @@ public enum ActivityUtils {
         return false;
     }
 
+    /**
+     * 跳转activity
+     *
+     * @param cla
+     * @return
+     */
+    public static boolean startActivity(Class cla) {
+        return startActivity(cla, null);
+    }
+
+
+    /**
+     * 跳转activity
+     *
+     * @param cla
+     * @return
+     */
+    public static boolean startActivity(Class cla, Bundle bundle) {
+        try {
+
+            Intent intent = new Intent(getTopActivity(), cla);
+            if (bundle != null) {
+                intent.putExtras(bundle);
+            }
+            getTopActivity().startActivity(intent);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
 
     /**
      * 关闭所有activity
@@ -165,7 +197,6 @@ public enum ActivityUtils {
     public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
         context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
     }
-
 
 
 }

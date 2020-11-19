@@ -115,16 +115,6 @@ public class StrUtil {
         return currentIndex;
     }
 
-    /**
-     * 将string.xml中的数据转换成String字符串
-     *
-     * @param resId
-     * @return
-     */
-    public static String strId2String(@StringRes int resId) {
-        return Utils.getContext().getString(resId);
-    }
-
 
     /**
      * 描述：从输入流中获得String.
@@ -164,7 +154,7 @@ public class StrUtil {
      * @param dateTime 预格式的时间字符串，如:2012-3-2 12:2:20
      * @return String 格式化好的时间字符串，如:2012-03-20 12:02:20
      */
-    public static String dateTimeFormat(String dateTime) {
+    public static String formatStandardDateTime(String dateTime) {
         StringBuilder sb = new StringBuilder();
         try {
             if (isEmpty(dateTime)) {
@@ -203,6 +193,7 @@ public class StrUtil {
     }
 
     /**
+     * 月份
      * 描述：不足2个字符的在前面补“0”.
      *
      * @param str 指定的字符串
@@ -358,9 +349,6 @@ public class StrUtil {
         }
     }
 
-    public static boolean isUrl(String url) {
-        return url.startsWith("http") || url.startsWith("www");
-    }
 
     /*手机号码脱敏，8位 ，9位，11位*/
     public static String mobileDesensitization(String mobile) {
@@ -370,27 +358,9 @@ public class StrUtil {
         return mobile.substring(0, mobile.length() / 2 - 2) + "****" + mobile.substring(mobile.length() / 2 + 2);
     }
 
-    /**
-     *  * 关键字高亮显示
-     *  *
-     *  * @param text  需要显示的文字
-     *  * @param color  高亮颜色
-     *  * @param start  头部增加高亮文字个数
-     *  * @param end   尾部增加高亮文字个数
-     *  * @return 处理完后的结果
-     *  
-     */
-    public static Spannable highlight(String text, int color, int start, int end) {
-        Spannable span = new SpannableString(text);
-        span.setSpan(new AbsoluteSizeSpan(80), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); //粗体
-        return span;
-    }
-
 
     /**
-     * 去除时间日期里面的-，或者.，同意成19910202
+     * 去除时间日期里面的-，或者.，统一成19910202
      *
      * @param date
      * @return

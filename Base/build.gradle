@@ -28,5 +28,6 @@ dependencies {
     implementation rootProject.ext.androidXFragment
     implementation rootProject.ext.androidXAnnotation
     implementation rootProject.ext.androidXAppcompat
+    implementation 'com.google.android.material:material:1.2.1'
 
 }

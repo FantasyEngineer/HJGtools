@@ -15,6 +15,12 @@
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions"></uses-permission>
 
-    <application android:label="@string/app_name"></application>
+    <application android:label="@string/app_name">
+
+
+        <activity
+            android:name=".base.PdfWebViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+    </application>
 
 </manifest>
