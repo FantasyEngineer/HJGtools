@@ -11,12 +11,17 @@ import androidx.core.app.ActivityCompat;
 
 import com.hjg.base.base.HJGBaseActivity;
 import com.hjg.base.util.D;
+import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.P;
 import com.hjg.base.util.RegexUtils;
 import com.hjg.base.util.log.androidlog.L;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
 import java.util.List;
+
+import io.reactivex.functions.Consumer;
 
 
 public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnReceiveMessageListener {
@@ -37,18 +42,26 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
-        //请求权限
-//        final RxPermissions rxPermissions = new RxPermissions(this); // where this is an Activity or Fragment instance
-//        // Must be done during an initialization phase like onCreate
-//        Observable<Boolean> observableRequest = rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.LOCATION_HARDWARE, Manifest.permission.ACCESS_COARSE_LOCATION);
-//        observableRequest.subscribe(new Consumer<Boolean>() {
-//            @Override
-//            public void accept(Boolean aBoolean) throws Throwable {
-//
-//            }
-//        });
+
 //
         image = findViewById(R.id.image);
+
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                L.d(aBoolean);
+
+
+                L.d(FileUtils.getCachePath(MainActivity.this));
+
+                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "houjiguo/1.txt"));
+                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou"));
+                L.d(FileUtils.createOrExistsDir(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou2.txt"));
+
+
+            }
+        });
 
 //        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
@@ -162,7 +175,7 @@ public class MainActivity extends HJGBaseActivity implements HandlerUtils.OnRece
 //        L.d(RegexUtils.isNum("11111"));
 //        L.d(RegexUtils.isEnAndNum("002232fdsjfhajkhfjkAAAA00"));
 //        L.d(RegexUtils.is0OrNotFirst0Num("00"));
-        L.d(RegexUtils.isUpperEN("A"));
+//        L.d(RegexUtils.isUpperEN("A"));
     }
 
     public void open(View view) {

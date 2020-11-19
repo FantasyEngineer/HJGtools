@@ -158,7 +158,8 @@ public class FileUtils {
     }
 
     /**
-     * 判断目录是否存在，不存在则判断是否创建成功
+     * 判断目录是否存在，不存在则判断是否创建成功(针对目录)
+     * L.d(FileUtils.createOrExistsDir(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou1"));
      *
      * @param dirPath 目录路径
      * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
@@ -168,7 +169,7 @@ public class FileUtils {
     }
 
     /**
-     * 判断目录是否存在，不存在则判断是否创建成功
+     * 判断目录是否存在，不存在则判断是否创建成功(针对目录）
      *
      * @param file 文件
      * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败

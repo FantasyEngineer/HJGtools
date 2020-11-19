@@ -192,10 +192,14 @@ public class ConstUtils {
     public static final String REGEX_PASSWORD_SIMPLE = "^[a-zA-Z]\\w{5,17}$";
 
     /**
-     *强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)
+     * 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)
      */
     public static final String REGEX_PASSWORD_POWER = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$";
 
+    /**
+     * 车牌号
+     */
+    public static final String REGEX_VEHICLE_NO = "^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{5}$";
 
 
     /************** If u want more please visit http://toutiao.com/i6231678548520731137/ **************/
