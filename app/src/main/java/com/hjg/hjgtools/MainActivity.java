@@ -1,43 +1,19 @@
 package com.hjg.hjgtools;
 
-import android.Manifest;
-import android.location.Location;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-
 import com.hjg.base.base.HJGBaseActivity;
 import com.hjg.base.base.PdfWebViewActivity;
 import com.hjg.base.util.ActivityUtils;
-import com.hjg.base.util.D;
-import com.hjg.base.util.FileUtils;
-import com.hjg.base.util.HandlerUtils;
-import com.hjg.base.util.P;
-import com.hjg.base.util.RegexUtils;
-import com.hjg.base.util.ResUtils;
-import com.hjg.base.util.StrUtil;
-import com.hjg.base.util.TextSpanUtils;
-import com.hjg.base.util.log.androidlog.L;
-import com.tbruyelle.rxpermissions2.RxPermissions;
-
-import java.io.File;
-import java.util.List;
-
-import io.reactivex.functions.Consumer;
+import com.hjg.base.view.LoadingDialog;
+import com.hjg.base.view.flyco.animation.FadeEnter.FadeEnter;
+import com.hjg.base.view.flyco.animation.FadeExit.FadeExit;
 
 
 public class MainActivity extends HJGBaseActivity {
 
-
-    //    private HandlerUtils.HandlerHolder handlerHolder;
-    private ImageView image;
-    private TextView textView;
 
     @Override
     protected int getContentID() {
@@ -45,7 +21,21 @@ public class MainActivity extends HJGBaseActivity {
     }
 
     @Override
+    protected boolean isOpenNetListener() {
+        return false;
+    }
+
+    @Override
     protected void initViewAction() {
+
+
+
+        LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.showAnim(new FadeEnter());
+        loadingDialog.dismissAnim(new FadeExit());
+        loadingDialog.show();
+
+
 //    @Override
 //    protected void onCreate(@Nullable Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -53,41 +43,57 @@ public class MainActivity extends HJGBaseActivity {
 
 
 //
-        image = findViewById(R.id.image);
-        textView = findViewById(R.id.textView);
+//        image = findViewById(R.id.image);
+//        textView = findViewById(R.id.textView);
 
-        textView.setText(TextSpanUtils.getBuilder("你好").setBold().setClickSpan(new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View widget) {
+//        textView.setText(TextSpanUtils.getBuilder("你好").setBold().setClickSpan(new ClickableSpan() {
+//            @Override
+//            public void onClick(@NonNull View widget) {
+//
+//                D.showShort("你好");
+//            }
+//        }).append("fafjsdjfasf").setClickSpan(new ClickableSpan() {
+//            @Override
+//            public void onClick(@NonNull View widget) {
+//                D.showShort("fafjsdjfasf");
+//            }
+//        }).create());
 
-                D.showShort("你好");
-            }
-        }).append("fafjsdjfasf").setClickSpan(new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View widget) {
-                D.showShort("fafjsdjfasf");
-            }
-        }).create());
-
-        RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean aBoolean) throws Exception {
-                L.d(aBoolean);
-
-
-                L.d(FileUtils.getCachePath(MainActivity.this));
-
-                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "houjiguo/1.txt"));
-                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou"));
-                L.d(FileUtils.createOrExistsDir(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou2.txt"));
+//        RxPermissions rxPermissions = new RxPermissions(this);
+//        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
+//            @Override
+//            public void accept(Boolean aBoolean) throws Exception {
+//                L.d(aBoolean);
+//
+//
+//                L.d(FileUtils.getCachePath(MainActivity.this));
+//
+//                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "houjiguo/1.txt"));
+//                L.d(FileUtils.createFileByDeleteOldFile(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou"));
+//                L.d(FileUtils.createOrExistsDir(FileUtils.getCachePath(MainActivity.this) + File.separator + "hou2.txt"));
+//
+//
+//            }
+//        });
 
 
-            }
-        });
+//        L.d(StrUtil.idHide("341203199306042438"));
 
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, NetService.class);
+//                if (!ServiceUtils.isServiceRunning(MainActivity.this, NetService.class.getName())) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        D.showShort("开启服务");
+//                        startForegroundService(intent);
+//                    }
+//                }
+//
+//                finish();
+//            }
+//        });
 
-        L.d(StrUtil.idHide("341203199306042438"));
 
 //        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 

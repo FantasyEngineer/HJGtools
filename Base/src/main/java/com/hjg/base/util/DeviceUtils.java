@@ -8,13 +8,17 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import com.hjg.base.util.log.androidlog.L;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.List;
+
+import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
  * desc  : 设备相关工具类
@@ -23,6 +27,31 @@ public class DeviceUtils {
 
     private DeviceUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+
+    /**
+     * 获取imei号（需要权限）
+     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+     * <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+     *
+     * @param context
+     * @return
+     */
+    public static String getIMEI(Context context) {
+        String imei = "";
+        try {
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                imei = tm.getDeviceId();
+            } else {
+                Method method = tm.getClass().getMethod("getImei");
+                imei = (String) method.invoke(tm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return imei;
     }
 
     /**

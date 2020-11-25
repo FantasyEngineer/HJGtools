@@ -21,6 +21,7 @@
         <activity
             android:name=".base.PdfWebViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
     </application>
 
 </manifest>

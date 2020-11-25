@@ -15,9 +15,12 @@ import android.provider.MediaStore;
 import android.telephony.SmsManager;
 
 import com.hjg.base.manager.ActivityManager;
+import com.hjg.base.util.log.androidlog.L;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 
 /**
@@ -196,6 +199,76 @@ public enum ActivityUtils {
      */
     public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
         context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
+    }
+
+
+    /**
+     * 根本包名打开应用
+     *
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public static boolean openApp(Context context, String packageName) {
+        try {
+            PackageManager pm = context.getPackageManager();    //包管理者
+            Intent it = new Intent();                           //意图
+            it = pm.getLaunchIntentForPackage(packageName);   //值为应用的包名
+            if (null != it) {
+                context.startActivity(it);         //启动意图
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            L.d(e.getMessage());
+            return false;
+        }
+    }
+
+
+    /**
+     * 根本包名打开应用，也可以直接跳转到对应的activity ， 不用设置export
+     *
+     * @param context
+     * @param packageName
+     */
+    public static void openApp2(Context context, String packageName) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES | PackageManager.GET_ACTIVITIES);
+            ActivityInfo[] activityInfos = info.activities;
+            ActivityInfo activityInfo = activityInfos[activityInfos.length - 1];
+            Intent intent = new Intent();
+            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+            intent.setClassName(packageName, activityInfo.name);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            L.d(e.getMessage());
+        }
+    }
+
+
+    /**
+     * 打开某个应用的某个activity，不启动应用，
+     * 可以不是lauchActivity，但是非lauchactivity，必须设置export：true属性
+     *
+     * @param context
+     * @param packageName     com.hjg.locationproject
+     * @param activityPackage com.hjg.locationproject.SecondActivity
+     * @return
+     */
+    public static void openAppActivity(Context context, String packageName, String activityPackage) {
+        try {
+            ComponentName localComponentName = new ComponentName(
+                    packageName,
+                    activityPackage);
+            Intent localIntent = new Intent();
+            localIntent.setComponent(localComponentName);
+            context.startActivity(localIntent);
+        } catch (Exception e) {
+            L.d(e.getMessage());
+        }
     }
 
 
