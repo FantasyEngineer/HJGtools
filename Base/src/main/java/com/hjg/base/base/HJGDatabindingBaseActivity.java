@@ -1,23 +1,23 @@
 package com.hjg.base.base;
 
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
-import com.hjg.base.manager.ActivityManager;
-import com.hjg.base.receiver.NetworkChangeReceiver;
 import com.hjg.base.util.D;
 import com.hjg.base.util.log.androidlog.L;
 
-public abstract class HJGBaseActivity extends HBaseActivity {
+public abstract class HJGDatabindingBaseActivity<T> extends HBaseActivity {
 
+
+    protected T databinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentID());
+        databinding = (T) DataBindingUtil.setContentView(this, getContentID());
         try {
             initViewAction();
         } catch (Exception e) {
@@ -26,11 +26,6 @@ public abstract class HJGBaseActivity extends HBaseActivity {
         }
     }
 
-    /**
-     * 添加布局文件
-     *
-     * @return
-     */
     protected abstract int getContentID();
 
 

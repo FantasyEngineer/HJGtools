@@ -14,6 +14,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        //开启databinding
+        dataBinding {
+            enabled = true
+        }
     }
 
     buildTypes {
@@ -41,7 +47,7 @@ dependencies {
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.0.2'
 
-    implementation 'com.jakewharton:butterknife:7.0.1'
+//    implementation 'com.jakewharton:butterknife:7.0.1'
 
 
 //    implementation 'com.github.FantasyEngineer:HJGTools:1.3'

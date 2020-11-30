@@ -24,6 +24,11 @@ import com.hjg.base.view.flyco.dialog.widget.internal.BaseAlertDialog;
 
 /**
  * 等待框
+ * 使用方案如下：添加动画等等
+ * LoadingDialog loadingDialog = new LoadingDialog(this);
+ * loadingDialog.showAnim(new FadeEnter());
+ * loadingDialog.dismissAnim(new FadeExit());
+ * loadingDialog.show();
  */
 public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
 
@@ -41,10 +46,11 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
 
         //内部布局
         LinearLayout linearLayout = new LinearLayout(mContext);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(dp2px(110), dp2px(110)));
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         float radius = dp2px(10);
         linearLayout.setBackgroundDrawable(CornerUtils.cornerDrawable(mBgColor, radius));//添加圆角
         linearLayout.setGravity(Gravity.CENTER);//居中
+        linearLayout.setPadding(dp2px(25), dp2px(18), dp2px(25), dp2px(18));
         linearLayout.setOrientation(LinearLayout.VERTICAL);//纵向排列
         mLlContainer.addView(linearLayout);
 
@@ -58,6 +64,7 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
         //加载的提示语
         TextView tvTip = new TextView(mContext);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tvTip.setMaxWidth(dp2px(100));
         layoutParams.topMargin = dp2px(3);
         tvTip.setLayoutParams(layoutParams);
         tvTip.setText(tip);

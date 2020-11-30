@@ -4,16 +4,38 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.hjg.base.base.HJGBaseActivity;
+import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.base.PdfWebViewActivity;
+import com.hjg.base.listener.OnRvClickListener;
 import com.hjg.base.util.ActivityUtils;
+import com.hjg.base.util.ArrayListUtils;
 import com.hjg.base.view.LoadingDialog;
+import com.hjg.base.view.MyDividerItemDecoration;
 import com.hjg.base.view.flyco.animation.FadeEnter.FadeEnter;
 import com.hjg.base.view.flyco.animation.FadeExit.FadeExit;
+import com.hjg.hjgtools.adapter.RecyclerViewAdapter;
+import com.hjg.hjgtools.databinding.ActivityMainBinding;
+import com.hjg.hjgtools.dialog.DialogActivity;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
-public class MainActivity extends HJGBaseActivity {
+public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding> implements OnRvClickListener {
 
+
+    private LinearLayoutManager layoutManager;
+
+    private ArrayList dataList = ArrayListUtils.newArrayList(
+            "各种弹窗", "1",
+            "1", "1",
+            "1", "1");
 
     @Override
     protected int getContentID() {
@@ -28,12 +50,13 @@ public class MainActivity extends HJGBaseActivity {
     @Override
     protected void initViewAction() {
 
+        layoutManager = new LinearLayoutManager(this);
+        databinding.recyclerView.setLayoutManager(layoutManager);
 
-
-        LoadingDialog loadingDialog = new LoadingDialog(this);
-        loadingDialog.showAnim(new FadeEnter());
-        loadingDialog.dismissAnim(new FadeExit());
-        loadingDialog.show();
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(dataList);
+        recyclerViewAdapter.setOnRvClickListener(this);
+        databinding.recyclerView.addItemDecoration(new MyDividerItemDecoration(this));
+        databinding.recyclerView.setAdapter(recyclerViewAdapter);
 
 
 //    @Override
@@ -211,8 +234,9 @@ public class MainActivity extends HJGBaseActivity {
     }
 
     public void open(View view) {
+        ActivityUtils.startActivity(SecondActivity.class);
 
-        ActivityUtils.startActivity(PdfWebViewActivity.class);
+//        ActivityUtils.startActivity(PdfWebViewActivity.class);
 //        image.setImageBitmap(ImageUtils.string2bitmap(ImageUtils.bitmap2String(ImageUtils.drawable2Bitmap(ResUtils.getDrawable(R.drawable.ic_launcher)))));
 //        handlerHolder.sendEmptyMessage(1);
 //        ActivityUtils.INSTANCE.openApp2(this, "com.hjg.locationproject");
@@ -242,6 +266,18 @@ public class MainActivity extends HJGBaseActivity {
 
 
 //        DeviceUtils.printAllDeviceinfo();
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+        switch (((TextView) view).getText().toString()) {
+            case "各种弹窗":
+                ActivityUtils.startActivity(DialogActivity.class);
+                break;
+        }
+
 
     }
 

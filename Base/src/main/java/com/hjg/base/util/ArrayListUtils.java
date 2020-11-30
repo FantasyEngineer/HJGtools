@@ -17,6 +17,15 @@ public class ArrayListUtils<T> {
         return new ArrayList();
     }
 
+
+    public static ArrayList newArrayList(String... data) {
+        ArrayList list = new ArrayList();
+        for (String s : data) {
+            list.add(s);
+        }
+        return list;
+    }
+
     public static LinkedList newLinkList() {
         return new LinkedList();
     }

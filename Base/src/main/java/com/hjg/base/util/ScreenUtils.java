@@ -5,6 +5,7 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -25,6 +26,26 @@ public class ScreenUtils {
     private ScreenUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
+
+
+    /**
+     * 获取屏幕尺寸与密度.
+     *
+     * @param context the context
+     * @return mDisplayMetrics
+     */
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        Resources mResources;
+        if (context == null) {
+            mResources = Resources.getSystem();
+
+        } else {
+            mResources = context.getResources();
+        }
+        DisplayMetrics mDisplayMetrics = mResources.getDisplayMetrics();
+        return mDisplayMetrics;
+    }
+
 
     /**
      * 获取屏幕的宽度（单位：px）

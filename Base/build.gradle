@@ -8,6 +8,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    //开启databinding
+    dataBinding {
+        enabled = true
+    }
+
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion

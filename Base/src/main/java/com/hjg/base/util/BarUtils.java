@@ -19,9 +19,6 @@ import java.lang.reflect.Method;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
  *     desc  : 栏相关工具类
  * </pre>
  */
@@ -211,6 +208,7 @@ public class BarUtils {
             setRootView(activity);
         }
     }
+
     /**
      * 为头部是 ImageView 的界面设置状态栏全透明
      *
