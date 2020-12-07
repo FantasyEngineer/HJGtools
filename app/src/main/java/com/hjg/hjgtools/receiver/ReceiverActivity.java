@@ -1,4 +1,4 @@
-package com.hjg.hjgtools;
+package com.hjg.hjgtools.receiver;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.TextSpanUtils;
+import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityReceiverBinding;
 import com.hjg.hjgtools.receiver.DynamicReceiver;
 import com.hjg.hjgtools.receiver.StaticReceiver;

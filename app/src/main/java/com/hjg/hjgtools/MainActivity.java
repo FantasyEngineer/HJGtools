@@ -1,28 +1,20 @@
 package com.hjg.hjgtools;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.hjg.base.base.HJGBaseActivity;
 import com.hjg.base.base.HJGDatabindingBaseActivity;
-import com.hjg.base.base.PdfWebViewActivity;
 import com.hjg.base.listener.OnRvClickListener;
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.ArrayListUtils;
-import com.hjg.base.view.LoadingDialog;
 import com.hjg.base.view.MyDividerItemDecoration;
-import com.hjg.base.view.flyco.animation.FadeEnter.FadeEnter;
-import com.hjg.base.view.flyco.animation.FadeExit.FadeExit;
 import com.hjg.hjgtools.adapter.RecyclerViewAdapter;
 import com.hjg.hjgtools.databinding.ActivityMainBinding;
 import com.hjg.hjgtools.dialog.DialogActivity;
-
-import org.w3c.dom.Text;
+import com.hjg.hjgtools.notification.NotificationActivity;
+import com.hjg.hjgtools.receiver.ReceiverActivity;
 
 import java.util.ArrayList;
 
@@ -34,7 +26,7 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
 
     private ArrayList dataList = ArrayListUtils.newArrayList(
             "各种弹窗", "广播测试",
-            "1", "1",
+            "通知测试", "1",
             "1", "1");
 
     @Override
@@ -278,6 +270,9 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
                 break;
             case "广播测试":
                 ActivityUtils.startActivity(ReceiverActivity.class);
+                break;
+            case "通知测试":
+                ActivityUtils.startActivity(NotificationActivity.class);
                 break;
 
         }
