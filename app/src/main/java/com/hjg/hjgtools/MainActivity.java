@@ -33,7 +33,7 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
     private LinearLayoutManager layoutManager;
 
     private ArrayList dataList = ArrayListUtils.newArrayList(
-            "各种弹窗", "1",
+            "各种弹窗", "广播测试",
             "1", "1",
             "1", "1");
 
@@ -276,6 +276,10 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
             case "各种弹窗":
                 ActivityUtils.startActivity(DialogActivity.class);
                 break;
+            case "广播测试":
+                ActivityUtils.startActivity(ReceiverActivity.class);
+                break;
+
         }
 
 

@@ -1,5 +1,6 @@
 package com.hjg.base.base;
 
+import android.app.Activity;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
@@ -12,12 +13,13 @@ import com.hjg.base.receiver.NetworkChangeReceiver;
 public abstract class HBaseActivity extends AppCompatActivity {
 
     private NetworkChangeReceiver networkChangeReceiver;
+    protected Activity activity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.get().onCreate(this);
-
+        activity = this;
         //注册网络监听
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             registerNetChangerReceiver();
