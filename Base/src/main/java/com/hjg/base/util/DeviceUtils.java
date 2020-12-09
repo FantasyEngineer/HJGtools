@@ -104,11 +104,33 @@ public class DeviceUtils {
 
     /**
      * 获取设备序列号
+     * 需要请求权限PHONE_STATE(目前电视上是能获取到的。但是在手机上获取不到)
      *
      * @return 序列号
      */
     public static String getSerial() {
-        return Build.SERIAL;
+        String serial = "";
+        //通过android.os获取sn号
+        try {
+            serial = android.os.Build.SERIAL;
+            if (!serial.equals("") && !serial.equals("unknown")) return serial;
+        } catch (Exception e) {
+            serial = "";
+        }
+
+        //通过反射获取sn号
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("get", String.class);
+            serial = (String) get.invoke(c, "ro.serialno");
+            if (!serial.equals("") && !serial.equals("unknown")) return serial;
+
+            //9.0及以上无法获取到sn，此方法为补充，能够获取到多数高版本手机 sn
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) serial = Build.getSerial();
+        } catch (Exception e) {
+            serial = "";
+        }
+        return serial;
     }
 
 
