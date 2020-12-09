@@ -30,6 +30,8 @@ import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Base64;
 import android.view.View;
 
+import androidx.annotation.DrawableRes;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -98,6 +100,10 @@ public class ImageUtils {
      */
     public static Bitmap drawable2Bitmap(Drawable drawable) {
         return drawable == null ? null : ((BitmapDrawable) drawable).getBitmap();
+    }
+
+    public static Bitmap res2Bitmap(@DrawableRes int res) {
+        return BitmapFactory.decodeResource(Utils.getContext().getResources(), res);
     }
 
     /**
