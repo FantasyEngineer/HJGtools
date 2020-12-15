@@ -10,6 +10,7 @@ import android.os.Build;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -52,101 +53,6 @@ public class NetUtil {
         ConnectivityManager connMgr = (ConnectivityManager) Utils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         return (networkInfo != null && networkInfo.isConnected());
-    }
-
-    /**
-     * 将ip的整数形式转换成ip形式
-     *
-     * @param ipInt
-     * @return
-     */
-    public static String int2ip(int ipInt) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(ipInt & 0xFF).append(".");
-        sb.append((ipInt >> 8) & 0xFF).append(".");
-        sb.append((ipInt >> 16) & 0xFF).append(".");
-        sb.append((ipInt >> 24) & 0xFF);
-        return sb.toString();
-    }
-
-
-    /**
-     * 获取局域网ip地址 输出结果 fe80::941b:5fff:fe8d:fbe8%dummy0
-     * <p>
-     * 'boolean java.util.Enumeration.hasMoreElements()' on a null object reference，是因为缺少了网络权限
-     * <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-     *
-     * @return
-     */
-    public static String getLocalIpAddress() {
-        try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
-                NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
-                    InetAddress inetAddress = enumIpAddr.nextElement();
-                    if (!inetAddress.isLoopbackAddress()) {
-                        return inetAddress.getHostAddress().toString();
-                    }
-                }
-            }
-        } catch (SocketException ex) {
-        }
-        return null;
-    }
-
-    /**
-     * 获取当前ip地址  192.168.10.129这样
-     *
-     * @param context
-     * @return
-     */
-    public static String getLocalIpAddress(Context context) {
-        try {
-
-            WifiManager wifiManager = (WifiManager)Utils.getContext().getApplicationContext()
-                    .getSystemService(Context.WIFI_SERVICE);
-            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            int i = wifiInfo.getIpAddress();
-            return int2ip(i);
-        } catch (Exception ex) {
-            return " 获取IP出错了!请保证是WIFI,或者请重新打开网络!\n" + ex.getMessage();
-        }
-        // return null;
-    }
-
-
-    /**
-     * 获取内网IP 输出结果：fe80::941b:5fff:fe8d:fbe8%dummy0
-     *
-     * @return
-     * @throws SocketException
-     */
-    public static String getInnerIp() {
-        String ipaddress = null;
-        if (isWifiConnected()) {
-            ipaddress = getLocalIpAddress();
-        }
-        if (ipaddress != null) {
-            return ipaddress;
-        }
-        try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
-                NetworkInterface intf = en.nextElement();
-                if (intf.getName().toLowerCase().equals("eth0") || intf.getName().toLowerCase().equals("wlan0")) {
-                    for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
-                        InetAddress inetAddress = enumIpAddr.nextElement();
-                        if (!inetAddress.isLoopbackAddress()) {
-                            ipaddress = inetAddress.getHostAddress().toString();
-                        }
-                    }
-                } else {
-                    continue;
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-        return ipaddress;
     }
 
 
@@ -253,4 +159,80 @@ public class NetUtil {
         }
         return mac;
     }
+
+
+    /**
+     * 获取ip地址  192.168.1.1 这种类似的
+     *
+     * @return
+     */
+    public static String getInnerIp() {
+        String hostIp = null;
+        if (isWifiConnected()) {
+            hostIp = getLocalIpAddress(Utils.getContext());
+        }
+        if (hostIp != null) {
+            return hostIp;
+        }
+        try {
+            Enumeration nis = NetworkInterface.getNetworkInterfaces();
+            InetAddress ia = null;
+            while (nis.hasMoreElements()) {
+                NetworkInterface ni = (NetworkInterface) nis.nextElement();
+                Enumeration<InetAddress> ias = ni.getInetAddresses();
+                while (ias.hasMoreElements()) {
+                    ia = ias.nextElement();
+                    if (ia instanceof Inet6Address) {
+                        continue;// skip ipv6
+                    }
+                    String ip = ia.getHostAddress();
+                    if (!"127.0.0.1".equals(ip)) {//"127.0.0.1" 本机地址
+                        hostIp = ia.getHostAddress();
+                        break;
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return hostIp;
+    }
+
+
+    /**
+     * 获取当前ip地址
+     *
+     * @param context
+     * @return
+     */
+    public static String getLocalIpAddress(Context context) {
+        try {
+
+            WifiManager wifiManager = (WifiManager) context
+                    .getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            int i = wifiInfo.getIpAddress();
+            return int2ip(i);
+        } catch (Exception ex) {
+            return " 获取IP出错了!请保证是WIFI,或者请重新打开网络!\n" + ex.getMessage();
+        }
+        // return null;
+    }
+
+    /**
+     * 将ip的整数形式转换成ip形式
+     *
+     * @param ipInt
+     * @return
+     */
+    public static String int2ip(int ipInt) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(ipInt & 0xFF).append(".");
+        sb.append((ipInt >> 8) & 0xFF).append(".");
+        sb.append((ipInt >> 16) & 0xFF).append(".");
+        sb.append((ipInt >> 24) & 0xFF);
+        return sb.toString();
+    }
+
+
 }

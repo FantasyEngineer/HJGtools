@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Surface;
@@ -202,5 +203,16 @@ public class ScreenUtils {
             e.printStackTrace();
             return -123;
         }
+    }
+
+    /**
+     * 判断手机屏幕是否锁定
+     * @param c
+     * @return
+     */
+    public final static boolean isScreenOn(Context c) {
+        PowerManager powermanager;
+        powermanager = (PowerManager) c.getSystemService(Context.POWER_SERVICE);
+        return powermanager.isScreenOn();
     }
 }

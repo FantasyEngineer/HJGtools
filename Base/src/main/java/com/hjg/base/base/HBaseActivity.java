@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hjg.base.manager.ActivityManager;
 import com.hjg.base.receiver.NetworkChangeReceiver;
+import com.hjg.base.util.BarUtils;
+import com.hjg.base.util.ScreenUtils;
 
 public abstract class HBaseActivity extends AppCompatActivity {
 
@@ -24,7 +26,6 @@ public abstract class HBaseActivity extends AppCompatActivity {
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             registerNetChangerReceiver();
         }
-
     }
 
     protected boolean isOpenNetListener() {
