@@ -206,7 +206,8 @@ public class ScreenUtils {
     }
 
     /**
-     * 判断手机屏幕是否锁定
+     * 判断手机屏幕是否亮屏
+     *
      * @param c
      * @return
      */
