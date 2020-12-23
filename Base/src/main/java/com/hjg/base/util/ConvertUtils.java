@@ -532,4 +532,26 @@ public class ConvertUtils {
         final float fontScale = Utils.getContext().getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
+
+
+    /**
+     * String 转byte【】数组
+     *
+     * @param data
+     * @return
+     */
+    public static byte[] string2Byte(String data) {
+        return data.getBytes();
+    }
+
+    /**
+     * byte【】数组转string
+     *
+     * @param bytes
+     * @return
+     */
+    public static String byte2String(byte[] bytes) {
+        return new String(bytes);
+    }
+
 }

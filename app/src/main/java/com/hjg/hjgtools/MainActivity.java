@@ -13,6 +13,7 @@ import com.hjg.base.view.MyDividerItemDecoration;
 import com.hjg.hjgtools.adapter.RecyclerViewAdapter;
 import com.hjg.hjgtools.databinding.ActivityMainBinding;
 import com.hjg.hjgtools.dialog.DialogActivity;
+import com.hjg.hjgtools.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.notification.NotificationActivity;
 import com.hjg.hjgtools.receiver.ReceiverActivity;
 
@@ -26,7 +27,7 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
 
     private ArrayList dataList = ArrayListUtils.newArrayList(
             "各种弹窗", "广播测试",
-            "通知测试", "1",
+            "通知测试", "加解密",
             "1", "1");
 
     @Override
@@ -273,6 +274,9 @@ public class MainActivity extends HJGDatabindingBaseActivity<ActivityMainBinding
                 break;
             case "通知测试":
                 ActivityUtils.startActivity(NotificationActivity.class);
+                break;
+            case "加解密":
+                ActivityUtils.startActivity(EncryptionActivity.class);
                 break;
 
         }
