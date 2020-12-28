@@ -1,6 +1,8 @@
 package com.hjg.base.util;
 
 
+import com.hjg.base.util.log.androidlog.L;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -68,6 +70,7 @@ public class AESUtil {
     public static String encrypt(String key, String src) throws Exception {
         // /src = Base64.encodeToString(src.getBytes(), Base64.DEFAULT);
         byte[] rawKey = toMakekey(key, keyLenght, defaultV).getBytes();// key.getBytes();
+        L.d("密钥的长度" + rawKey.length);
         byte[] result = encrypt(rawKey, src.getBytes("utf-8"));
         // result = Base64.encode(result, Base64.DEFAULT);
         return toHex(result);
