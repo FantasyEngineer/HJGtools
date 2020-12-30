@@ -28,7 +28,7 @@ public class NetUtil {
      * 是否已经连接到网络
      */
     public static boolean isOnline() {
-        ConnectivityManager connMgr = (ConnectivityManager) Utils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) HJGUtils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
@@ -39,7 +39,7 @@ public class NetUtil {
      * @return true, if is wifi connected
      */
     public static boolean isWifiConnected() {
-        ConnectivityManager connMgr = (ConnectivityManager) Utils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) HJGUtils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         return (networkInfo != null && networkInfo.isConnected());
     }
@@ -50,7 +50,7 @@ public class NetUtil {
      * @return true, if is mobile connected
      */
     public static boolean isMobileConnected() {
-        ConnectivityManager connMgr = (ConnectivityManager) Utils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) HJGUtils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         return (networkInfo != null && networkInfo.isConnected());
     }
@@ -62,7 +62,7 @@ public class NetUtil {
      */
     private static String getMacDefault() {
         String mac = "";
-        WifiManager wifi = (WifiManager) Utils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifi = (WifiManager) HJGUtils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = null;
         try {
             info = wifi.getConnectionInfo();
@@ -169,7 +169,7 @@ public class NetUtil {
     public static String getInnerIp() {
         String hostIp = null;
         if (isWifiConnected()) {
-            hostIp = getLocalIpAddress(Utils.getContext());
+            hostIp = getLocalIpAddress(HJGUtils.getContext());
         }
         if (hostIp != null) {
             return hostIp;

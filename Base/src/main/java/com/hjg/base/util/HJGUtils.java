@@ -3,13 +3,12 @@ package com.hjg.base.util;
 import android.content.Context;
 
 import com.hjg.base.R;
-import com.hjg.base.util.log.androidlog.L;
 
-public class Utils {
+public class HJGUtils {
 
     private static Context context;
 
-    private Utils() {
+    private HJGUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -19,7 +18,7 @@ public class Utils {
      * @param context 上下文
      */
     public static void init(Context context) {
-        Utils.context = context.getApplicationContext();
+        HJGUtils.context = context.getApplicationContext();
         P.initP(ResUtils.getString(R.string.app_name));
     }
 

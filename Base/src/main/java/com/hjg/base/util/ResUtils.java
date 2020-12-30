@@ -2,7 +2,6 @@ package com.hjg.base.util;
 
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
@@ -17,7 +16,7 @@ public class ResUtils {
      * @return
      */
     public static String getString(@StringRes int id) {
-        return Utils.getContext().getResources().getString(id);
+        return HJGUtils.getContext().getResources().getString(id);
     }
 
     /**
@@ -27,7 +26,7 @@ public class ResUtils {
      * @return
      */
     public static int getColor(@ColorRes int id) {
-        return Utils.getContext().getResources().getColor(id);
+        return HJGUtils.getContext().getResources().getColor(id);
     }
 
 
@@ -38,6 +37,6 @@ public class ResUtils {
      * @return
      */
     public static Drawable getDrawable(@DrawableRes int id) {
-        return Utils.getContext().getResources().getDrawable(id);
+        return HJGUtils.getContext().getResources().getDrawable(id);
     }
 }

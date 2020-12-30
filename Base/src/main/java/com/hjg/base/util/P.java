@@ -1,10 +1,7 @@
 package com.hjg.base.util;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import static com.hjg.base.util.ConstUtils.SHAREPREFERENCENAME;
 
 
 /**
@@ -16,7 +13,7 @@ public class P {
 
 
     public static void initP(String spName) {
-        settings = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        settings = HJGUtils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     public static boolean contains(String key) {

@@ -83,7 +83,7 @@ public class DeviceUtils {
     public static String getSimSerialNum() {
         String simSN = "";
         try {
-            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) Utils.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) HJGUtils.getContext().getSystemService(Context.TELEPHONY_SERVICE);
             simSN = tm.getSimSerialNumber();
         } catch (Exception e) {
             simSN = "无法获取SimSerial";
@@ -149,7 +149,7 @@ public class DeviceUtils {
         if (getSDKVersion() >= 29) {
             return "版本过高，没有许可不允许访问不可重置的设备标志符";
         }
-        android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) Utils.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) HJGUtils.getContext().getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getDeviceId();
     }
 
@@ -165,7 +165,7 @@ public class DeviceUtils {
      */
     @SuppressLint("HardwareIds")
     public static String getAndroidID() {
-        return Settings.Secure.getString(Utils.getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        return Settings.Secure.getString(HJGUtils.getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     /**
@@ -200,7 +200,7 @@ public class DeviceUtils {
     @SuppressLint("HardwareIds")
     private static String getMacAddressByWifiInfo() {
         try {
-            WifiManager wifi = (WifiManager) Utils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifi = (WifiManager) HJGUtils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             if (wifi != null) {
                 WifiInfo info = wifi.getConnectionInfo();
                 if (info != null) return info.getMacAddress();
@@ -310,7 +310,7 @@ public class DeviceUtils {
         Intent intent = new Intent("android.intent.action.ACTION_REQUEST_SHUTDOWN");
         intent.putExtra("android.intent.extra.KEY_CONFIRM", false);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getContext().startActivity(intent);
+        HJGUtils.getContext().startActivity(intent);
     }
 
     /**
@@ -323,7 +323,7 @@ public class DeviceUtils {
         intent.putExtra("nowait", 1);
         intent.putExtra("interval", 1);
         intent.putExtra("window", 0);
-        Utils.getContext().sendBroadcast(intent);
+        HJGUtils.getContext().sendBroadcast(intent);
     }
 
     /**
@@ -333,7 +333,7 @@ public class DeviceUtils {
      * @param reason 传递给内核来请求特殊的引导模式，如"recovery"
      */
     public static void reboot(String reason) {
-        PowerManager mPowerManager = (PowerManager) Utils.getContext().getSystemService(Context.POWER_SERVICE);
+        PowerManager mPowerManager = (PowerManager) HJGUtils.getContext().getSystemService(Context.POWER_SERVICE);
         try {
             mPowerManager.reboot(reason);
         } catch (Exception e) {

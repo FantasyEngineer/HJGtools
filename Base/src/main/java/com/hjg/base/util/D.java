@@ -1,7 +1,6 @@
 package com.hjg.base.util;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,8 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.StringRes;
 
 import com.hjg.base.R;
 
@@ -32,7 +29,7 @@ public class D {
     private static Handler handler;
 
     static {
-        mContext = Utils.getContext();
+        mContext = HJGUtils.getContext();
         handler = new Handler();
     }
 

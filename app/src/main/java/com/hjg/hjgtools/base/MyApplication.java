@@ -1,7 +1,7 @@
 package com.hjg.hjgtools.base;
 
 import com.hjg.base.base.HJGBaseApplication;
-import com.hjg.base.util.Utils;
+import com.hjg.base.util.HJGUtils;
 import com.hjg.base.util.log.androidlog.L;
 
 public class MyApplication extends HJGBaseApplication {
@@ -10,7 +10,7 @@ public class MyApplication extends HJGBaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Utils.init(this);
+        HJGUtils.init(this);
         application = this;
         L.getLogConfig().configAllowLog(true);
     }

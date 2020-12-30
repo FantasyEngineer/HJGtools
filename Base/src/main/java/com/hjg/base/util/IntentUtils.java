@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -17,8 +15,6 @@ import android.telephony.SmsManager;
 import android.webkit.MimeTypeMap;
 
 import androidx.core.content.FileProvider;
-
-import com.hjg.base.util.log.androidlog.L;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -207,7 +203,7 @@ public class IntentUtils {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(Utils.getContext(), "com.your.package.fileProvider", file);
+            Uri contentUri = FileProvider.getUriForFile(HJGUtils.getContext(), "com.your.package.fileProvider", file);
             intent.setDataAndType(contentUri, type);
         }
         intent.setDataAndType(Uri.fromFile(file), type);

@@ -103,7 +103,7 @@ public class ImageUtils {
     }
 
     public static Bitmap res2Bitmap(@DrawableRes int res) {
-        return BitmapFactory.decodeResource(Utils.getContext().getResources(), res);
+        return BitmapFactory.decodeResource(HJGUtils.getContext().getResources(), res);
     }
 
     /**
@@ -696,7 +696,7 @@ public class ImageUtils {
         canvas.scale(scale, scale);
         canvas.drawBitmap(scaleBitmap, 0, 0, paint);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            scaleBitmap = renderScriptBlur(Utils.getContext(), scaleBitmap, radius);
+            scaleBitmap = renderScriptBlur(HJGUtils.getContext(), scaleBitmap, radius);
         } else {
             scaleBitmap = stackBlur(scaleBitmap, (int) radius, recycle);
         }
