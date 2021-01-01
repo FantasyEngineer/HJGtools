@@ -2,8 +2,6 @@ package com.hjg.base.util;
 
 import android.content.Context;
 
-import com.hjg.base.R;
-
 public class HJGUtils {
 
     private static Context context;
@@ -19,7 +17,7 @@ public class HJGUtils {
      */
     public static void init(Context context) {
         HJGUtils.context = context.getApplicationContext();
-        P.initP(ResUtils.getString(R.string.app_name));
+        P.initP(context.getPackageName());
     }
 
     /**
