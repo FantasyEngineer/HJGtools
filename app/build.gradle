@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.github.FantasyEngineer:HJGHttp:1.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 
 
 //    implementation 'com.jakewharton:butterknife:7.0.1'

@@ -65,4 +65,14 @@ public class MapUtils {
     }
 
 
+    /**
+     *遍历map
+     *     Iterator iterable = classMap.entrySet().iterator();
+     *         while (iterable.hasNext()) {
+     *             Map.Entry entry = (Map.Entry) iterable.next();
+     *             dataList.add(entry.getKey());
+     *         }
+     */
+
+
 }
