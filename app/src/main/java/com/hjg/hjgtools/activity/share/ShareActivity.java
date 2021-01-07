@@ -1,8 +1,4 @@
-package com.hjg.hjgtools.share;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+package com.hjg.hjgtools.activity.share;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.hjgtools.R;

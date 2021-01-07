@@ -1,15 +1,9 @@
-package com.hjg.hjgtools.encrytion;
+package com.hjg.hjgtools.activity.encrytion;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.AESUtil;
-import com.hjg.base.util.ConvertUtils;
-import com.hjg.base.util.EncryptUtils;
-import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityEncryptionBinding;
 

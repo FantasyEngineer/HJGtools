@@ -1,36 +1,17 @@
 package com.hjg.hjgtools;
 
-import android.app.Dialog;
-import android.view.View;
-import android.widget.TextView;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.google.gson.Gson;
-import com.hjg.base.base.HJGDatabindingBaseActivity;
-import com.hjg.base.listener.OnRvClickListener;
 import com.hjg.base.util.ActivityUtils;
-import com.hjg.base.util.ArrayListUtils;
-import com.hjg.base.util.EncryptUtils;
-import com.hjg.base.util.MapUtils;
-import com.hjg.base.util.ResUtils;
-import com.hjg.base.view.MyDividerItemDecoration;
-import com.hjg.hjgtools.adapter.RecyclerViewAdapter;
+import com.hjg.hjgtools.activity.dialog.DialogActivity;
+import com.hjg.hjgtools.activity.edittext.EdittextActivity;
+import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
+import com.hjg.hjgtools.activity.file.FileActivity;
+import com.hjg.hjgtools.activity.notification.NotificationActivity;
+import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerActivity;
-import com.hjg.hjgtools.databinding.ActivityMainBinding;
-import com.hjg.hjgtools.dialog.DialogActivity;
-import com.hjg.hjgtools.edittext.EdittextActivity;
-import com.hjg.hjgtools.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
-import com.hjg.hjgtools.file.FileActivity;
-import com.hjg.hjgtools.notification.NotificationActivity;
 import com.hjg.hjgtools.receiver.ReceiverActivity;
-import com.hjg.hjgtools.share.ShareActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 
 public class MainActivity extends HJGBaseRecyclerActivity {

@@ -1,8 +1,4 @@
-package com.hjg.hjgtools.edittext;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+package com.hjg.hjgtools.activity.edittext;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.DrawableUtils;

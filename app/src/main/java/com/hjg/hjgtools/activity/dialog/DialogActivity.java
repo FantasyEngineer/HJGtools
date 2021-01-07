@@ -1,12 +1,7 @@
-package com.hjg.hjgtools.dialog;
+package com.hjg.hjgtools.activity.dialog;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,14 +10,11 @@ import com.hjg.base.adapter.BaseAdapter;
 import com.hjg.base.adapter.BaseViewHolder;
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.listener.OnItemClickListener;
-import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.ArrayListUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.view.MyDividerItemDecoration;
-import com.hjg.base.view.flyco.dialog.listener.OnBtnClickL;
 import com.hjg.base.view.flyco.dialog.widget.NormalDialog;
-import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityDialogBinding;
 

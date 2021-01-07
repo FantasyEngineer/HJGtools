@@ -1,10 +1,5 @@
 package com.hjg.hjgtools;
 
-import android.view.Window;
-
-import androidx.annotation.DrawableRes;
-import androidx.annotation.Size;
-
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.D;
@@ -13,7 +8,6 @@ import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.SizeUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.view.LoadingDialog;
-import com.hjg.base.view.flyco.dialog.listener.OnBtnClickL;
 import com.hjg.base.view.flyco.dialog.widget.NormalDialog;
 import com.hjg.hjgtools.databinding.ActivityLoginBinding;
 import com.hjg.hjgtools.entity.LoginBean;

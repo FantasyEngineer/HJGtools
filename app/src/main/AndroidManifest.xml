@@ -27,9 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools">
-        <activity android:name=".share.ShareActivity"></activity>
-        <activity android:name=".file.FileActivity" />
-        <activity android:name=".edittext.EdittextActivity" />
+        <activity android:name=".activity.share.ShareActivity"></activity>
+        <activity android:name=".activity.file.FileActivity" />
+        <activity android:name=".activity.edittext.EdittextActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,14 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".encrytion.EncryptionActivity" />
-        <activity android:name=".notification.NotificationActivity" />
+        <activity android:name=".activity.encrytion.EncryptionActivity" />
+        <activity android:name=".activity.notification.NotificationActivity" />
         <activity android:name=".receiver.ReceiverActivity" />
-        <activity android:name=".dialog.DialogActivity" />
+        <activity android:name=".activity.dialog.DialogActivity" />
         <activity
             android:name=".test后台服务弹窗.MainActivity2"
             android:exported="true" />
-        <activity android:name=".SecondActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
