@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.rx;
+package com.hjg.hjgtools.request.rx;
 
 public class MyException extends Throwable {
     private String code;

@@ -1,6 +1,5 @@
-package com.hjg.hjgtools.rx;
+package com.hjg.hjgtools.request.rx;
 
-import com.hjg.base.util.D;
 import com.hjg.base.util.StrUtil;
 import com.hjg.hjgtools.entity.BaseBean;
 
