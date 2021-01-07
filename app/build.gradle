@@ -12,10 +12,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-
+        //多dex打包，防止65535方法数过多
+        multiDexEnabled true
         //开启databinding
         dataBinding {
             enabled = true
@@ -23,14 +22,35 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //使用java8 lamda表达式
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //多渠道必须配置，名字随意
+    flavorDimensions 'asuwish'
+    productFlavors {
+        Test {
+            applicationIdSuffix '.test'
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "BASE_SAFE_URL", "\"https://gitee.com/\""
+        }
+        Stardard {
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "BASE_SAFE_URL", "\"https://gitee.com/\""
+
+        }
     }
 }
 
@@ -52,8 +72,6 @@ dependencies {
     //请求框架
     implementation 'com.github.FantasyEngineer:HJGHttp:1.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-
-    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 
 
 //    implementation 'com.jakewharton:butterknife:7.0.1'
