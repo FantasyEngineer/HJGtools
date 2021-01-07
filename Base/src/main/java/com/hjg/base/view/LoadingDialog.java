@@ -62,6 +62,7 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
         progressBar.setLayoutParams(new LinearLayout.LayoutParams(dp2px(60), dp2px(60)));
         progressBar.setProgressDrawable(ResUtils.getDrawable(android.R.drawable.progress_horizontal));
         progressBar.setIndeterminate(false);//设置不确定，就变成了圆形
+        progressBar.setProgressDrawable(ResUtils.getDrawable(R.drawable.progressbar_bg));
         linearLayout.addView(progressBar);
 
         //加载的提示语
