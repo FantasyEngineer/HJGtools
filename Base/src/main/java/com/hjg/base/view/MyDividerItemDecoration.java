@@ -3,6 +3,7 @@ package com.hjg.base.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.util.Size;
 import android.view.View;
 
 import androidx.core.content.ContextCompat;
@@ -10,6 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.R;
+import com.hjg.base.util.DrawableUtils;
+import com.hjg.base.util.ResUtils;
+import com.hjg.base.util.SizeUtils;
 
 
 /**
@@ -21,8 +25,8 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable drawable;
 
 
-    public MyDividerItemDecoration(Context context) {
-        drawable = ContextCompat.getDrawable(context, R.drawable.dividerline);
+    public MyDividerItemDecoration() {
+        drawable = ResUtils.getDrawable(R.drawable.dividerline);
     }
 
 

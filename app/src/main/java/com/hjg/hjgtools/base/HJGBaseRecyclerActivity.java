@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hjg.base.adapter.BaseAdapter;
 import com.hjg.base.adapter.BaseViewHolder;
 import com.hjg.base.base.HBaseActivity;
+import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.view.MyDividerItemDecoration;
 import com.hjg.hjgtools.R;
@@ -34,12 +35,19 @@ public abstract class HJGBaseRecyclerActivity extends HBaseActivity {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new MyDividerItemDecoration(this));
+        recyclerView.addItemDecoration(new MyDividerItemDecoration());
         recyclerView.setAdapter(recyclerViewAdapter = new BaseAdapter<RecyclerListBean>(activity, R.layout.item_title, structureData()) {
 
             @Override
             public void convert(BaseViewHolder holder, RecyclerListBean recyclerListBean, int position) {
+                if (recyclerListBean.getIntDrawable() != 0) {
+                    holder.setImageDrawable(R.id.tvIcon, ResUtils.getDrawable(recyclerListBean.getIntDrawable()));
+                }
+                holder.setVisible(R.id.tvIcon, recyclerListBean.getIntDrawable() != 0);
+
                 holder.setText(R.id.tvTitle, recyclerListBean.getTitle());
+
+                
                 holder.setText(R.id.tvContent, recyclerListBean.getContent());
                 holder.setVisible(R.id.tvContent, StrUtil.isNotEmpty(recyclerListBean.getContent()));
                 holder.setOnClickListener(R.id.llTitle, new View.OnClickListener() {

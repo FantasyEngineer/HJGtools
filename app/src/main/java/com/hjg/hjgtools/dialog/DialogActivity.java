@@ -51,7 +51,7 @@ public class DialogActivity extends HJGDatabindingBaseActivity<ActivityDialogBin
 
         databinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         databinding.recyclerView.setHasFixedSize(false);
-        databinding.recyclerView.addItemDecoration(new MyDividerItemDecoration(this));
+        databinding.recyclerView.addItemDecoration(new MyDividerItemDecoration());
 
 
         dialogAdapter.setOnItemClickListener(new OnItemClickListener() {

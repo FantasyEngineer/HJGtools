@@ -13,6 +13,7 @@ import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.ArrayListUtils;
 import com.hjg.base.util.EncryptUtils;
 import com.hjg.base.util.MapUtils;
+import com.hjg.base.util.ResUtils;
 import com.hjg.base.view.MyDividerItemDecoration;
 import com.hjg.hjgtools.adapter.RecyclerViewAdapter;
 import com.hjg.hjgtools.base.HJGBaseRecyclerActivity;
@@ -294,12 +295,12 @@ public class MainActivity extends HJGBaseRecyclerActivity {
     @Override
     public ArrayList<RecyclerListBean> structureData() {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
-        RecyclerListBean bean1 = new RecyclerListBean("弹窗", DialogActivity.class, "各种已经实现的弹窗方案");
-        RecyclerListBean bean2 = new RecyclerListBean("广播测试", ReceiverActivity.class, "静态与动态广播");
-        RecyclerListBean bean3 = new RecyclerListBean("通知测试", NotificationActivity.class, "适配了低版本和高版本的通知");
-        RecyclerListBean bean4 = new RecyclerListBean("加解密", EncryptionActivity.class, "正在集成中");
-        RecyclerListBean bean5 = new RecyclerListBean("控件", EdittextActivity.class, "各种控件的展示方案");
-        RecyclerListBean bean6 = new RecyclerListBean("分享功能", EdittextActivity.class);
+        RecyclerListBean bean1 = new RecyclerListBean("弹窗", DialogActivity.class, "各种已经实现的弹窗方案", R.drawable.ic_icon_dialog);
+        RecyclerListBean bean2 = new RecyclerListBean("广播测试", ReceiverActivity.class, "静态与动态广播", R.drawable.ic_icon_broadcast);
+        RecyclerListBean bean3 = new RecyclerListBean("通知测试", NotificationActivity.class, "适配了低版本和高版本的通知", R.drawable.ic_icon_notification);
+        RecyclerListBean bean4 = new RecyclerListBean("加解密", EncryptionActivity.class, "base64，RSA非对称加密", R.drawable.ic_icon_encryption);
+        RecyclerListBean bean5 = new RecyclerListBean("控件", EdittextActivity.class, "各种控件的展示方案", R.drawable.ic_icon_view);
+        RecyclerListBean bean6 = new RecyclerListBean("分享功能", EdittextActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share);
 
         listBeans.add(bean1);
         listBeans.add(bean2);

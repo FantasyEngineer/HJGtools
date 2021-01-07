@@ -1,9 +1,12 @@
 package com.hjg.hjgtools.entity;
 
+import android.graphics.drawable.Drawable;
+
 public class RecyclerListBean {
     String title;//名称
     Class aClass;//对应跳转的activity.class
     String content;//叙述
+    int intDrawable;
 
     public RecyclerListBean(String title, Class aClass) {
         this.title = title;
@@ -14,6 +17,13 @@ public class RecyclerListBean {
         this.title = title;
         this.aClass = aClass;
         this.content = content;
+    }
+
+    public RecyclerListBean(String title, Class aClass, String content, int intDrawable) {
+        this.title = title;
+        this.aClass = aClass;
+        this.content = content;
+        this.intDrawable = intDrawable;
     }
 
     public RecyclerListBean(String title, String content) {
@@ -44,5 +54,15 @@ public class RecyclerListBean {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+
+    public int getIntDrawable() {
+        return intDrawable;
+    }
+
+    public void setIntDrawable(int intDrawable) {
+        this.intDrawable = intDrawable;
     }
 }
