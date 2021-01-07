@@ -35,9 +35,6 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
 
         LoadingDialog loadingDialog = new LoadingDialog(this);
 
-        databinding.username.setBackground(DrawableUtils.getCornerRaduisDrawable(ResUtils.getColor(R.color.translucent),
-                SizeUtils.dp2px(1), ResUtils.getColor(R.color.purple_500), SizeUtils.dp2px(5)));
-
         //监听两个按钮是否都不为空
         InitialValueObservable<CharSequence> nameObservable = RxTextView.textChanges(databinding.username);
         InitialValueObservable<CharSequence> passwordObservable = RxTextView.textChanges(databinding.password);
@@ -47,26 +44,27 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
 
         //规定时间内只响应第一个
         RxView.clicks(databinding.login).throttleFirst(200, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(o -> {
-            loadingDialog.show();
-            Loginbiz.getAppbiz().login().subscribe(new MyOberver<LoginBean>() {
-                @Override
-                public void onNewNext(LoginBean loginBean) {
-                    loadingDialog.dismiss();
-                    String inputUserName = databinding.username.getText().toString();
-                    String inputPassword = databinding.password.getText().toString();
-                    if (loginBean.getName().equals(inputUserName) && loginBean.getPassword().equals(inputPassword)) {
-                        showDialog();
-                    } else {
-                        D.showShort("账户或密码错误");
-                    }
-                }
-
-                @Override
-                public void onNewError(MyException myException) {
-                    loadingDialog.dismiss();
-                    D.showShort(myException.getMessage());
-                }
-            });
+//            loadingDialog.show();
+//            Loginbiz.getAppbiz().login().subscribe(new MyOberver<LoginBean>() {
+//                @Override
+//                public void onNewNext(LoginBean loginBean) {
+//                    loadingDialog.dismiss();
+//                    String inputUserName = databinding.username.getText().toString();
+//                    String inputPassword = databinding.password.getText().toString();
+//                    if (loginBean.getName().equals(inputUserName) && loginBean.getPassword().equals(inputPassword)) {
+//                        showDialog();
+//                    } else {
+//                        D.showShort("账户或密码错误");
+//                    }
+//                }
+//
+//                @Override
+//                public void onNewError(MyException myException) {
+//                    loadingDialog.dismiss();
+//                    D.showShort(myException.getMessage());
+//                }
+//            });
+            databinding.username.setEnabled(false);
         });
     }
 

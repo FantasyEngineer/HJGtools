@@ -32,14 +32,14 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:background="@null"
+            android:background="@drawable/selector_bg_cornor_all"
             android:gravity="center_vertical"
             android:hint="请填写客户姓名"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="hjg"
             android:textColor="@color/purple_500"
-            android:textCursorDrawable="@null"
+            android:textCursorDrawable="@drawable/edit_cursor_color"
             android:textSize="@dimen/edittext_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -49,11 +49,12 @@
             app:layout_constraintWidth_percent="0.8" />
 
 
-        <com.hjg.base.view.roundview.RoundEditText
+        <EditText
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/selector_bg_cornor_all"
             android:gravity="center_vertical"
             android:hint="请填写客户密码"
             android:inputType="textPassword"

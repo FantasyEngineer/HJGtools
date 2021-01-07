@@ -6,6 +6,10 @@
         <item name="colorPrimaryVariant">@color/purple_500</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
+
+        <!--设置全activity背景-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@mipmap/activity_backgroud</item>
     </style>
 
 

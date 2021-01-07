@@ -26,7 +26,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HJGTools">
+        android:theme="@style/Theme.HJGTools"
+        tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
         <activity android:name=".activity.share.ShareActivity"></activity>
         <activity android:name=".activity.file.FileActivity" />
         <activity android:name=".activity.edittext.EdittextActivity" />
