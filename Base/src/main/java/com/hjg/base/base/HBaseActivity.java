@@ -2,7 +2,10 @@ package com.hjg.base.base;
 
 import android.app.Activity;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +24,21 @@ public abstract class HBaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.get().onCreate(this);
+
         activity = this;
         //注册网络监听
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             registerNetChangerReceiver();
         }
+        //强制竖屏或者横屏或者用户控制
+        setRequestedOrientation(setScreenOrientation());
+    }
+
+    //设置屏幕旋转
+    protected int setScreenOrientation() {
+//        return ActivityInfo.SCREEN_ORIENTATION_USER;//用户控制
+//        return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;//强制横屏
+        return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;//强制竖屏
     }
 
     protected boolean isOpenNetListener() {

@@ -27,7 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools">
-        <activity android:name=".edittext.EdittextActivity"></activity>
+        <activity android:name=".share.ShareActivity"></activity>
+        <activity android:name=".file.FileActivity" />
+        <activity android:name=".edittext.EdittextActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +47,7 @@
         <activity android:name=".SecondActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <service
             android:name=".test后台服务弹窗.NetService"

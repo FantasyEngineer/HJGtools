@@ -1,5 +1,7 @@
 package com.hjg.hjgtools;
 
+import android.view.Window;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Size;
 
@@ -36,6 +38,7 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
 
     @Override
     protected void initViewAction() {
+
         LoadingDialog loadingDialog = new LoadingDialog(this);
 
         databinding.username.setBackground(DrawableUtils.getCornerRaduisDrawable(ResUtils.getColor(R.color.translucent),

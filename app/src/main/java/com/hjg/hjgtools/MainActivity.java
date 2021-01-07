@@ -22,8 +22,10 @@ import com.hjg.hjgtools.dialog.DialogActivity;
 import com.hjg.hjgtools.edittext.EdittextActivity;
 import com.hjg.hjgtools.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
+import com.hjg.hjgtools.file.FileActivity;
 import com.hjg.hjgtools.notification.NotificationActivity;
 import com.hjg.hjgtools.receiver.ReceiverActivity;
+import com.hjg.hjgtools.share.ShareActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -300,7 +302,8 @@ public class MainActivity extends HJGBaseRecyclerActivity {
         RecyclerListBean bean3 = new RecyclerListBean("通知测试", NotificationActivity.class, "适配了低版本和高版本的通知", R.drawable.ic_icon_notification);
         RecyclerListBean bean4 = new RecyclerListBean("加解密", EncryptionActivity.class, "base64，RSA非对称加密", R.drawable.ic_icon_encryption);
         RecyclerListBean bean5 = new RecyclerListBean("控件", EdittextActivity.class, "各种控件的展示方案", R.drawable.ic_icon_view);
-        RecyclerListBean bean6 = new RecyclerListBean("分享功能", EdittextActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share);
+        RecyclerListBean bean6 = new RecyclerListBean("分享功能", ShareActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share);
+        RecyclerListBean bean7 = new RecyclerListBean("文件操作", FileActivity.class, "", R.drawable.ic_icon_file);
 
         listBeans.add(bean1);
         listBeans.add(bean2);
@@ -308,6 +311,7 @@ public class MainActivity extends HJGBaseRecyclerActivity {
         listBeans.add(bean4);
         listBeans.add(bean5);
         listBeans.add(bean6);
+        listBeans.add(bean7);
         return listBeans;
     }
 
