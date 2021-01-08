@@ -4,6 +4,7 @@ import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.DrawableUtils;
+import com.hjg.base.util.P;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.SizeUtils;
 import com.hjg.base.util.StrUtil;
@@ -83,8 +84,8 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
         normalDialog.show();
         normalDialog.setOnBtnClickL(() -> {
             normalDialog.dismiss();
-            ActivityUtils.startActivity(MainActivity.class);
             finish();
+            P.putString(Config.LOGIN_STATUS, "logined");
         });
     }
 

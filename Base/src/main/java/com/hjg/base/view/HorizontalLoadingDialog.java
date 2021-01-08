@@ -1,54 +1,64 @@
 package com.hjg.base.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.ContentLoadingProgressBar;
+import androidx.annotation.DrawableRes;
 
 import com.hjg.base.R;
 import com.hjg.base.util.ResUtils;
-import com.hjg.base.util.SizeUtils;
 import com.hjg.base.util.StrUtil;
-import com.hjg.base.view.flyco.animation.BaseAnimatorSet;
 import com.hjg.base.view.flyco.dialog.utils.CornerUtils;
-import com.hjg.base.view.flyco.dialog.widget.base.BaseDialog;
 import com.hjg.base.view.flyco.dialog.widget.internal.BaseAlertDialog;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
- * 等待框
- * 使用方案如下：添加动画等等
- * LoadingDialog loadingDialog = new LoadingDialog(this);
- * loadingDialog.showAnim(new FadeEnter());
- * loadingDialog.dismissAnim(new FadeExit());
- * loadingDialog.show();
+ * 横向等待框
  */
-public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
+public class HorizontalLoadingDialog extends BaseAlertDialog<HorizontalLoadingDialog> {
 
     private int textColor = Color.parseColor("#383838");
     private String tip = "加载中..";
     private int textSize = 15;//默认的字体的大小
+    private long periodMilliseconds = 50;//周期进度的时间，单位是
+    private ProgressBar progressBar;
+    private int progressDrawable = android.R.drawable.progress_horizontal;
 
 
-    public LoadingDialog(Context context) {
+    public HorizontalLoadingDialog(Context context) {
         super(context);
+    }
+
+    /**
+     * @param context
+     * @param periodMilliseconds 周期进度时间
+     */
+    public HorizontalLoadingDialog(Context context, long periodMilliseconds) {
+        super(context);
+        this.periodMilliseconds = periodMilliseconds;
+    }
+
+    /**
+     * @param context
+     * @param periodMilliseconds 周期进度时间
+     * @param progressDrawable   进度条的样式
+     */
+    public HorizontalLoadingDialog(Context context, long periodMilliseconds, @DrawableRes int progressDrawable) {
+        super(context);
+        this.periodMilliseconds = periodMilliseconds;
+        this.progressDrawable = progressDrawable;
     }
 
     @Override
@@ -65,17 +75,14 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
         mLlContainer.addView(linearLayout);
 
         //圆形滚动条
-        ProgressBar progressBar = new ProgressBar(mContext);
-        progressBar.setLayoutParams(new LinearLayout.LayoutParams(dp2px(60), dp2px(60)));
-        progressBar.setProgressDrawable(ResUtils.getDrawable(android.R.drawable.progress_horizontal));
+        progressBar = new ProgressBar(mContext, null, android.R.attr.progressBarStyleHorizontal);
+        progressBar.setMax(100);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dp2px(60), dp2px(25));
+        params.bottomMargin = dp2px(10);
+        progressBar.setLayoutParams(params);
+        progressBar.setProgressDrawable(ResUtils.getDrawable(progressDrawable));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //两种方式
-            progressBar.setIndeterminateTintList(ColorStateList.valueOf(ResUtils.getColor(R.color.black)));
-//            progressBar.setIndeterminateTintList(ContextCompat.getColorStateList(getContext(), R.color.black));
-        }
         progressBar.setIndeterminate(false);//设置不确定，就变成了圆形
-        progressBar.setProgressDrawable(ResUtils.getDrawable(R.drawable.progressbar_bg));
         linearLayout.addView(progressBar);
 
         //加载的提示语
@@ -95,9 +102,42 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
         return mLlContainer;
     }
 
+    private int i = 0;
+    private Timer timer;
+
     @Override
     public void setUiBeforShow() {
 
+        //需要进度不听的前进，然后归零，轮训，达到一种加载的效果
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                progressBar.setProgress(i);
+                i = i + 5;
+                if (i >= 100) {
+                    i = 0;
+                }
+            }
+        }, 100, periodMilliseconds);
+
+    }
+
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (timer != null) {
+            timer.cancel();
+        }
     }
 
     /**
@@ -106,7 +146,7 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
      * @param tip
      * @return
      */
-    public LoadingDialog setTip(String tip) {
+    public HorizontalLoadingDialog setTip(String tip) {
         this.tip = tip;
         return this;
     }
@@ -117,7 +157,7 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
      * @param textSize
      * @return
      */
-    public LoadingDialog setTextSize(int textSize) {
+    public HorizontalLoadingDialog setTextSize(int textSize) {
         this.textSize = textSize;
         return this;
     }
@@ -128,7 +168,7 @@ public class LoadingDialog extends BaseAlertDialog<LoadingDialog> {
      * @param textColor
      * @return
      */
-    public LoadingDialog setTextColor(String textColor) {
+    public HorizontalLoadingDialog setTextColor(String textColor) {
         this.textColor = Color.parseColor(textColor);
         return this;
     }
