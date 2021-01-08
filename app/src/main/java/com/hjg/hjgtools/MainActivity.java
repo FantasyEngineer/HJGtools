@@ -8,6 +8,7 @@ import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.P;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.view.HorizontalLoadingDialog;
+import com.hjg.base.view.SpecialHorizontalLoadingDialog;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
 import com.hjg.hjgtools.activity.edittext.EdittextActivity;
 import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
@@ -37,7 +38,7 @@ public class MainActivity extends HJGBaseRecyclerActivity {
     @Override
     protected void onItemClick(int position, RecyclerListBean recyclerListBean) {
 //        ActivityUtils.startActivity(recyclerListBean.getaClass());
-        HorizontalLoadingDialog horizontalLoadingDialog = new HorizontalLoadingDialog(activity, 100, R.drawable.progress_horizon);
+        SpecialHorizontalLoadingDialog horizontalLoadingDialog = new SpecialHorizontalLoadingDialog(activity, 50, R.drawable.progress_horizon_special);
         horizontalLoadingDialog.show();
     }
 
