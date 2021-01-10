@@ -8,6 +8,10 @@ public class RecyclerListBean {
     String content;//叙述
     int intDrawable;
 
+    public RecyclerListBean(String title) {
+        this.title = title;
+    }
+
     public RecyclerListBean(String title, Class aClass) {
         this.title = title;
         this.aClass = aClass;
@@ -55,7 +59,6 @@ public class RecyclerListBean {
     public void setContent(String content) {
         this.content = content;
     }
-
 
 
     public int getIntDrawable() {
