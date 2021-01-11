@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">工具集合</string>
+
+    <string name="splash_jump">跳过&#160; %1$s</string>
 </resources>

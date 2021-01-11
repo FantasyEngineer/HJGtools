@@ -9,7 +9,7 @@ import com.hjg.base.util.P;
 import com.hjg.base.util.StrUtil;
 import com.hjg.hjgtools.activity.bound.ElasticActivity;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
-import com.hjg.hjgtools.activity.edittext.EdittextActivity;
+import com.hjg.hjgtools.activity.widget.EdittextActivity;
 import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.activity.file.FileActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;

@@ -3,8 +3,8 @@
 
     <!--    <item android:drawable="@drawable/bg_cornor_all_gray"></item>-->
     <!--    <item android:drawable="@drawable/bg_cornor_all_black" android:state_focused="true"></item>-->
-    <item android:drawable="@drawable/bg_cornor_all_gray" android:state_focused="false"></item>
-    <item android:drawable="@drawable/bg_cornor_all_black" android:state_focused="true"></item>
+    <item android:drawable="@drawable/bg_cornor_stroke_gray" android:state_focused="false"></item>
+    <item android:drawable="@drawable/bg_cornor_strokel_black" android:state_focused="true"></item>
 
 
 </selector>

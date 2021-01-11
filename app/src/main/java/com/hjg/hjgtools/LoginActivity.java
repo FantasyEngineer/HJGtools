@@ -84,8 +84,9 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
         normalDialog.show();
         normalDialog.setOnBtnClickL(() -> {
             normalDialog.dismiss();
-            finish();
             P.putString(Config.LOGIN_STATUS, "logined");
+            ActivityUtils.startActivity(MainActivity.class);
+            finish();
         });
     }
 

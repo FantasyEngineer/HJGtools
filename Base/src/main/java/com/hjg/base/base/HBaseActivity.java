@@ -24,7 +24,6 @@ public abstract class HBaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.get().onCreate(this);
-
         activity = this;
         //注册网络监听
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -32,6 +31,34 @@ public abstract class HBaseActivity extends AppCompatActivity {
         }
         //强制竖屏或者横屏或者用户控制
         setRequestedOrientation(setScreenOrientation());
+        if (!isShowActionBar()) {
+            supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        }
+        if (!isShowBottomNavigation()) {
+            ScreenUtils.hideBottomUIMenu(activity);
+        }
+        if (isFullScreen()) {
+            ScreenUtils.setFullScreen(activity);
+        }
+    }
+
+    /**
+     * 是否全屏
+     *
+     * @return 默认不全屏
+     */
+    protected boolean isFullScreen() {
+        return false;
+    }
+
+    //是否展示底部导航
+    protected boolean isShowBottomNavigation() {
+        return true;
+    }
+
+    //是否展示ActionBar
+    protected boolean isShowActionBar() {
+        return true;
     }
 
     //设置屏幕旋转

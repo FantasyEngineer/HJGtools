@@ -7,11 +7,13 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 /**
@@ -216,4 +218,59 @@ public class ScreenUtils {
         powermanager = (PowerManager) c.getSystemService(Context.POWER_SERVICE);
         return powermanager.isScreenOn();
     }
+
+
+    /**
+     * activity全屏，包含底部的虚拟导航按钮,不包含ActionBar（当滑动屏幕的时候会展示出来）
+     *
+     * @return
+     */
+    public final static void hideBottomUIMenu(Activity c) {
+        //隐藏虚拟按键，并且全屏
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+            View v = c.getWindow().getDecorView();
+            v.setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            //for new api versions.
+            View decorView = c.getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
+    }
+
+    /**
+     * 安卓手机设置全屏（不包含底部navigation，以及ActionBar）
+     *
+     * @param c
+     */
+    public final static void setFullScreen(Activity c) {
+        c.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 隐藏状态栏
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

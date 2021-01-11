@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.activity.edittext;
+package com.hjg.hjgtools.activity.widget;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.DrawableUtils;

@@ -28,11 +28,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.bound.BoundScrollViewActivity"></activity>
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.bound.BoundScrollViewActivity" />
         <activity android:name=".activity.bound.ElasticActivity" />
         <activity android:name=".activity.share.ShareActivity" />
         <activity android:name=".activity.file.FileActivity" />
-        <activity android:name=".activity.edittext.EdittextActivity" />
+        <activity android:name=".activity.widget.EdittextActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".activity.encrytion.EncryptionActivity" />
         <activity android:name=".activity.notification.NotificationActivity" />
@@ -40,13 +47,7 @@
         <activity android:name=".activity.dialog.DialogActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
 
         <service
             android:name=".test后台服务弹窗.NetService"
