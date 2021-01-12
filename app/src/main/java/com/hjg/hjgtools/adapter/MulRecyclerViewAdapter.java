@@ -1,5 +1,6 @@
 package com.hjg.hjgtools.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.listener.OnEasyItemClickListener;
+import com.hjg.base.util.NetUtil;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.hjgtools.R;
@@ -27,33 +29,36 @@ import io.reactivex.functions.Consumer;
  */
 public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<RecyclerListBean> list;
+    private Context context;
 
     private OnEasyItemClickListener onItemClickListener;
 
-    public MulRecyclerViewAdapter(List<RecyclerListBean> list) {
+    public MulRecyclerViewAdapter(Context context, List<RecyclerListBean> list) {
         this.list = list;
+        this.context = context;
     }
+
+    View emptyView, labelView, functionView;
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         if (viewType == RecyclerListBean.TYPE_EMPTY) {
-            View emptyView = layoutInflater.inflate(R.layout.layout_empty, parent, true);
+            emptyView = layoutInflater.inflate(R.layout.layout_empty, parent, false);
             EmptyViewHolder viewHolder = new EmptyViewHolder(emptyView);
             return viewHolder;
         } else if (viewType == RecyclerListBean.TYPE_LABER) {
-            View labelView = layoutInflater.inflate(R.layout.item_tv_category, parent, true);
+            labelView = layoutInflater.inflate(R.layout.item_tv_category, parent, false);
             LaberViewHolder viewHolder = new LaberViewHolder(labelView);
             return viewHolder;
         } else {
-            View functionView = layoutInflater.inflate(R.layout.item_function, parent, true);
+            functionView = layoutInflater.inflate(R.layout.item_function, parent, false);
             FunctionViewHolder viewHolder = new FunctionViewHolder(functionView);
             return viewHolder;
         }
-
-
     }
+
 
     @Override
     public int getItemViewType(int position) {

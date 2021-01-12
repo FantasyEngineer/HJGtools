@@ -35,7 +35,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new MyDividerItemDecoration());
-        MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(structureData());
+        MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, structureData());
         mulRecyclerViewAdapter.setOnItemClickListener(new OnEasyItemClickListener<RecyclerListBean>() {
             @Override
             public void onItemClick(View view, RecyclerListBean recyclerListBean, int position) {
