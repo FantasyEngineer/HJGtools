@@ -20,53 +20,33 @@ import com.hjg.hjgtools.entity.RecyclerListBean;
 
 import java.util.ArrayList;
 
-//recyclerView布局activity基类（单个布局承载）
-public abstract class HJGBaseRecyclerActivity extends HBaseActivity {
-
+//recyclerView布局activity基类（多个布局承载）
+public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
 
     private RecyclerView recyclerView;
-    private BaseAdapter<RecyclerListBean> recyclerViewAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recyclerview);
 
-
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new MyDividerItemDecoration());
-        recyclerView.setAdapter(recyclerViewAdapter = new BaseAdapter<RecyclerListBean>(activity, R.layout.item_title, structureData()) {
-
+        MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(structureData());
+        mulRecyclerViewAdapter.setOnItemClickListener(new OnEasyItemClickListener<RecyclerListBean>() {
             @Override
-            public void convert(BaseViewHolder holder, RecyclerListBean recyclerListBean, int position) {
-                if (recyclerListBean.getIntDrawable() != 0) {
-                    holder.setImageDrawable(R.id.tvIcon, ResUtils.getDrawable(recyclerListBean.getIntDrawable()));
-                }
-                holder.setVisible(R.id.tvIcon, recyclerListBean.getIntDrawable() != 0);
-
-                holder.setText(R.id.tvTitle, recyclerListBean.getTitle());
-
-
-                holder.setText(R.id.tvContent, recyclerListBean.getContent());
-                holder.setVisible(R.id.tvContent, StrUtil.isNotEmpty(recyclerListBean.getContent()));
-                holder.setOnClickListener(R.id.llFunction, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onActivityItemClick(position, recyclerListBean);
-                    }
-                });
+            public void onItemClick(View view, RecyclerListBean recyclerListBean, int position) {
+                onActivityItemClick(position, recyclerListBean);
             }
         });
-
-
+        recyclerView.setAdapter(mulRecyclerViewAdapter);
     }
 
     protected abstract void onActivityItemClick(int position, RecyclerListBean recyclerListBean);
 
     public abstract ArrayList<RecyclerListBean> structureData();
-
 
 }

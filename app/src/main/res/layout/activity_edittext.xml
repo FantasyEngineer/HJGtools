@@ -23,7 +23,7 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <com.hjg.base.view.roundview.RoundEditText
+                <com.hjg.hjgtools.view.roundview.RoundEditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -47,7 +47,7 @@
                     app:rv_strokeWidth="1dp" />
 
 
-                <com.hjg.base.view.roundview.RoundEditText
+                <com.hjg.hjgtools.view.roundview.RoundEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

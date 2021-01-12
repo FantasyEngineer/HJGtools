@@ -62,7 +62,7 @@ public class LoginActivity extends HJGDatabindingBaseActivity<ActivityLoginBindi
                 @Override
                 public void onNewError(MyException myException) {
                     loadingDialog.dismiss();
-                    D.showShort(myException.getMessage());
+                    D.showShort(myException.getMsg());
                 }
             });
         });

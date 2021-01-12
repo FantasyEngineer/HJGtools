@@ -15,27 +15,17 @@ import com.hjg.hjgtools.activity.file.FileActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerActivity;
+import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 import com.hjg.hjgtools.receiver.ReceiverActivity;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends HJGBaseRecyclerActivity {
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        String loginStatus = P.getString(Config.LOGIN_STATUS);
-        if (StrUtil.isEmpty(loginStatus)) {
-            ActivityUtils.startActivity(LoginActivity.class);
-        }
-    }
+public class MainActivity extends HJGBaseRecyclerMulItemActivity {
 
     @Override
-    protected void onItemClick(int position, RecyclerListBean recyclerListBean) {
+    protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
         ActivityUtils.startActivity(recyclerListBean.getaClass());
     }
 
@@ -50,8 +40,6 @@ public class MainActivity extends HJGBaseRecyclerActivity {
         listBeans.add(new RecyclerListBean("分享功能", ShareActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share));
         listBeans.add(new RecyclerListBean("文件操作", FileActivity.class, "", R.drawable.ic_icon_file));
         listBeans.add(new RecyclerListBean("弹性布局", ElasticActivity.class, "", R.drawable.ic_icon_file));
-
-
         return listBeans;
     }
 

@@ -1,34 +1,28 @@
-package com.hjg.base.view.roundview;
+package com.hjg.hjgtools.view.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 
-/**
- * 用于需要圆角矩形框背景的TextView的情况,减少直接使用TextView时引入的shape资源文件
- */
-public class RoundEditText extends AppCompatEditText {
+/** 用于需要圆角矩形框背景的TextView的情况,减少直接使用TextView时引入的shape资源文件 */
+public class RoundTextView extends AppCompatTextView {
     private RoundViewDelegate delegate;
 
-    public RoundEditText(Context context) {
+    public RoundTextView(Context context) {
         this(context, null);
     }
 
-    public RoundEditText(Context context, AttributeSet attrs) {
+    public RoundTextView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RoundEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
-        setFocusable(true);
-        setFocusableInTouchMode(true);
     }
 
-    /**
-     * use delegate to set attr
-     */
+    /** use delegate to set attr */
     public RoundViewDelegate getDelegate() {
         return delegate;
     }
