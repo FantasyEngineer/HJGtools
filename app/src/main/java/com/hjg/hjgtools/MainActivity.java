@@ -37,8 +37,6 @@ public class MainActivity extends HJGBaseRecyclerActivity {
     @Override
     protected void onItemClick(int position, RecyclerListBean recyclerListBean) {
         ActivityUtils.startActivity(recyclerListBean.getaClass());
-//        SpecialHorizontalLoadingDialog horizontalLoadingDialog = new SpecialHorizontalLoadingDialog(activity, 50, R.drawable.progress_horizon_special);
-//        horizontalLoadingDialog.show();
     }
 
     @Override

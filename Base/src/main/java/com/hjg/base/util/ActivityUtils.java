@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 
+import com.hjg.base.R;
 import com.hjg.base.manager.ActivityManager;
 import com.hjg.base.util.log.androidlog.L;
 
@@ -73,6 +74,7 @@ public enum ActivityUtils {
                 intent.putExtras(bundle);
             }
             getTopActivity().startActivity(intent);
+            getTopActivity().overridePendingTransition(R.anim.enter_trans_from_right, 0);
             return true;
         } catch (Exception e) {
             return false;
