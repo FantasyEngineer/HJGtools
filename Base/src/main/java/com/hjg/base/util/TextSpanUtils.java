@@ -426,6 +426,39 @@ public class TextSpanUtils {
         }
 
         /**
+         * 追加样式换行
+         *
+         * @return {@link Builder}
+         */
+        public Builder appendNewLine() {
+            setSpan();
+            this.text = "\n";
+            return this;
+        }
+
+        /**
+         * 追加样式tab
+         *
+         * @return {@link Builder}
+         */
+        public Builder appendTab() {
+            setSpan();
+            this.text = "\t";
+            return this;
+        }
+
+        /**
+         * 追加样式空格
+         *
+         * @return {@link Builder}
+         */
+        public Builder appendBlank() {
+            setSpan();
+            this.text = "&#160;";
+            return this;
+        }
+
+        /**
          * 创建样式字符串
          *
          * @return 样式字符串
