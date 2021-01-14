@@ -28,6 +28,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
+        <activity android:name=".activity.conflict.ScrollViewRecyclerViewActivity"></activity>
+        <activity android:name=".activity.conflict.ConflictActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +49,7 @@
         <activity android:name=".activity.dialog.DialogActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <service
             android:name=".test后台服务弹窗.NetService"
