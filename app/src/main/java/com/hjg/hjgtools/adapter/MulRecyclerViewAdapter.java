@@ -79,7 +79,7 @@ public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             laberViewHolder.tvCategroy.setText(recyclerListBean.getTitle());
         } else if (holder instanceof FunctionViewHolder) {//功能布局
             FunctionViewHolder functionViewHolder = (FunctionViewHolder) holder;
-            RxView.clicks(functionViewHolder.itemView).throttleFirst(1, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
+            RxView.clicks(functionViewHolder.itemView).throttleFirst(1500, TimeUnit.MILLISECONDS).subscribe(new Consumer<Object>() {
                 @Override
                 public void accept(Object o) throws Exception {
                     if (onItemClickListener != null) {

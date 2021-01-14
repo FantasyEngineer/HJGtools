@@ -2,6 +2,7 @@ package com.hjg.hjgtools.base;
 
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
     private RecyclerView recyclerView;
-    private TextView tvDes;
+    protected TextView tvDes;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
         recyclerView = findViewById(R.id.recyclerView);
         tvDes = findViewById(R.id.tv_des);
         tvDes.setText(setDesString());
+        tvDes.setMovementMethod(LinkMovementMethod.getInstance());
         tvDes.setVisibility(StrUtil.isEmpty(setDesString().toString()) ? View.GONE : View.VISIBLE);
 
         recyclerView.setHasFixedSize(true);
@@ -66,7 +68,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
      * @return
      */
     protected String getDesString() {
-        return tvDes.toString();
+        return tvDes.getText().toString();
     }
 
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
