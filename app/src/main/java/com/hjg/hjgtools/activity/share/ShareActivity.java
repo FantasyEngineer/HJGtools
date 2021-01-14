@@ -1,18 +1,21 @@
 package com.hjg.hjgtools.activity.share;
 
-import com.hjg.base.base.HJGDatabindingBaseActivity;
-import com.hjg.hjgtools.R;
-import com.hjg.hjgtools.databinding.ActivityShareBinding;
+import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
+import com.hjg.hjgtools.entity.RecyclerListBean;
 
-public class ShareActivity extends HJGDatabindingBaseActivity<ActivityShareBinding> {
+import java.util.ArrayList;
 
-    @Override
-    protected int getContentID() {
-        return R.layout.activity_share;
-    }
+public class ShareActivity extends HJGBaseRecyclerMulItemActivity {
 
     @Override
-    protected void initViewAction() {
-
+    public ArrayList<RecyclerListBean> structureData() {
+        ArrayList<RecyclerListBean> recyclerListBeans = new ArrayList<>();
+        recyclerListBeans.add(new RecyclerListBean("分享到短信"));
+        recyclerListBeans.add(new RecyclerListBean("分享到邮箱"));
+        recyclerListBeans.add(new RecyclerListBean("分享到QQ"));
+        recyclerListBeans.add(new RecyclerListBean("分享到微信好友"));
+        recyclerListBeans.add(new RecyclerListBean("分享到微信朋友圈"));
+        recyclerListBeans.add(new RecyclerListBean("分享到微博"));
+        return recyclerListBeans;
     }
 }
