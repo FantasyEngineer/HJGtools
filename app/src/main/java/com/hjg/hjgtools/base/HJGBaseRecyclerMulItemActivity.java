@@ -1,6 +1,7 @@
 package com.hjg.hjgtools.base;
 
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,8 +33,8 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         tvDes = findViewById(R.id.tv_des);
-        tvDes.setText(initDes());
-        tvDes.setVisibility(StrUtil.isEmpty(initDes()) ? View.GONE : View.VISIBLE);
+        tvDes.setText(setDesString());
+        tvDes.setVisibility(StrUtil.isEmpty(setDesString().toString()) ? View.GONE : View.VISIBLE);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -55,8 +56,8 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
      *
      * @return
      */
-    protected String initDes() {
-        return "";
+    protected CharSequence setDesString() {
+        return "null";
     }
 
     /**
@@ -64,7 +65,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
      *
      * @return
      */
-    protected String getDes() {
+    protected String getDesString() {
         return tvDes.toString();
     }
 
