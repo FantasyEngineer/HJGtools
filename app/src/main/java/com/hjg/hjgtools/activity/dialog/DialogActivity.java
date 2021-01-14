@@ -24,7 +24,6 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
 
     @Override
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
-
         switch (recyclerListBean.getTitle()) {
             case "NormalDialog":
                 NormalDialog normalDialog = new NormalDialog(activity);

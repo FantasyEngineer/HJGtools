@@ -11,6 +11,7 @@ import com.hjg.base.adapter.BaseAdapter;
 import com.hjg.base.adapter.BaseViewHolder;
 import com.hjg.base.base.HBaseActivity;
 import com.hjg.base.listener.OnEasyItemClickListener;
+import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.util.log.androidlog.L;
@@ -22,6 +23,8 @@ import com.hjg.hjgtools.entity.RecyclerListBean;
 
 import java.util.ArrayList;
 
+import static com.hjg.hjgtools.MainActivity.TITLE;
+
 //recyclerView布局activity基类（多个布局承载）
 public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
 
@@ -31,12 +34,6 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recyclerview);
-
-        Bundle bundle = getIntent().getBundleExtra("bundle");
-        if (bundle != null) {
-            String title = bundle.getString(MainActivity.TITLE);
-            setTitle(title);
-        }
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -48,12 +45,20 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
             @Override
             public void onItemClick(View view, RecyclerListBean recyclerListBean, int position) {
                 onActivityItemClick(position, recyclerListBean);
+
+                if (recyclerListBean.getaClass() != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(TITLE, recyclerListBean.getTitle());
+                    ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
+                }
             }
         });
         recyclerView.setAdapter(mulRecyclerViewAdapter);
     }
 
-    protected abstract void onActivityItemClick(int position, RecyclerListBean recyclerListBean);
+    protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
+
+    }
 
     public abstract ArrayList<RecyclerListBean> structureData();
 

@@ -19,12 +19,21 @@ public abstract class HBaseActivity extends AppCompatActivity {
 
     private NetworkChangeReceiver networkChangeReceiver;
     protected Activity activity;
+    public static String TITLE = "title";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.get().onCreate(this);
         activity = this;
+
+        //添加标题
+        Bundle bundle = getIntent().getBundleExtra("bundle");
+        if (bundle != null) {
+            String title = bundle.getString(TITLE);
+            setTitle(title);
+        }
+
         //注册网络监听
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             registerNetChangerReceiver();
