@@ -48,6 +48,16 @@ public class SpecialHorizontalLoadingDialog extends BaseAlertDialog<SpecialHoriz
 
     /**
      * @param context
+     * @param progressDrawable 进度条的样式
+     */
+
+    public SpecialHorizontalLoadingDialog(Context context, @DrawableRes int progressDrawable) {
+        super(context);
+        this.progressDrawable = progressDrawable;
+    }
+
+    /**
+     * @param context
      * @param periodMilliseconds 周期进度时间
      * @param progressDrawable   进度条的样式
      */

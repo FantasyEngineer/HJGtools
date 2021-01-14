@@ -13,7 +13,9 @@ import com.hjg.base.base.HBaseActivity;
 import com.hjg.base.listener.OnEasyItemClickListener;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
+import com.hjg.base.util.log.androidlog.L;
 import com.hjg.base.view.MyDividerItemDecoration;
+import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.adapter.MulRecyclerViewAdapter;
 import com.hjg.hjgtools.entity.RecyclerListBean;
@@ -29,6 +31,12 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recyclerview);
+
+        Bundle bundle = getIntent().getBundleExtra("bundle");
+        if (bundle != null) {
+            String title = bundle.getString(MainActivity.TITLE);
+            setTitle(title);
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
 

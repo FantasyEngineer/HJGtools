@@ -1,5 +1,6 @@
 package com.hjg.hjgtools;
 
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,10 +25,13 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends HJGBaseRecyclerMulItemActivity {
+    public static String TITLE = "title";
 
     @Override
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
-        ActivityUtils.startActivity(recyclerListBean.getaClass());
+        Bundle bundle = new Bundle();
+        bundle.putString(TITLE, recyclerListBean.getTitle());
+        ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
     }
 
     @Override

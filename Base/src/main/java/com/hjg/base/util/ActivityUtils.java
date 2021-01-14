@@ -71,7 +71,7 @@ public enum ActivityUtils {
 
             Intent intent = new Intent(getTopActivity(), cla);
             if (bundle != null) {
-                intent.putExtras(bundle);
+                intent.putExtra("bundle", bundle);
             }
             getTopActivity().startActivity(intent);
             getTopActivity().overridePendingTransition(R.anim.enter_trans_from_right, 0);
