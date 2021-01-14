@@ -8,8 +8,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hjg.base.R;
 import com.hjg.base.manager.ActivityManager;
 import com.hjg.base.receiver.NetworkChangeReceiver;
 import com.hjg.base.util.BarUtils;
@@ -27,13 +29,6 @@ public abstract class HBaseActivity extends AppCompatActivity {
         ActivityManager.get().onCreate(this);
         activity = this;
 
-        //添加标题
-        Bundle bundle = getIntent().getBundleExtra("bundle");
-        if (bundle != null) {
-            String title = bundle.getString(TITLE);
-            setTitle(title);
-        }
-
         //注册网络监听
         if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             registerNetChangerReceiver();
@@ -49,6 +44,7 @@ public abstract class HBaseActivity extends AppCompatActivity {
         if (isFullScreen()) {
             ScreenUtils.setFullScreen(activity);
         }
+
     }
 
     /**

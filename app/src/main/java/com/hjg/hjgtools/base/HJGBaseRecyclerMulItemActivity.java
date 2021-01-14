@@ -8,26 +8,19 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hjg.base.adapter.BaseAdapter;
-import com.hjg.base.adapter.BaseViewHolder;
-import com.hjg.base.base.HBaseActivity;
+import com.hjg.base.base.HTitleActivity;
 import com.hjg.base.listener.OnEasyItemClickListener;
 import com.hjg.base.util.ActivityUtils;
-import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
-import com.hjg.base.util.log.androidlog.L;
 import com.hjg.base.view.MyDividerItemDecoration;
-import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.adapter.MulRecyclerViewAdapter;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 
 import java.util.ArrayList;
 
-import static com.hjg.hjgtools.MainActivity.TITLE;
-
 //recyclerView布局activity基类（多个布局承载）
-public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
+public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
     private RecyclerView recyclerView;
     private TextView tvDes;
@@ -64,6 +57,15 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
      */
     protected String initDes() {
         return "";
+    }
+
+    /**
+     * 获取描述文字
+     *
+     * @return
+     */
+    protected String getDes() {
+        return tvDes.toString();
     }
 
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {

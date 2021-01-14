@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding;
 import com.hjg.base.util.D;
 import com.hjg.base.util.log.androidlog.L;
 
-public abstract class HJGDatabindingBaseActivity<T> extends HBaseActivity {
+public abstract class HJGDatabindingBaseActivity<T> extends HTitleActivity {
 
 
     protected T databinding;

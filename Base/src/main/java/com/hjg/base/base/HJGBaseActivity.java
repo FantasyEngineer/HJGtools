@@ -11,7 +11,7 @@ import com.hjg.base.receiver.NetworkChangeReceiver;
 import com.hjg.base.util.D;
 import com.hjg.base.util.log.androidlog.L;
 
-public abstract class HJGBaseActivity extends HBaseActivity {
+public abstract class HJGBaseActivity extends HTitleActivity {
 
 
     @Override

@@ -34,4 +34,9 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         return listBeans;
     }
 
+
+    @Override
+    protected boolean isShowBackArrow() {
+        return false;
+    }
 }
