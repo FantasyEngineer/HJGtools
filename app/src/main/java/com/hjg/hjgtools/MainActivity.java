@@ -11,7 +11,7 @@ import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.widget.EdittextActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
-import com.hjg.hjgtools.receiver.ReceiverActivity;
+import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
 
 import java.util.ArrayList;
 

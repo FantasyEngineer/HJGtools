@@ -1,11 +1,7 @@
-package com.hjg.hjgtools.receiver;
+package com.hjg.hjgtools.activity.receiver;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Bundle;
 import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
@@ -14,8 +10,6 @@ import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.TextSpanUtils;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityReceiverBinding;
-import com.hjg.hjgtools.receiver.DynamicReceiver;
-import com.hjg.hjgtools.receiver.StaticReceiver;
 
 public class ReceiverActivity extends HJGDatabindingBaseActivity<ActivityReceiverBinding> {
 

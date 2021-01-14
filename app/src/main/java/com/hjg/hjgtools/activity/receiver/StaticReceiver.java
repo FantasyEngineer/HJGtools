@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.receiver;
+package com.hjg.hjgtools.activity.receiver;
 
 
 import android.content.BroadcastReceiver;
