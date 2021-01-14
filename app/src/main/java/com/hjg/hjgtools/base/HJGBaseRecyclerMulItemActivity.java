@@ -2,6 +2,7 @@ package com.hjg.hjgtools.base;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ import static com.hjg.hjgtools.MainActivity.TITLE;
 public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
 
     private RecyclerView recyclerView;
+    private TextView tvDes;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,24 +38,32 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HBaseActivity {
         setContentView(R.layout.layout_recyclerview);
 
         recyclerView = findViewById(R.id.recyclerView);
+        tvDes = findViewById(R.id.tv_des);
+        tvDes.setText(initDes());
+        tvDes.setVisibility(StrUtil.isEmpty(initDes()) ? View.GONE : View.VISIBLE);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new MyDividerItemDecoration());
         MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, structureData());
-        mulRecyclerViewAdapter.setOnItemClickListener(new OnEasyItemClickListener<RecyclerListBean>() {
-            @Override
-            public void onItemClick(View view, RecyclerListBean recyclerListBean, int position) {
-                onActivityItemClick(position, recyclerListBean);
-
-                if (recyclerListBean.getaClass() != null) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString(TITLE, recyclerListBean.getTitle());
-                    ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
-                }
+        mulRecyclerViewAdapter.setOnItemClickListener((OnEasyItemClickListener<RecyclerListBean>) (view, recyclerListBean, position) -> {
+            onActivityItemClick(position, recyclerListBean);
+            if (recyclerListBean.getaClass() != null) {
+                Bundle bundle = new Bundle();
+                bundle.putString(TITLE, recyclerListBean.getTitle());
+                ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
             }
         });
         recyclerView.setAdapter(mulRecyclerViewAdapter);
+    }
+
+    /**
+     * 初始化页面的描述语句
+     *
+     * @return
+     */
+    protected String initDes() {
+        return "";
     }
 
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {

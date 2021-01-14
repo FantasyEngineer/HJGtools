@@ -78,7 +78,7 @@ public abstract class HBaseActivity extends AppCompatActivity {
     }
 
     protected boolean isOpenNetListener() {
-        return true;
+        return false;
     }
 
     @Override
