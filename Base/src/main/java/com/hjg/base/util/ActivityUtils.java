@@ -273,5 +273,102 @@ public enum ActivityUtils {
         }
     }
 
+    /**
+     * 跳转到浏览器打开网页(网址必须以http开头，否则会报错)
+     *
+     * @param url
+     */
+    public static void goExplore(Context context, String url) {
+        if (hasBrowser(context)) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri content_url = Uri.parse(url);
+            intent.setData(content_url);
+            context.startActivity(intent);
+        } else {
+            D.showShort("当前系统没有可用的浏览器");
+        }
+
+    }
+
+
+    /**
+     * 是否有浏览器
+     *
+     * @param context
+     * @return
+     */
+    public static boolean hasBrowser(Context context) {
+        PackageManager pm = context.getPackageManager();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse("http://"));
+        @SuppressLint("WrongConstant") List<ResolveInfo> list = pm.queryIntentActivities(intent, PackageManager.GET_INTENT_FILTERS);
+        final int size = (list == null) ? 0 : list.size();
+        return size > 0;
+    }
+
+
+    /**
+     * 选择相机
+     */
+
+    public static void openCamera(Context context) {
+        // 跳转到系统照相机
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        context.startActivity(cameraIntent);
+//        if (cameraIntent.resolveActivity(context.getPackageManager()) != null) {
+//            // 设置系统相机拍照后的输出路径
+//            // 创建临时文件
+//            mTmpFile = OtherUtils.createFile(context.getApplicationContext());
+//
+//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
+//            context.(cameraIntent, REQUEST_CAMERA);
+//        } else {
+//        }
+    }
+
+
+    /**
+     * 打开相册
+     *
+     * @param activity
+     * @param REQUEST_ALBUM_OK
+     */
+    public static void openAlbum(Activity activity, int REQUEST_ALBUM_OK) {
+        Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
+        albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        activity.startActivityForResult(albumIntent, REQUEST_ALBUM_OK);
+    }
+
+
+    /**
+     * 拨打电话（跳转到拨号界面，用户手动点击拨打）
+     * 不需要call phone权限
+     *
+     * @param phoneNum 电话号码
+     */
+    public static void callPhone(Activity activity, String phoneNum) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNum);
+        intent.setData(data);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 发送短信 需要sms的权限
+     */
+    public static void sendSMSS(String phone, String content) {
+        if (!StrUtil.isEmpty(content) && !StrUtil.isEmpty(phone)) {
+            SmsManager manager = SmsManager.getDefault();
+            ArrayList<String> strings = manager.divideMessage(content);
+            for (int i = 0; i < strings.size(); i++) {
+                manager.sendTextMessage(phone, null, content, null, null);
+            }
+        } else {
+            D.showShort("内容以及号码不能为空");
+            return;
+        }
+    }
+
 
 }

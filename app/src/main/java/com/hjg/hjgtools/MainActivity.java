@@ -6,6 +6,7 @@ import com.hjg.hjgtools.activity.dialog.DialogActivity;
 import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.activity.file.FileActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
+import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.recyclerVIew.RecyclerViewStyleActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.widget.EdittextActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("弹性布局", ElasticActivity.class, "", R.drawable.ic_icon_bound));
         listBeans.add(new RecyclerListBean("冲突解决", ConflictActivity.class, "", R.drawable.ic_icon_conflict));
         listBeans.add(new RecyclerListBean("RecyclerView", RecyclerViewStyleActivity.class, "各种样式RecyclerView", R.drawable.ic_icon_conflict));
-        listBeans.add(new RecyclerListBean("权限申请", RecyclerViewStyleActivity.class, "各种权限申请", R.drawable.ic_icon_conflict));
+        listBeans.add(new RecyclerListBean("权限申请", PermissionActivity.class, "各种权限申请", R.drawable.ic_icon_conflict));
         return listBeans;
     }
 
