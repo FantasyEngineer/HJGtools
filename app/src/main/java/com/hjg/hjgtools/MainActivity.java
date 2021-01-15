@@ -31,6 +31,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("弹性布局", ElasticActivity.class, "", R.drawable.ic_icon_bound));
         listBeans.add(new RecyclerListBean("冲突解决", ConflictActivity.class, "", R.drawable.ic_icon_conflict));
         listBeans.add(new RecyclerListBean("RecyclerView", RecyclerViewStyleActivity.class, "各种样式RecyclerView", R.drawable.ic_icon_conflict));
+        listBeans.add(new RecyclerListBean("权限申请", RecyclerViewStyleActivity.class, "各种权限申请", R.drawable.ic_icon_conflict));
         return listBeans;
     }
 

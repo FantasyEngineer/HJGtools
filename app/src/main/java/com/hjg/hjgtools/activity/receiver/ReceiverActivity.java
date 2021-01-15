@@ -58,6 +58,7 @@ public class ReceiverActivity extends HJGBaseRecyclerMulItemActivity {
 
             case "反注册广播":
                 if (dynamicReceiver != null) {
+
                     unregisterReceiver(dynamicReceiver);
                     dynamicReceiver = null;
                     D.showShort("注销广播");
