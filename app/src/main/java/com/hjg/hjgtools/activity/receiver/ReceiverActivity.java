@@ -39,14 +39,14 @@ public class ReceiverActivity extends HJGBaseRecyclerMulItemActivity {
                 sendBroadcast(intent);
                 break;
 
-            case "注册广播"://注册
+            case "注册广播":
                 dynamicReceiver = new DynamicReceiver();
                 IntentFilter intentFilter = new IntentFilter();
                 intentFilter.addAction("com.hjg.dynamic");
                 registerReceiver(dynamicReceiver, intentFilter);
                 D.showShort("注册广播");
                 break;
-            case "发送动态广播"://发送
+            case "发送动态广播":
                 if (dynamicReceiver != null) {
                     intent = new Intent("com.hjg.dynamic");
                     intent.putExtra("data", i++);
@@ -56,7 +56,7 @@ public class ReceiverActivity extends HJGBaseRecyclerMulItemActivity {
                 }
                 break;
 
-            case "反注册广播"://反注册
+            case "反注册广播":
                 if (dynamicReceiver != null) {
                     unregisterReceiver(dynamicReceiver);
                     dynamicReceiver = null;
