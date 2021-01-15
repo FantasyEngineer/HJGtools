@@ -22,8 +22,8 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
     public ArrayList<RecyclerListBean> structureData() {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
         listBeans.add(new RecyclerListBean("弹窗", DialogActivity.class, "各种已经实现的弹窗方案", R.drawable.ic_icon_dialog));
-        listBeans.add(new RecyclerListBean("广播测试", ReceiverActivity.class, "静态与动态广播", R.drawable.ic_icon_broadcast));
-        listBeans.add(new RecyclerListBean("通知测试", NotificationActivity.class, "适配了低版本和高版本的通知", R.drawable.ic_icon_notification));
+        listBeans.add(new RecyclerListBean("广播", ReceiverActivity.class, "静态与动态广播", R.drawable.ic_icon_broadcast));
+        listBeans.add(new RecyclerListBean("通知", NotificationActivity.class, "适配了低版本和高版本的通知", R.drawable.ic_icon_notification));
         listBeans.add(new RecyclerListBean("加解密", EncryptionActivity.class, "base64，RSA非对称加密,中文加码解码", R.drawable.ic_icon_encryption));
         listBeans.add(new RecyclerListBean("控件", EdittextActivity.class, "各种控件的展示方案", R.drawable.ic_icon_view));
         listBeans.add(new RecyclerListBean("分享功能", ShareActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share));
