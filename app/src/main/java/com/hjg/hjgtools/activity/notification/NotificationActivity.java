@@ -43,7 +43,9 @@ public class NotificationActivity extends HJGBaseRecyclerMulItemActivity {
     protected CharSequence setDesString() {
         return new TextSpanUtils.Builder("注意：\n").setForegroundColor(ResUtils.getColor(R.color.red)).setBold()
                 .append("NotificationChannel是Android O新增的通知渠道，其允许您为要显示的每种通知类型创建用户可自定义的渠道\n" +
-                        "如果你需要发送属于某个自定义渠道的通知，你需要在发送通知前创建自定义通知渠道" + "\n如果没有添加渠道则报错").append("No Channel found for pkg=com.example.xx.xx, channelId=null, id=1001, tag=null…\n").setForegroundColor(ResUtils.getColor(R.color.red)).create();
+                        "如果你需要发送属于某个自定义渠道的通知，你需要在发送通知前创建自定义通知渠道" + "\n如果没有添加渠道则报错").append("No Channel found for pkg=com.example.xx.xx, channelId=null, id=1001, tag=null…\n")
+                .setUnderline()
+                .setForegroundColor(ResUtils.getColor(R.color.red)).create();
     }
 
     @Override

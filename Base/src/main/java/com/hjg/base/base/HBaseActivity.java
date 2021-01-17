@@ -29,21 +29,26 @@ public abstract class HBaseActivity extends AppCompatActivity {
         ActivityManager.get().onCreate(this);
         activity = this;
 
-        //注册网络监听
-        if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-            registerNetChangerReceiver();
+        try {
+            //注册网络监听
+            if (isOpenNetListener()) {// 需要该<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+                registerNetChangerReceiver();
+            }
+            //强制竖屏或者横屏或者用户控制
+            setRequestedOrientation(setScreenOrientation());
+            if (!isShowActionBar()) {
+                supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+            }
+            if (!isShowBottomNavigation()) {
+                ScreenUtils.hideBottomUIMenu(activity);
+            }
+            if (isFullScreen()) {
+                ScreenUtils.setFullScreen(activity);
+            }
+        } catch (Exception e) {
+
         }
-        //强制竖屏或者横屏或者用户控制
-        setRequestedOrientation(setScreenOrientation());
-        if (!isShowActionBar()) {
-            supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        }
-        if (!isShowBottomNavigation()) {
-            ScreenUtils.hideBottomUIMenu(activity);
-        }
-        if (isFullScreen()) {
-            ScreenUtils.setFullScreen(activity);
-        }
+
 
     }
 

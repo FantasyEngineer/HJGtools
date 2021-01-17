@@ -27,10 +27,10 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 /**
  * 活动页面操作类
  */
-public enum ActivityUtils {
-
-    //枚举单例
-    INSTANCE;
+public class ActivityUtils {
+//
+//    //枚举单例
+//    INSTANCE;
 
     /**
      * 判断当前应用某个activity是否存活
@@ -86,7 +86,7 @@ public enum ActivityUtils {
     /**
      * 关闭所有activity
      */
-    public void finishAllActivity() {
+    public static void finishAllActivity() {
         checkIsExtendsHJGBaseActivity();
 
         while (ActivityManager.get().getActivityList().size() > 0) {
@@ -119,7 +119,7 @@ public enum ActivityUtils {
      *
      * @param context
      */
-    public void exit(Activity context) {
+    public static void exit(Activity context) {
         checkIsExtendsHJGBaseActivity();
 
         try {
