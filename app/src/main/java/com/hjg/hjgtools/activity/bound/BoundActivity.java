@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * 弹性布局
  */
-public class ElasticActivity extends HJGBaseRecyclerMulItemActivity {
+public class BoundActivity extends HJGBaseRecyclerMulItemActivity {
 
     @Override
     public ArrayList<RecyclerListBean> structureData() {

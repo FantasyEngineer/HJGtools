@@ -9,10 +9,10 @@ android {
     }
 
     //开启databinding
-    dataBinding {
-        enabled = true
-    }
-
+//    dataBinding {//已被替换
+//        enabled = true
+//    }
+    android.buildFeatures.dataBinding true
 
 
     defaultConfig {

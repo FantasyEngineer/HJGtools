@@ -16,9 +16,7 @@ android {
         //多dex打包，防止65535方法数过多
         multiDexEnabled true
         //开启databinding
-        dataBinding {
-            enabled = true
-        }
+        android.buildFeatures.dataBinding true
     }
 
     buildTypes {

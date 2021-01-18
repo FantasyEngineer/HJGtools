@@ -80,7 +80,6 @@ public class BoundScrollView extends NestedScrollView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        // TODO Auto-generated method stub
         return super.onInterceptTouchEvent(ev);
     }
 

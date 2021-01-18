@@ -1,10 +1,11 @@
 package com.hjg.hjgtools;
 
-import com.hjg.hjgtools.activity.bound.ElasticActivity;
+import com.hjg.hjgtools.activity.bound.BoundActivity;
 import com.hjg.hjgtools.activity.conflict.ConflictActivity;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
 import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
 import com.hjg.hjgtools.activity.file.FileActivity;
+import com.hjg.hjgtools.activity.fragment.FragmentActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.recyclerVIew.RecyclerViewStyleActivity;
@@ -29,10 +30,11 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("控件", EdittextActivity.class, "各种控件的展示方案", R.drawable.ic_icon_view));
         listBeans.add(new RecyclerListBean("分享功能", ShareActivity.class, "集成了各种平台的分享", R.drawable.ic_icon_share));
         listBeans.add(new RecyclerListBean("文件操作", FileActivity.class, "", R.drawable.ic_icon_file));
-        listBeans.add(new RecyclerListBean("弹性布局", ElasticActivity.class, "", R.drawable.ic_icon_bound));
+        listBeans.add(new RecyclerListBean("弹性布局", BoundActivity.class, "", R.drawable.ic_icon_bound));
         listBeans.add(new RecyclerListBean("冲突解决", ConflictActivity.class, "", R.drawable.ic_icon_conflict));
         listBeans.add(new RecyclerListBean("RecyclerView", RecyclerViewStyleActivity.class, "各种样式RecyclerView", R.drawable.ic_icon_conflict));
         listBeans.add(new RecyclerListBean("权限申请", PermissionActivity.class, "各种权限申请", R.drawable.ic_icon_conflict));
+        listBeans.add(new RecyclerListBean("碎片化Fragment", FragmentActivity.class, "fragment的用法", R.drawable.ic_icon_conflict));
         return listBeans;
     }
 
