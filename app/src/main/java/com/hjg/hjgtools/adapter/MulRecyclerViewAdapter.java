@@ -76,7 +76,11 @@ public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         RecyclerListBean recyclerListBean = list.get(position);
         if (holder instanceof LaberViewHolder) {//标签布局
             LaberViewHolder laberViewHolder = (LaberViewHolder) holder;
-            laberViewHolder.tvCategroy.setText(recyclerListBean.getTitle());
+            if (StrUtil.isNotEmpty(recyclerListBean.getTitle())) {
+                laberViewHolder.tvCategroy.setText(recyclerListBean.getTitle());
+            } else {
+                laberViewHolder.tvCategroy.setText(recyclerListBean.getSpannableStringBuilderTitle());
+            }
         } else if (holder instanceof FunctionViewHolder) {//功能布局
             FunctionViewHolder functionViewHolder = (FunctionViewHolder) holder;
             RxView.clicks(functionViewHolder.itemView).throttleFirst(1500, TimeUnit.MILLISECONDS).subscribe(new Consumer<Object>() {
@@ -94,7 +98,12 @@ public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             } else {
                 functionViewHolder.tvIcon.setVisibility(View.GONE);
             }
-            functionViewHolder.tvTitle.setText(recyclerListBean.getTitle());
+            if (StrUtil.isNotEmpty(recyclerListBean.getTitle())) {
+                functionViewHolder.tvTitle.setText(recyclerListBean.getTitle());
+            } else {
+                functionViewHolder.tvTitle.setText(recyclerListBean.getSpannableStringBuilderTitle());
+            }
+
             functionViewHolder.tvContent.setText(recyclerListBean.getContent());
             functionViewHolder.tvContent.setVisibility(StrUtil.isNotEmpty(recyclerListBean.getContent()) ? View.VISIBLE : View.GONE);
 

@@ -10,6 +10,7 @@
     <!-- 圆角矩形背景色select -->
     <attr name="rv_backgroundSelectedColor" format="color" />
     <attr name="rv_backgroundEnableColor" format="color" />
+    <attr name="rv_backgroundFocusColor" format="color" />
     <!-- 圆角弧度,单位dp-->
     <attr name="rv_cornerRadius" format="dimension" />
     <!-- 圆角弧度,单位dp-->
@@ -46,6 +47,7 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundSelectedColor" />
         <attr name="rv_backgroundEnableColor" />
+        <attr name="rv_backgroundFocusColor" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
         <attr name="rv_strokeColor" />

@@ -1,6 +1,7 @@
 package com.hjg.hjgtools.entity;
 
 import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
 
 import com.hjg.hjgtools.activity.widget.EdittextActivity;
 
@@ -10,13 +11,20 @@ public class RecyclerListBean {
     public static final int TYPE_FUNCTION = 1;//分类下的内容展示, 可以点击
 
     private int type = TYPE_FUNCTION;//类型(分类标签或者可点击的标签)
+
     private String title;//名称
+    private SpannableStringBuilder spannableStringBuilderTitle;//带有文本格式的名称
+
     private Class aClass;//对应跳转的activity.class
     private String content;//叙述
     private int intDrawable; //图标
 
     public RecyclerListBean(String title) {
         this.title = title;
+    }
+
+    public RecyclerListBean(SpannableStringBuilder spannableStringBuilderTitle) {
+        this.spannableStringBuilderTitle = spannableStringBuilderTitle;
     }
 
     //这里是laber
@@ -112,4 +120,11 @@ public class RecyclerListBean {
         this.type = type;
     }
 
+    public SpannableStringBuilder getSpannableStringBuilderTitle() {
+        return spannableStringBuilderTitle;
+    }
+
+    public void setSpannableStringBuilderTitle(SpannableStringBuilder spannableStringBuilderTitle) {
+        this.spannableStringBuilderTitle = spannableStringBuilderTitle;
+    }
 }

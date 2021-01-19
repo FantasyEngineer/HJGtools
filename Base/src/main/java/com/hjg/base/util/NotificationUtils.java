@@ -34,7 +34,7 @@ public class NotificationUtils {
      * @param pendingIntent  目的
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public static void sendNotification(Activity activity, String channelId, int notificationID, String title, String content, int icon, String ticker, String subText, PendingIntent pendingIntent) {
+    public static void sendNotification(Context activity, String channelId, int notificationID, String title, String content, int icon, String ticker, String subText, PendingIntent pendingIntent) {
         //1.获取到manager
         NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
 

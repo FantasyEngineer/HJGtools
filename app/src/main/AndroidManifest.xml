@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- wifi状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /> <!-- 电话权限 拨打电话 读取通话记录 读取电话状态  修改通话记录 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -43,7 +44,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.widget.WidgetActivity"></activity>
+        <activity android:name=".activity.task.JobSchedulerActivity"></activity>
+        <activity android:name=".activity.task.TaskActivity" />
+        <activity android:name=".activity.system.SystemActivity" />
+        <activity android:name=".activity.widget.WidgetActivity" />
         <activity android:name=".activity.recyclerVIew.RecyclerViewScrollActivity" />
         <activity android:name=".activity.recyclerVIew.RecyclerViewUpwardDownActivity" />
         <activity android:name=".activity.widget.FAQActivity" />
@@ -81,6 +85,13 @@
                 <action android:name="com.hjg.static.action" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".activity.task.JobSchedulerService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+
+        </service>
     </application>
 
 </manifest>

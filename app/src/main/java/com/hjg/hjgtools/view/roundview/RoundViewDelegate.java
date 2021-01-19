@@ -22,10 +22,13 @@ public class RoundViewDelegate {
     private GradientDrawable gd_background_press = new GradientDrawable();
     private GradientDrawable gd_background_selected = new GradientDrawable();
     private GradientDrawable gd_background_enable = new GradientDrawable();
+    private GradientDrawable gd_background_focus = new GradientDrawable();
     private int backgroundColor;
     private int backgroundPressColor;
     private int backgroundSelectedColor;
     private int backgroundEnableColor;
+
+    private int backgroundFocusColor;
     private int cornerRadius;
     private int cornerRadius_TL;
     private int cornerRadius_TR;
@@ -56,6 +59,7 @@ public class RoundViewDelegate {
         backgroundPressColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressColor, Integer.MAX_VALUE);
         backgroundSelectedColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundSelectedColor, Integer.MAX_VALUE);
         backgroundEnableColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundEnableColor, Integer.MAX_VALUE);
+        backgroundFocusColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundFocusColor, Integer.MAX_VALUE);
         cornerRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_cornerRadius, 0);
         strokeWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeWidth, 0);
         strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Color.TRANSPARENT);
@@ -103,6 +107,14 @@ public class RoundViewDelegate {
 
     public void setBackgroundEnableColor(int backgroundEnableColor) {
         this.backgroundEnableColor = backgroundEnableColor;
+    }
+
+    public int getBackgroundFocusColor() {
+        return backgroundFocusColor;
+    }
+
+    public void setBackgroundFocusColor(int backgroundFocusColor) {
+        this.backgroundFocusColor = backgroundFocusColor;
     }
 
     public int getStrokeEnableColor() {
@@ -294,6 +306,12 @@ public class RoundViewDelegate {
             setDrawable(gd_background_enable, backgroundEnableColor == Integer.MAX_VALUE ? backgroundColor : backgroundEnableColor,
                     strokeEnableColor == Integer.MAX_VALUE ? strokeColor : strokeEnableColor);
             bg.addState(new int[]{android.R.attr.state_enabled}, gd_background_enable);
+        }
+
+        if (backgroundFocusColor != Integer.MAX_VALUE || strokeSelectedColor != Integer.MAX_VALUE) {
+            setDrawable(gd_background_focus, backgroundFocusColor == Integer.MAX_VALUE ? backgroundColor : backgroundFocusColor,
+                    strokeSelectedColor == Integer.MAX_VALUE ? strokeColor : strokeSelectedColor);
+            bg.addState(new int[]{android.R.attr.state_focused}, gd_background_focus);
         }
 
         setDrawable(gd_background, backgroundColor, strokeColor);
