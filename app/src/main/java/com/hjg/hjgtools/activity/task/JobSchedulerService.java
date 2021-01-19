@@ -7,6 +7,7 @@ import android.content.Intent;
 
 import com.hjg.base.util.D;
 import com.hjg.base.util.NotificationUtils;
+import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 
@@ -20,6 +21,7 @@ public class JobSchedulerService extends JobService {
     public boolean onStartJob(JobParameters params) {
 //        一般我们的逻辑都是在这里面操作的，但是这个是主线程的，所以我们最好在子线程里面执行耗时操作。
 //        返回false的话，jobfinish()中的true属性不在有用，也就是不再重试。
+        //返回false，没有调用jobfinish，直接会调用ondestory方法结束
 //        只有返回true,  jobfinish(true)才会有用。如果没有调用jobfinish  Service会直接destory掉
         //一般都是返回true,表示还有任务要做。
         D.showShort("执行job");
@@ -27,6 +29,8 @@ public class JobSchedulerService extends JobService {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, new Intent(getBaseContext(), MainActivity.class), PendingIntent.FLAG_ONE_SHOT);
         NotificationUtils.sendNotification(getBaseContext(), "HOUJIGUO", notificationID, "JobScheduler", "job任务" + notificationID + "正在执行中", R.mipmap.ic_launcher, "", "", pendingIntent);
+
+        jobFinished(params, true);
         return false;
     }
 //    1 finalvoid  jobFinished(JobParameters params,boolean needsReschedule)
@@ -38,6 +42,12 @@ public class JobSchedulerService extends JobService {
 //        一般都返回false.
         D.showShort("关闭job");
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        L.d("onDestroy");
+        super.onDestroy();
     }
 }
 
