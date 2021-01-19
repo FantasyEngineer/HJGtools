@@ -63,6 +63,10 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "双单按钮实现"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog"));
+
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "底部按钮弹出"));
+
+
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "等待层"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "LoadingDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "HorizontalLoadingDialog"));
