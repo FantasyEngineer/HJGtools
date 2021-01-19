@@ -12,6 +12,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.hjg.base.adapter.BaseAdapter;
@@ -22,9 +23,13 @@ import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.TextSpanUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.base.view.MyDividerItemDecoration;
+import com.hjg.base.view.flyco.dialog.entity.DialogMenuItem;
+import com.hjg.base.view.flyco.dialog.listener.OnOperItemClickL;
+import com.hjg.base.view.flyco.dialog.widget.ActionSheetDialog;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityJobSchedulerBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJobSchedulerBinding> {
@@ -45,8 +50,7 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
         scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
         databinding.tvAttation.setText(new TextSpanUtils.Builder("注意：任务执行期间，应用可以被杀死，不影响任务的执行;").append("任务运行严格按照创建规则来执行；").setUnderline().append("任务执行的service需要在manifest中注册。").create());
 
-
-        //获得所有的jobinfo
+        //获得所有的jobinfo,页面显示recyclerView
         List<JobInfo> jobInfos = scheduler.getAllPendingJobs();
         databinding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         databinding.recyclerView.addItemDecoration(new MyDividerItemDecoration());
@@ -57,7 +61,7 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
                 TextView textView = holder.getView(R.id.tv);
                 String netInfo = "";
                 if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_ANY) {//这项工作需要网络连接
-                    netInfo = "这项工作需要网络连接";
+                    netInfo = "需要网络连接";
                 } else if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_NONE) {//任意网络都可以
                     netInfo = "任意网络都可以";
                 } else if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_UNMETERED) {//无线网络接入
@@ -76,9 +80,42 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
                         .create());
             }
         });
+
     }
 
 
+    /**
+     * 选择网络类型
+     *
+     * @param view
+     */
+    public void selectNetType(View view) {
+        ArrayList<DialogMenuItem> dialogMenuItems = new ArrayList<>();
+        dialogMenuItems.add(new DialogMenuItem("需要网络连接", 0));
+        dialogMenuItems.add(new DialogMenuItem("任意网络都可以", 0));
+        dialogMenuItems.add(new DialogMenuItem("无线网络接入", 0));
+        dialogMenuItems.add(new DialogMenuItem("移动数据网络", 0));
+        ActionSheetDialog ActionSheetDialog = new ActionSheetDialog(activity, dialogMenuItems, null);
+        ActionSheetDialog.setTitle("选择网络条件");
+        ActionSheetDialog.show();
+        ActionSheetDialog.itemTextColor(ResUtils.getColor(R.color.black));
+        ActionSheetDialog.mCancelTextColor(ResUtils.getColor(R.color.black));
+        ActionSheetDialog.setOnOperItemClickL(new OnOperItemClickL() {
+            @Override
+            public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DialogMenuItem dialogMenuItem = dialogMenuItems.get(position);
+                databinding.btnNetInfo.setText(dialogMenuItem.mOperName);
+                ActionSheetDialog.dismiss();
+            }
+        });
+    }
+
+
+    /**
+     * 开启任务
+     *
+     * @param view
+     */
     public void startJob(View view) {
         jobId = jobId + 1;
         //开启job

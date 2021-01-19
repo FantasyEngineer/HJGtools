@@ -1,4 +1,4 @@
-package com.hjg.base.view;
+package com.hjg.base.view.dialog;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -114,7 +114,6 @@ public class SpecialHorizontalLoadingDialog extends BaseAlertDialog<SpecialHoriz
 
     @Override
     public void setUiBeforShow() {
-
         //需要进度不听的前进，然后归零，轮训，达到一种加载的效果
         timer = new Timer();
         timer.schedule(new TimerTask() {

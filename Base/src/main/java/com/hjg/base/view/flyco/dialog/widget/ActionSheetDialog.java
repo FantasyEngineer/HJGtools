@@ -69,6 +69,7 @@ public class ActionSheetDialog extends BottomBaseDialog<ActionSheetDialog> {
     private boolean mIsTitleShow = true;
     /*** cancel btn text(取消按钮内容) */
     private String mCancelText = "取消";
+
     /** cancel btn text color(取消按钮文字颜色) */
     private int mCancelTextColor = Color.parseColor("#44A2FF");
     /** cancel btn text size(取消按钮文字大小) */
@@ -315,6 +316,14 @@ public class ActionSheetDialog extends BottomBaseDialog<ActionSheetDialog> {
     public ActionSheetDialog cancelText(String cancelText) {
         mCancelText = cancelText;
         return this;
+    }
+
+    public int getmCancelTextColor() {
+        return mCancelTextColor;
+    }
+
+    public void mCancelTextColor(int mCancelTextColor) {
+        this.mCancelTextColor = mCancelTextColor;
     }
 
     /** cancel btn text color(取消按钮文字颜色) */

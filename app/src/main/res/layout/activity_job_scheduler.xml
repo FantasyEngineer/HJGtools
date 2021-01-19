@@ -59,6 +59,14 @@
             app:layout_constraintBottom_toBottomOf="@+id/etJobTime"
             app:layout_constraintLeft_toRightOf="@+id/etJobTime"></TextView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="选择网络条件"
+            app:layout_constraintBottom_toTopOf="@+id/btnNetInfo"
+            app:layout_constraintLeft_toLeftOf="@+id/btnNetInfo"></TextView>
+
         <com.hjg.hjgtools.view.roundview.RoundTextView
             android:id="@+id/btnNetInfo"
             android:layout_width="0dp"
@@ -66,9 +74,10 @@
             android:layout_marginLeft="10dp"
             android:clickable="true"
             android:gravity="center"
+            android:onClick="selectNetType"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="选择任务执行的网络条件"
+            android:text="任意网络都可以"
             app:layout_constraintLeft_toRightOf="@+id/tvTimeUnit"
             app:layout_constraintTop_toTopOf="@+id/etJobTime"
             app:layout_constraintWidth_percent="0.4"

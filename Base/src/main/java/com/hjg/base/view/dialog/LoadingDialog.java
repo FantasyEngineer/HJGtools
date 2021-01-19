@@ -1,36 +1,21 @@
-package com.hjg.base.view;
+package com.hjg.base.view.dialog;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Build;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.ContentLoadingProgressBar;
-
 import com.hjg.base.R;
 import com.hjg.base.util.ResUtils;
-import com.hjg.base.util.SizeUtils;
 import com.hjg.base.util.StrUtil;
-import com.hjg.base.view.flyco.animation.BaseAnimatorSet;
 import com.hjg.base.view.flyco.dialog.utils.CornerUtils;
-import com.hjg.base.view.flyco.dialog.widget.base.BaseDialog;
 import com.hjg.base.view.flyco.dialog.widget.internal.BaseAlertDialog;
-
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 
 /**
  * 等待框

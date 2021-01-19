@@ -1,19 +1,13 @@
 package com.hjg.hjgtools.activity.dialog;
 
-import android.app.ActionBar;
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-
-import com.hjg.base.util.ArrayListUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
-import com.hjg.base.util.log.androidlog.L;
-import com.hjg.base.view.HorizontalLoadingDialog;
-import com.hjg.base.view.LoadingDialog;
-import com.hjg.base.view.SpecialHorizontalLoadingDialog;
+import com.hjg.base.view.dialog.HorizontalLoadingDialog;
+import com.hjg.base.view.dialog.LoadingDialog;
+import com.hjg.base.view.dialog.SpecialHorizontalLoadingDialog;
+import com.hjg.base.view.flyco.dialog.entity.DialogMenuItem;
+import com.hjg.base.view.flyco.dialog.widget.ActionSheetDialog;
 import com.hjg.base.view.flyco.dialog.widget.NormalDialog;
-import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
@@ -43,6 +37,19 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
                     normalDialog.dismiss();
                 });
                 break;
+
+
+            case "ActionSheetDialog":
+                ArrayList<DialogMenuItem> dialogMenuItems = new ArrayList<>();
+                dialogMenuItems.add(new DialogMenuItem("版本更新", 0));
+                dialogMenuItems.add(new DialogMenuItem("帮助与反馈", 0));
+                dialogMenuItems.add(new DialogMenuItem("退出", 0));
+                ActionSheetDialog ActionSheetDialog = new ActionSheetDialog(activity, dialogMenuItems, null);
+                ActionSheetDialog.setTitle("选择群消息\n该群在电脑的设置，接受并提醒");
+                ActionSheetDialog.itemTextColor(ResUtils.getColor(R.color.black));
+                ActionSheetDialog.mCancelTextColor(ResUtils.getColor(R.color.black));
+                ActionSheetDialog.show();
+                break;
             case "LoadingDialog":
                 LoadingDialog loadingDialog = new LoadingDialog(activity);
                 loadingDialog.show();
@@ -65,6 +72,8 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog"));
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "底部按钮弹出"));
+
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ActionSheetDialog"));
 
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "等待层"));

@@ -14,7 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.hjg.base.util.log.androidlog.L;
-import com.hjg.base.view.LoadingDialog;
+import com.hjg.base.view.dialog.LoadingDialog;
 
 
 /**

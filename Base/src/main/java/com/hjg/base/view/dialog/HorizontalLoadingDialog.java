@@ -1,10 +1,7 @@
-package com.hjg.base.view;
+package com.hjg.base.view.dialog;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 
-import com.hjg.base.R;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.view.flyco.dialog.utils.CornerUtils;
 import com.hjg.base.view.flyco.dialog.widget.internal.BaseAlertDialog;
 
-import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
