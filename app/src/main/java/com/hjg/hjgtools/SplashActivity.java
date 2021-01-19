@@ -49,7 +49,6 @@ public class SplashActivity extends HJGDatabindingBaseActivity<ActivitySplashBin
             @Override
             public void onNext(@NonNull Long aLong) {
                 String backWardsCount = String.valueOf(titalNum - aLong);
-                L.d(backWardsCount);
                 databinding.tvJump.setVisibility(View.VISIBLE);
                 databinding.tvJump.setText(String.format(ResUtils.getString(R.string.splash_jump), backWardsCount));
                 if (backWardsCount.equals("0")) {

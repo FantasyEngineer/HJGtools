@@ -1,6 +1,9 @@
 package com.hjg.hjgtools.activity.task;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
@@ -9,11 +12,16 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.TextView;
 
+import com.hjg.base.adapter.BaseAdapter;
+import com.hjg.base.adapter.BaseViewHolder;
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.TextSpanUtils;
+import com.hjg.base.util.log.androidlog.L;
+import com.hjg.base.view.MyDividerItemDecoration;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityJobSchedulerBinding;
 
@@ -25,6 +33,7 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
     private JobScheduler scheduler;
     private int jobId = -1;
     private long periodicTime = 15 * 60 * 1000;//最少15分钟
+    private BaseAdapter<JobInfo> baseAdapter;
 
     @Override
     protected int getContentID() {
@@ -39,8 +48,34 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
 
         //获得所有的jobinfo
         List<JobInfo> jobInfos = scheduler.getAllPendingJobs();
+        databinding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        databinding.recyclerView.addItemDecoration(new MyDividerItemDecoration());
+        databinding.recyclerView.setAdapter(baseAdapter = new BaseAdapter<JobInfo>(this, R.layout.item_tv, jobInfos) {
 
-
+            @Override
+            public void convert(BaseViewHolder holder, JobInfo jobInfo, int position) {
+                TextView textView = holder.getView(R.id.tv);
+                String netInfo = "";
+                if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_ANY) {//这项工作需要网络连接
+                    netInfo = "这项工作需要网络连接";
+                } else if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_NONE) {//任意网络都可以
+                    netInfo = "任意网络都可以";
+                } else if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_UNMETERED) {//无线网络接入
+                    netInfo = "无线网络接入";
+                } else if (jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_CELLULAR) {// 移动数据网络
+                    netInfo = "移动数据网络";
+                }
+                textView.setText(new TextSpanUtils.Builder("任务ID：").setBold()
+                        .append(jobInfo.getId() + "").appendNewLine()
+                        .append("任务需要网络状态:").setBold()
+                        .append(netInfo).appendNewLine()
+                        .append("是否循环:").setBold()
+                        .append(jobInfo.isPeriodic() + "").appendNewLine()
+                        .append("重启是否继续:").setBold()
+                        .append(jobInfo.isPersisted() + "")
+                        .create());
+            }
+        });
     }
 
 
@@ -69,6 +104,15 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
                 .setBackoffCriteria(3000, JobInfo.BACKOFF_POLICY_LINEAR) //设置退避/重试策略
                 .build();
         scheduler.schedule(jobInfo);
+
+
+        getJobList();
+    }
+
+
+    public void getJobList() {
+        List<JobInfo> jobInfos = scheduler.getAllPendingJobs();
+        baseAdapter.setNewData(jobInfos);
     }
 
 

@@ -13,6 +13,7 @@ import java.util.List;
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     protected Context mContext;
     protected int mLayoutId;
+
     protected List<T> mDatas;
 
     private OnItemClickListener mOnItemClickListener;
@@ -66,6 +67,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
                         return false;
                     }
                 });
+    }
+
+
+    public void setNewData(List<T> mDatas) {
+        this.mDatas = mDatas;
+        notifyDataSetChanged();
     }
 
     @Override

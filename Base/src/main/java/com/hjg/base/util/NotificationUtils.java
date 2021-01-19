@@ -17,11 +17,14 @@ public class NotificationUtils {
     private NotificationUtils() {
 
     }
-    /**
-     *
-     *
-     */
 
+    /**
+     * 不设置删除的动作
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public static void sendNotification(Context activity, String channelId, int notificationID, String title, String content, int icon, String ticker, String subText, PendingIntent pendingIntent) {
+        sendNotification(activity, channelId, notificationID, title, content, icon, ticker, subText, pendingIntent, null);
+    }
 
     /**
      * @param channelId      渠道id
@@ -34,7 +37,7 @@ public class NotificationUtils {
      * @param pendingIntent  目的
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public static void sendNotification(Context activity, String channelId, int notificationID, String title, String content, int icon, String ticker, String subText, PendingIntent pendingIntent) {
+    public static void sendNotification(Context activity, String channelId, int notificationID, String title, String content, int icon, String ticker, String subText, PendingIntent pendingIntent, PendingIntent deletePendingIntent) {
         //1.获取到manager
         NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -56,6 +59,7 @@ public class NotificationUtils {
         }
         builder.setContentText(content);
         builder.setContentTitle(title);
+        builder.setPriority(Notification.PRIORITY_HIGH);
         builder.setSmallIcon(icon);//小图标
         builder.setLargeIcon(ImageUtils.res2Bitmap(icon));//大图标
         if (StrUtil.isNotEmpty(ticker)) {
@@ -68,7 +72,10 @@ public class NotificationUtils {
         builder.setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND);//设置默认的三色灯与振动器//Notification.DEFAULT_SOUND默认声音
 //        builder.setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.kalimba));//设置自定义的提示音
 
+        //设置被点击
         builder.setContentIntent(pendingIntent);
+        //设置被删除
+        builder.setDeleteIntent(deletePendingIntent);
         Notification n = builder.build();
         //3.manager.notify()
         notificationManager.notify(notificationID, n);

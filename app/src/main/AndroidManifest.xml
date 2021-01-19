@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- wifi状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮权限 -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /><!--开机自启权限-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /> <!-- 电话权限 拨打电话 读取通话记录 读取电话状态  修改通话记录 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -75,6 +75,7 @@
         <activity android:name=".activity.dialog.DialogActivity" />
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:exported="true" />
 
         <service
