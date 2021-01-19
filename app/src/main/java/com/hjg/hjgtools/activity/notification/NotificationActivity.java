@@ -15,7 +15,6 @@ import com.hjg.base.util.TextSpanUtils;
 import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
-import com.hjg.hjgtools.databinding.ActivityNotificationBinding;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 
 import java.util.ArrayList;

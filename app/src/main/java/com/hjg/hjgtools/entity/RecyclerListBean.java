@@ -2,6 +2,8 @@ package com.hjg.hjgtools.entity;
 
 import android.graphics.drawable.Drawable;
 
+import com.hjg.hjgtools.activity.widget.EdittextActivity;
+
 public class RecyclerListBean {
     public static final int TYPE_LABER = -1;//分类标签 不可点击
     public static final int TYPE_EMPTY = 0;//空布局
@@ -63,6 +65,11 @@ public class RecyclerListBean {
         this.content = content;
     }
 
+    public RecyclerListBean(String title, Class aClass) {
+        this.title = title;
+        this.aClass = aClass;
+    }
+
 
     public String getTitle() {
         return title;
@@ -104,5 +111,5 @@ public class RecyclerListBean {
     public void setType(int type) {
         this.type = type;
     }
-    
+
 }

@@ -43,8 +43,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.recyclerVIew.RecyclerViewScrollActivity"></activity>
-        <activity android:name=".activity.recyclerVIew.RecyclerViewUpwardDownActivity"></activity>
+        <activity android:name=".activity.widget.WidgetActivity"></activity>
+        <activity android:name=".activity.recyclerVIew.RecyclerViewScrollActivity" />
+        <activity android:name=".activity.recyclerVIew.RecyclerViewUpwardDownActivity" />
         <activity android:name=".activity.widget.FAQActivity" />
         <activity android:name=".activity.fragment.FragmentActivity" />
         <activity android:name=".activity.permission.PermissionActivity" />
