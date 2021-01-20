@@ -47,16 +47,24 @@ public class NotificationUtils {
         //大于或者等于8.0的情况
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             //1.这里使用channel的方式，处理channel
-            NotificationChannel channel = new NotificationChannel(channelId, channelId, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.enableLights(true); //是否在桌面icon右上角展示小红点
-            channel.setLightColor(Color.RED); //小红点颜色
-            channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
+            NotificationChannel channel = new NotificationChannel(channelId, channelId, NotificationManager.IMPORTANCE_HIGH);
+//            channel.enableLights(true); //是否在桌面icon右上角展示小红点
+//            channel.setLightColor(Color.RED); //小红点颜色
+//            channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
             notificationManager.createNotificationChannel(channel);
-            builder.setChannelId(channelId);
+//            builder.setChannelId(channelId);
 
             //2.这里使用构造的方式，不做对桌面的处理
-//            builder = new Notification.Builder(activity, channelId);
+            builder = new Notification.Builder(activity, channelId);
         }
+
+        //推送bug:安卓7.0新功能有将通知合并，点击合并的消息，跳转启动页(即使App正在运行)
+        //解决方法1：Android 7.0以上的设备强制不合并消息
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            builder.setGroupSummary(false)
+                    .setGroup("group");
+        }
+
         builder.setContentText(content);
         builder.setContentTitle(title);
         builder.setPriority(Notification.PRIORITY_HIGH);

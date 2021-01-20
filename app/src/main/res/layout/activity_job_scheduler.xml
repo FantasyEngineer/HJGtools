@@ -20,6 +20,46 @@
             android:textColor="@color/red"
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
+        <TextView
+            android:id="@+id/tvFirstDelayTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="第一次执行时延长时间"
+            app:layout_constraintTop_toBottomOf="@+id/tvAttation">
+
+        </TextView>
+
+
+        <com.hjg.hjgtools.view.roundview.RoundEditText
+            android:id="@+id/etFirstDelayTime"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFirstDelayTime"
+            app:layout_constraintWidth_percent="0.4"
+            app:rv_backgroundColor="@color/white"
+            app:rv_backgroundFocusColor="@color/gray_press"
+            app:rv_cornerRadius="5dp"
+            app:rv_strokeColor="@color/black"
+            app:rv_strokeWidth="1dp">
+
+        </com.hjg.hjgtools.view.roundview.RoundEditText>
+
+
+        <TextView
+            android:id="@+id/tvFirstTimeUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分钟"
+            app:layout_constraintBottom_toBottomOf="@+id/etFirstDelayTime"
+            app:layout_constraintLeft_toRightOf="@+id/etFirstDelayTime"></TextView>
 
         <TextView
             android:id="@+id/tvtip"
@@ -27,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="循环job任务的时间"
-            app:layout_constraintTop_toBottomOf="@+id/tvAttation">
+            app:layout_constraintTop_toBottomOf="@+id/etFirstDelayTime">
 
         </TextView>
 
@@ -37,8 +77,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:text="15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvtip"
             app:layout_constraintWidth_percent="0.4"
@@ -139,7 +181,7 @@
             android:id="@+id/tvbootTip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="是否空闲状态执行"
+            android:text="是否手机重启后继续执行"
             app:layout_constraintBottom_toBottomOf="@+id/isBootContune"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/isBootContune"

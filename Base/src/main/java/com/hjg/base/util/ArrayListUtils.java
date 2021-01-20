@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -91,7 +92,7 @@ public class ArrayListUtils<T> {
      * @param list
      * @return
      */
-    public static String[] list2Array(ArrayList<String> list) {
+    public static String[] list2Array(Collection<String> list) {
         String[] strings = new String[list.size()];
         list.toArray(strings);
         return strings;

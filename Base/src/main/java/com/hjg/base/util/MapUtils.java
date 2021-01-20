@@ -2,9 +2,11 @@ package com.hjg.base.util;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -64,6 +66,22 @@ public class MapUtils {
         return map.values();
     }
 
+    /**
+     * 根据value获取到key
+     *
+     * @param map
+     * @param value
+     * @return
+     */
+    public static List<Object> getKey(Map map, Object value) {
+        List<Object> keyList = new ArrayList<>();
+        for (Object key : map.keySet()) {
+            if (map.get(key).equals(value)) {
+                keyList.add(key);
+            }
+        }
+        return keyList;
+    }
 
     /**
      *遍历map

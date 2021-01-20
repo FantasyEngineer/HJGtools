@@ -2,8 +2,11 @@ package com.hjg.hjgtools.activity.task;
 
 import android.app.PendingIntent;
 import android.app.job.JobParameters;
+import android.app.job.JobScheduler;
 import android.app.job.JobService;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 
 import com.hjg.base.util.D;
 import com.hjg.base.util.DateUtils;
@@ -23,6 +26,9 @@ import java.util.Date;
 public class JobSchedulerService extends JobService {
     /**
      * 满足Job预设置条件下回调
+     * 可以在任务过程中取消当前的任务
+     * JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+     * scheduler.cancelAll();
      */
     @Override
     public boolean onStartJob(JobParameters params) {
@@ -34,16 +40,23 @@ public class JobSchedulerService extends JobService {
         D.showShort("执行job");
         L.d("执行job");
 
-        int notificationID = params.getExtras().getInt("jobId");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int notificationID = params.getExtras().getInt("jobId");
+                PendingIntent pendingIntent = PendingIntent.getActivity(JobSchedulerService.this, 1, new Intent(getBaseContext(), MainActivity.class), PendingIntent.FLAG_ONE_SHOT);
+                NotificationUtils.sendNotification(getBaseContext(), "HOUJIGUO", Integer.parseInt(RandomUtils.generateNumberString(7)),
+                        "JobScheduler" + DateUtils.getStringByFormat(new Date(), DateUtils.dateFormatYMDHMS), "job任务" + notificationID + "正在执行中", R.mipmap.ic_launcher, "", "", pendingIntent);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, new Intent(getBaseContext(), MainActivity.class), PendingIntent.FLAG_ONE_SHOT);
-        NotificationUtils.sendNotification(getBaseContext(), "HOUJIGUO", Integer.parseInt(RandomUtils.generateNumberString(7)),
-                "JobScheduler" + DateUtils.getStringByFormat(new Date(), DateUtils.dateFormatYMDHMS), "job任务" + notificationID + "正在执行中", R.mipmap.ic_launcher, "", "", pendingIntent);
+                jobFinished(params, false);
 
-        jobFinished(params, false);
-        return false;
+            }
+        }, 3000);
 
-//        jobFinished(params, true);
+        return false;//说明任务立即结束，直接调用destroy销毁，相应线程的销毁工作应该在destroy中写明。
+        //如果上面采用线程的方式，这里应该是true，说明任务不应该立即结束，是否结束应该由jobFinished来判定。
+
+//        jobFinished(params, true);//如果使用了这两行代码，说明该任务会一次又一次的执行。但是会使周期失效。并且重启手机该任务不会继续执行。
 //        return true;
     }
 //    1 finalvoid  jobFinished(JobParameters params,boolean needsReschedule)
