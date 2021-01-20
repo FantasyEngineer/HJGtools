@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.view.roundview;
+package com.hjg.base.view.roundview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hjg.hjgtools.R;
+import com.hjg.base.R;
 
 
 public class RoundViewDelegate {
