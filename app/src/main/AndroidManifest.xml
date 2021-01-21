@@ -4,7 +4,8 @@
     package="com.hjg.hjgtools">
     <!-- 网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 前台服务 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><!--wifi状态-->
+    <!-- 前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /><!--开机自启权限-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -28,9 +29,12 @@
     <uses-permission android:name="android.permission.BODY_SENSORS" /> <!-- 位置权限 通过gps获取定位权限 通过wifi和移动基站获取定位权限 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 日历权限 读取日历 修改日历 -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" /><!-- 日历权限 读取日历 修改日历 -->
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /><!--手机系统状态查询权限-->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission
         android:name="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
         tools:ignore="ProtectedPermissions" />
@@ -75,8 +79,8 @@
         <activity android:name=".activity.dialog.DialogActivity" />
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleTop" />
 
         <service
             android:name=".test后台服务弹窗.NetService"

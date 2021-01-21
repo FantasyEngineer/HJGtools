@@ -29,31 +29,6 @@ public class DeviceUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-
-    /**
-     * 获取imei号（需要权限）
-     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-     * <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
-     *
-     * @param context
-     * @return
-     */
-    public static String getIMEI(Context context) {
-        String imei = "";
-        try {
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                imei = tm.getDeviceId();
-            } else {
-                Method method = tm.getClass().getMethod("getImei");
-                imei = (String) method.invoke(tm);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return imei;
-    }
-
     /**
      * 判断设备是否root
      *
@@ -93,7 +68,7 @@ public class DeviceUtils {
 
 
     /**
-     * 获取设备系统版本号
+     * 获取设备系统版本号 29 ， 28 ..
      *
      * @return 设备系统版本号
      */
@@ -101,6 +76,39 @@ public class DeviceUtils {
         return Build.VERSION.SDK_INT;
     }
 
+    /**
+     * 获取手机Android 版本  9。0； 8。0；7。0
+     *
+     * @return 设备系统版本号
+     */
+    public static String getOSVersionName() {
+        return android.os.Build.VERSION.RELEASE;
+    }
+
+
+    /**
+     * 获取imei号（需要权限）
+     * <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+     * <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+     *
+     * @param context
+     * @return
+     */
+    public static String getIMEI(Context context) {
+        String imei = "";
+        try {
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                imei = tm.getDeviceId();
+            } else {
+                Method method = tm.getClass().getMethod("getImei");
+                imei = (String) method.invoke(tm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return imei;
+    }
 
     /**
      * 获取设备序列号

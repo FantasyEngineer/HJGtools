@@ -19,6 +19,8 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 
+import static android.content.Context.WIFI_SERVICE;
+
 /**
  * Created by zrh on 2017/12/12
  */
@@ -62,7 +64,7 @@ public class NetUtil {
      */
     private static String getMacDefault() {
         String mac = "";
-        WifiManager wifi = (WifiManager) HJGUtils.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifi = (WifiManager) HJGUtils.getContext().getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo info = null;
         try {
             info = wifi.getConnectionInfo();
@@ -209,7 +211,7 @@ public class NetUtil {
         try {
 
             WifiManager wifiManager = (WifiManager) context
-                    .getSystemService(Context.WIFI_SERVICE);
+                    .getSystemService(WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             int i = wifiInfo.getIpAddress();
             return int2ip(i);
@@ -232,6 +234,53 @@ public class NetUtil {
         sb.append((ipInt >> 16) & 0xFF).append(".");
         sb.append((ipInt >> 24) & 0xFF);
         return sb.toString();
+    }
+
+    /**
+     * 获取当前连接的无线网名称(获取不到)
+     *
+     * @param context
+     * @return
+     * @deprecated 该方法获取到的为/<unknown ssid>
+     */
+    @Deprecated
+    public static String getConnectWifiSsid(Context context) {
+        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+//        //去掉带引号的字符串方法一
+//        String wifiInfo1 = wifiInfo.getSSID();
+//        if (wifiInfo1.contains("\"")) {
+//            wifiInfo1 = wifiInfo1.substring(1, wifiInfo1.length() - 1);
+//        }
+        if (wifiInfo == null) {
+            return "当前没有连接无线网络";
+        }
+
+        //去掉带引号的字符串方法二
+        String wifiInfo1 = wifiInfo.getSSID().replace("\"", "")
+                .replace("\"", "");
+        return wifiInfo1;
+
+    }
+
+
+    /**
+     * 获取当前连接的wifi名称
+     *
+     * @param context
+     * @return
+     * @deprecated 该方法获取到的为/<unknown ssid>
+     */
+    @Deprecated
+    public static String getCurWIFIName(Context context) {
+        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        int wifiState = wifiMgr.getWifiState();
+        if (wifiState != WifiManager.WIFI_STATE_ENABLED) return null;
+        WifiInfo info = wifiMgr.getConnectionInfo();
+        String wifiId = info != null ? info.getSSID().replace("\"", "") : null;
+        int rssi = info.getRssi();
+        if (wifiId == null || wifiId.equals("<unknown ssid>") || rssi == -127) return null;
+        return wifiId + "/" + rssi;
     }
 
 

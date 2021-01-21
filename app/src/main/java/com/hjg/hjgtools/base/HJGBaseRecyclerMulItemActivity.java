@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hjg.base.base.HTitleActivity;
 import com.hjg.base.listener.OnEasyItemClickListener;
 import com.hjg.base.util.ActivityUtils;
+import com.hjg.base.util.ClipboardUtils;
 import com.hjg.base.util.EmptyUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.view.MyDividerItemDecoration;
@@ -58,6 +59,14 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
         MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, recyclerListBeans);
         mulRecyclerViewAdapter.setOnItemClickListener((OnEasyItemClickListener<RecyclerListBean>) (view, recyclerListBean, position) -> {
             onActivityItemClick(position, recyclerListBean);
+
+            //将title复制到粘贴板上
+            if (null != recyclerListBean.getSpannableStringBuilderTitle()) {
+                ClipboardUtils.copyText(recyclerListBean.getSpannableStringBuilderTitle().toString());
+            } else {
+                ClipboardUtils.copyText(recyclerListBean.getTitle());
+            }
+
             if (recyclerListBean.getaClass() != null) {
                 Bundle bundle = new Bundle();
                 bundle.putString(TITLE, recyclerListBean.getTitle());

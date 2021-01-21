@@ -198,6 +198,16 @@ public class AppUtils {
         return getAppSignature(context, context.getPackageName());
     }
 
+
+    /**
+     * 获取当前app进程的id
+     *
+     * @return
+     */
+    public static int getAppProcessId() {
+        return android.os.Process.myPid();
+    }
+
     /**
      * 获取App签名
      *
@@ -281,13 +291,13 @@ public class AppUtils {
      */
     public static class AppInfo {
 
-        private String   name;
+        private String name;
         private Drawable icon;
-        private String   packageName;
-        private String   packagePath;
-        private String   versionName;
-        private int      versionCode;
-        private boolean  isSystem;
+        private String packageName;
+        private String packagePath;
+        private String versionName;
+        private int versionCode;
+        private boolean isSystem;
 
         public Drawable getIcon() {
             return icon;
