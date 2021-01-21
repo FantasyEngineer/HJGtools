@@ -186,6 +186,6 @@ public class JobSchedulerActivity extends HJGDatabindingBaseActivity<ActivityJob
     public void stopJob(View view) {
         D.showShort("停止任务");
         scheduler.cancelAll();
-
+        getJobList();
     }
 }
