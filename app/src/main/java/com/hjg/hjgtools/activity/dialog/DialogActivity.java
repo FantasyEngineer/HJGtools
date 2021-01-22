@@ -1,12 +1,19 @@
 package com.hjg.hjgtools.activity.dialog;
 
+import android.view.Gravity;
+
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
+import com.hjg.base.view.dialog.CustomBaseDialog;
 import com.hjg.base.view.dialog.HorizontalLoadingDialog;
+import com.hjg.base.view.dialog.IOSTaoBaoDialog;
 import com.hjg.base.view.dialog.LoadingDialog;
+import com.hjg.base.view.dialog.ShareBottomDialog;
+import com.hjg.base.view.dialog.ShareTopDialog;
 import com.hjg.base.view.dialog.SpecialHorizontalLoadingDialog;
 import com.hjg.base.view.flyco.dialog.entity.DialogMenuItem;
 import com.hjg.base.view.flyco.dialog.widget.ActionSheetDialog;
+import com.hjg.base.view.flyco.dialog.widget.MaterialDialog;
 import com.hjg.base.view.flyco.dialog.widget.NormalDialog;
 import com.hjg.base.view.flyco.dialog.widget.NormalListDialog;
 import com.hjg.hjgtools.R;
@@ -24,8 +31,9 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         dialogMenuItems.add(new DialogMenuItem("帮助与反馈", R.drawable.ic_dialog));
         dialogMenuItems.add(new DialogMenuItem("退出", R.drawable.ic_dialog));
         switch (recyclerListBean.getTitle()) {
-            case "NormalDialog默认双按钮":
+            case "NormalDialog默认双按钮居中":
                 NormalDialog normalDialog = new NormalDialog(activity);
+                normalDialog.style(NormalDialog.STYLE_TWO);
                 normalDialog.titleTextColor(ResUtils.getColor(R.color.black));
                 normalDialog.titleLineColor(ResUtils.getColor(R.color.black));
                 normalDialog.setTitle("温馨提示");
@@ -54,12 +62,45 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
                 break;
 
 
+            case "MaterialDialog默认":
+                MaterialDialog materialDialog = new MaterialDialog(activity);
+                materialDialog.titleTextColor(ResUtils.getColor(R.color.black));
+                materialDialog.setTitle("温馨提示");
+                materialDialog.content("确认是否退出程序");
+                materialDialog.show();
+                break;
+            case "MaterialDialog单按钮":
+                MaterialDialog materialDialogSingle = new MaterialDialog(activity);
+                materialDialogSingle.titleTextColor(ResUtils.getColor(R.color.black));
+                materialDialogSingle.setTitle("温馨提示");
+                materialDialogSingle.btnNum(1);
+                materialDialogSingle.content("确认是否退出程序");
+                materialDialogSingle.show();
+                break;
+            case "MaterialDialog三按钮":
+                MaterialDialog materialDialogStyle = new MaterialDialog(activity);
+                materialDialogStyle.titleTextColor(ResUtils.getColor(R.color.black));
+                materialDialogStyle.setTitle("温馨提示");
+                materialDialogStyle.btnNum(3);
+                materialDialogStyle.content("确认是否退出程序");
+                materialDialogStyle.show();
+                break;
+
+
             case "ActionSheetDialog":
                 ActionSheetDialog ActionSheetDialog = new ActionSheetDialog(activity, dialogMenuItems, null);
                 ActionSheetDialog.setTitle("选择群消息\n该群在电脑的设置，接受并提醒");
                 ActionSheetDialog.itemTextColor(ResUtils.getColor(R.color.black));
                 ActionSheetDialog.mCancelTextColor(ResUtils.getColor(R.color.black));
                 ActionSheetDialog.show();
+                break;
+
+            case "ActionSheetDialogNOTitle":
+                ActionSheetDialog ActionSheetDialogNOTitle = new ActionSheetDialog(activity, dialogMenuItems, null);
+                ActionSheetDialogNOTitle.isTitleShow(false);
+                ActionSheetDialogNOTitle.itemTextColor(ResUtils.getColor(R.color.black));
+                ActionSheetDialogNOTitle.mCancelTextColor(ResUtils.getColor(R.color.black));
+                ActionSheetDialogNOTitle.show();
                 break;
             case "NormalListDialog无title":
                 NormalListDialog normalListDialog = new NormalListDialog(activity, dialogMenuItems);
@@ -72,8 +113,27 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
                 normalListDialogWithoutTitle.isTitleShow(true);//是否展示头部
                 normalListDialogWithoutTitle.setTitle("这里是标题");
                 normalListDialogWithoutTitle.show();
-
                 break;
+
+
+            case "CustomBaseDialog":
+                CustomBaseDialog customBaseDialog = new CustomBaseDialog(activity);
+                customBaseDialog.show();
+                break;
+            case "IOSTaoBaoDialog":
+                IOSTaoBaoDialog iosTaoBaoDialog = new IOSTaoBaoDialog(activity);
+                iosTaoBaoDialog.show();
+                break;
+            case "ShareBottomDialog":
+                ShareBottomDialog shareBottomDialog = new ShareBottomDialog(activity);
+                shareBottomDialog.show();
+                break;
+            case "ShareTopDialog":
+                ShareTopDialog shareTopDialog = new ShareTopDialog(activity);
+                shareTopDialog.show();
+                break;
+
+
             case "LoadingDialog":
                 LoadingDialog loadingDialog = new LoadingDialog(activity);
                 loadingDialog.show();
@@ -93,9 +153,15 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
     public ArrayList<RecyclerListBean> structureData() {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "双单按钮实现"));
-        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog默认双按钮"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog默认双按钮居中"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog默认单按钮"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalDialog默认三按钮"));
+
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "仿系统样式弹窗"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "MaterialDialog默认"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "MaterialDialog单按钮"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "MaterialDialog三按钮"));
+
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "中部列表形式"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "NormalListDialog有title"));
@@ -103,9 +169,16 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "底部按钮弹出"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ActionSheetDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ActionSheetDialogNOTitle"));
+
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "自定义弹窗"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "CustomBaseDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "IOSTaoBaoDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareBottomDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareTopDialog"));
 
 
-        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "等待层"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "自定义等待层"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "LoadingDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "HorizontalLoadingDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "SpecialHorizontalLoadingDialog"));
