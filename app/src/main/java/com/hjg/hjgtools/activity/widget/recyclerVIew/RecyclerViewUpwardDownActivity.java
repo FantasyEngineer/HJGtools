@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.activity.recyclerVIew;
+package com.hjg.hjgtools.activity.widget.recyclerVIew;
 
 import android.os.Bundle;
 import android.view.View;

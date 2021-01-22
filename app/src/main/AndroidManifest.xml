@@ -4,10 +4,10 @@
     package="com.hjg.hjgtools">
     <!-- 网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><!--wifi状态-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- wifi状态 -->
     <!-- 前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮权限 -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /><!--开机自启权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 开机自启权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /> <!-- 电话权限 拨打电话 读取通话记录 读取电话状态  修改通话记录 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -30,10 +30,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" /><!-- 日历权限 读取日历 修改日历 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" /> <!-- 日历权限 读取日历 修改日历 -->
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /><!--手机系统状态查询权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 手机系统状态查询权限 -->
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission
         android:name="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
@@ -48,16 +47,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.task.JobSchedulerActivity"></activity>
+        <activity android:name=".activity.widget.recyclerVIew.HorizontalRecyclerViewActivity"></activity>
+        <activity android:name=".activity.task.JobSchedulerActivity" />
         <activity android:name=".activity.task.TaskActivity" />
         <activity android:name=".activity.system.SystemActivity" />
         <activity android:name=".activity.widget.WidgetActivity" />
-        <activity android:name=".activity.recyclerVIew.RecyclerViewScrollActivity" />
-        <activity android:name=".activity.recyclerVIew.RecyclerViewUpwardDownActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewScrollActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewUpwardDownActivity" />
         <activity android:name=".activity.widget.FAQActivity" />
         <activity android:name=".activity.fragment.FragmentActivity" />
         <activity android:name=".activity.permission.PermissionActivity" />
-        <activity android:name=".activity.recyclerVIew.RecyclerViewStyleActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewStyleActivity" />
         <activity android:name=".activity.conflict.ScrollViewRecyclerViewActivity" />
         <activity android:name=".activity.conflict.ConflictActivity" />
         <activity android:name=".SplashActivity">
@@ -94,9 +94,7 @@
         <service
             android:name=".activity.task.JobSchedulerService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-
-        </service>
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
     </application>
 
 </manifest>

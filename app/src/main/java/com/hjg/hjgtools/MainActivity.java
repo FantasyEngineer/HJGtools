@@ -1,20 +1,13 @@
 package com.hjg.hjgtools;
 
-import android.animation.Animator;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.util.ActivityUtils;
-import com.hjg.base.util.D;
-import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.activity.bound.BoundActivity;
 import com.hjg.hjgtools.activity.conflict.ConflictActivity;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
@@ -24,11 +17,10 @@ import com.hjg.hjgtools.activity.fragment.FragmentActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
-import com.hjg.hjgtools.activity.recyclerVIew.RecyclerViewStyleActivity;
+import com.hjg.hjgtools.activity.widget.recyclerVIew.RecyclerViewStyleActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
 import com.hjg.hjgtools.activity.task.TaskActivity;
-import com.hjg.hjgtools.activity.widget.EdittextActivity;
 import com.hjg.hjgtools.activity.widget.WidgetActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
@@ -82,7 +74,6 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("文件操作", FileActivity.class, "", R.drawable.ic_icon_file));
         listBeans.add(new RecyclerListBean("弹性布局", BoundActivity.class, "", R.drawable.ic_icon_bound));
         listBeans.add(new RecyclerListBean("冲突解决", ConflictActivity.class, "", R.drawable.ic_icon_conflict));
-        listBeans.add(new RecyclerListBean("RecyclerView", RecyclerViewStyleActivity.class, "各种样式RecyclerView", R.drawable.ic_icon_recyclerview));
         listBeans.add(new RecyclerListBean("权限申请", PermissionActivity.class, "各种权限申请", R.drawable.ic_icon_permission));
         listBeans.add(new RecyclerListBean("碎片化Fragment", FragmentActivity.class, "fragment的用法", R.drawable.ic_icon_fragment));
         listBeans.add(new RecyclerListBean("动画", FragmentActivity.class, "各种动画的使用", R.drawable.ic_icon_animation));

@@ -1,13 +1,11 @@
-package com.hjg.hjgtools.activity.recyclerVIew;
+package com.hjg.hjgtools.activity.widget.recyclerVIew;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.D;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
