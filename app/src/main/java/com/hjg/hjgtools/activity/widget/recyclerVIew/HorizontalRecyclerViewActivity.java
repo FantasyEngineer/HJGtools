@@ -27,12 +27,28 @@ public class HorizontalRecyclerViewActivity extends HJGDatabindingBaseActivity<A
     @Override
     protected void initViewAction() {
 
-        //创建横向滑动的recyclerView
+        //正常的横向recyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         databinding.recyclerView.setLayoutManager(linearLayoutManager);
         ArrayList data = ArrayListUtils.newArrayList("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1");
         databinding.recyclerView.setAdapter(new BaseAdapter<String>(activity, R.layout.item_image, data) {
+            @Override
+            public void convert(BaseViewHolder holder, String s, int position) {
 
+            }
+        });
+
+
+        /*嵌套冲突*/
+
+        /*beforeDescendants：viewGroup会优先子类控件而获取焦点；
+        afterDescendants：viewGroup只有当子类控件不需要获取焦点的时候才去获取焦点；
+        blocksDescendants：viewGroup会覆盖子类控件而直接获取焦点。*/
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false) {
+
+        };
+        databinding.horizontalRecyclerView.setLayoutManager(linearLayoutManager2);
+        databinding.horizontalRecyclerView.setAdapter(new BaseAdapter<String>(activity, R.layout.item_image, data) {
             @Override
             public void convert(BaseViewHolder holder, String s, int position) {
 
