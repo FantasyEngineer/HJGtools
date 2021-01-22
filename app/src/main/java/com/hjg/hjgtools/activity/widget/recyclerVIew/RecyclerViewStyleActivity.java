@@ -2,6 +2,7 @@ package com.hjg.hjgtools.activity.widget.recyclerVIew;
 
 import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.activity.conflict.ScrollViewRecyclerViewActivity;
+import com.hjg.hjgtools.activity.dialog.DialogActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 
@@ -18,14 +19,14 @@ public class RecyclerViewStyleActivity extends HJGBaseRecyclerMulItemActivity {
 
 
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "RecyclerView单布局"));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通纵向RecyclerView的使用", ScrollViewRecyclerViewActivity.class));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通横向RecyclerView的使用", HorizontalRecyclerViewActivity.class));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通九宫格布局", ScrollViewRecyclerViewActivity.class));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "纵向", ScrollViewRecyclerViewActivity.class));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "横向", HorizontalRecyclerViewActivity.class));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "表格布局", TabActivity.class));
 
 
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "RecyclerView多布局"));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通纵向多布局使用"));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "粘性标签"));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通纵向多布局使用", DialogActivity.class));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "RecyclerView粘性标签"));
         return recyclerListBeans;
     }
 }
