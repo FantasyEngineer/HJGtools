@@ -59,7 +59,7 @@
         <activity android:name=".activity.widget.FAQActivity" />
         <activity android:name=".activity.fragment.FragmentActivity" />
         <activity android:name=".activity.permission.PermissionActivity" />
-        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewStyleActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewActivity" />
         <activity android:name=".activity.conflict.ScrollViewRecyclerViewActivity" />
         <activity android:name=".activity.conflict.ConflictActivity" />
         <activity android:name=".SplashActivity">

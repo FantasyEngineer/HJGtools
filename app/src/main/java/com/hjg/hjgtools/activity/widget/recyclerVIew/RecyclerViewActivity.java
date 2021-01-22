@@ -8,7 +8,7 @@ import com.hjg.hjgtools.entity.RecyclerListBean;
 
 import java.util.ArrayList;
 
-public class RecyclerViewStyleActivity extends HJGBaseRecyclerMulItemActivity {
+public class RecyclerViewActivity extends HJGBaseRecyclerMulItemActivity {
 
     @Override
     public ArrayList<RecyclerListBean> structureData() {
@@ -26,7 +26,7 @@ public class RecyclerViewStyleActivity extends HJGBaseRecyclerMulItemActivity {
 
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "RecyclerView多布局"));
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "普通纵向多布局使用", DialogActivity.class));
-        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "RecyclerView粘性标签"));
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "RecyclerView粘性标签", StickyActivity.class));
         return recyclerListBeans;
     }
 }

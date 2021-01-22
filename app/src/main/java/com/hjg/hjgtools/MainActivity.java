@@ -17,7 +17,6 @@ import com.hjg.hjgtools.activity.fragment.FragmentActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
-import com.hjg.hjgtools.activity.widget.recyclerVIew.RecyclerViewStyleActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
 import com.hjg.hjgtools.activity.task.TaskActivity;

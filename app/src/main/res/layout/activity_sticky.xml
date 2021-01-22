@@ -13,20 +13,20 @@
         tools:context=".activity.widget.recyclerVIew.StickyActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/stickyheader_recyclerview"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <!-- Header布局 -->
         <LinearLayout
-            android:id="@+id/sticky_header"
+            android:id="@+id/stickyHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_press"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/header_textview"
+                android:id="@+id/tvStickyHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"

@@ -13,14 +13,14 @@
 
         <!-- Header布局 -->
         <LinearLayout
-            android:id="@+id/sticky_header"
+            android:id="@+id/headLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_press"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/header_textview"
+                android:id="@+id/tvHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
@@ -38,7 +38,7 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:id="@+id/sticky_time_textview"
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
@@ -51,7 +51,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/sticky_content_textview"
+                    android:id="@+id/tvThing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
