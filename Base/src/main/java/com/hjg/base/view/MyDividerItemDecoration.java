@@ -28,7 +28,7 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
     public MyDividerItemDecoration() {
         drawable = ResUtils.getDrawable(R.drawable.dividerline);
     }
-
+    
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {

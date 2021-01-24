@@ -66,21 +66,21 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
     private BaseAnimatorSet mWindowInAs;
     private BaseAnimatorSet mWindowOutAs;
 
-    @Override
-    protected BaseAnimatorSet getWindowInAs() {
-        if (mWindowInAs == null) {
-            mWindowInAs = new WindowsInAs();
-        }
-        return mWindowInAs;
-    }
-
-    @Override
-    protected BaseAnimatorSet getWindowOutAs() {
-        if (mWindowOutAs == null) {
-            mWindowOutAs = new WindowsOutAs();
-        }
-        return mWindowOutAs;
-    }
+//    @Override
+//    protected BaseAnimatorSet getWindowInAs() {
+//        if (mWindowInAs == null) {
+//            mWindowInAs = new WindowsInAs();
+//        }
+//        return mWindowInAs;
+//    }
+//
+//    @Override
+//    protected BaseAnimatorSet getWindowOutAs() {
+//        if (mWindowOutAs == null) {
+//            mWindowOutAs = new WindowsOutAs();
+//        }
+//        return mWindowOutAs;
+//    }
 
     class WindowsInAs extends BaseAnimatorSet {
         @Override

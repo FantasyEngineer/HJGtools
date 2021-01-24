@@ -59,6 +59,10 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
             bundle.putString(TITLE, "系统详情");
             ActivityUtils.startActivity(SystemActivity.class, bundle);
         });
+
+        
+        ActivityUtils.startActivity(DialogActivity.class);
+
     }
 
     @Override

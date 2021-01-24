@@ -1,7 +1,12 @@
 package com.hjg.hjgtools.activity.dialog;
 
+import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.hjg.base.util.ArrayListUtils;
+import com.hjg.base.util.ArrayUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.view.dialog.CustomBaseDialog;
@@ -19,6 +24,7 @@ import com.hjg.base.view.flyco.dialog.widget.NormalListDialog;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
+import com.hjg.hjgtools.view.dialog.SelectBottomDialog;
 
 import java.util.ArrayList;
 
@@ -133,6 +139,21 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
                 shareTopDialog.show();
                 break;
 
+            case "SelectBottomDialog":
+                SelectBottomDialog selectBottomDialog = new SelectBottomDialog(activity);
+                ArrayList options = ArrayListUtils.newArrayList("选择1", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4");
+                selectBottomDialog.setOptions(options);
+                selectBottomDialog.show();
+                break;
+
+            case "BottomSheetDialog可以下拉消失，上拉更多":
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(activity);
+                View view1 = getLayoutInflater().inflate(R.layout.dialog_bottom_sheet_new, null);
+                bottomSheetDialog.setContentView(view1);
+                bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundColor(Color.TRANSPARENT);
+                bottomSheetDialog.show();
+                break;
+
 
             case "LoadingDialog":
                 LoadingDialog loadingDialog = new LoadingDialog(activity);
@@ -176,6 +197,8 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "IOSTaoBaoDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareBottomDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareTopDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "SelectBottomDialog"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "BottomSheetDialog可以下拉消失，上拉更多"));
 
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "自定义等待层"));
