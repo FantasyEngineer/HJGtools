@@ -20,6 +20,7 @@ import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
 import com.hjg.hjgtools.activity.task.TaskActivity;
+import com.hjg.hjgtools.activity.touchtest.TouchActivity;
 import com.hjg.hjgtools.activity.widget.WidgetActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
@@ -60,14 +61,14 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
             ActivityUtils.startActivity(SystemActivity.class, bundle);
         });
 
-        
-        ActivityUtils.startActivity(DialogActivity.class);
 
+        ActivityUtils.startActivity(TouchActivity.class);
     }
 
     @Override
     public ArrayList<RecyclerListBean> structureData() {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
+        listBeans.add(new RecyclerListBean("触摸测试", TouchActivity.class, "触摸事件的实践", R.drawable.ic_icon_dialog));
         listBeans.add(new RecyclerListBean("弹窗", DialogActivity.class, "各种已经实现的弹窗方案", R.drawable.ic_icon_dialog));
         listBeans.add(new RecyclerListBean("广播", ReceiverActivity.class, "静态与动态广播", R.drawable.ic_icon_broadcast));
         listBeans.add(new RecyclerListBean("通知", NotificationActivity.class, "适配了低版本和高版本的通知", R.drawable.ic_icon_notification));

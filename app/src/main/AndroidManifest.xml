@@ -47,7 +47,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.widget.recyclerVIew.StickyActivity"></activity>
+        <activity
+            android:name=".activity.touchtest.TouchActivity"
+            android:theme="@style/Theme.HJGTools.trans"></activity>
+        <activity android:name=".activity.widget.recyclerVIew.StickyActivity" />
         <activity android:name=".activity.widget.recyclerVIew.TabActivity" />
         <activity android:name=".activity.widget.recyclerVIew.HorizontalRecyclerViewActivity" />
         <activity android:name=".activity.task.JobSchedulerActivity" />
