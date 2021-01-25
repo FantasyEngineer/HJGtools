@@ -57,7 +57,7 @@ public class AutoLineActivity extends HJGDatabindingBaseActivity<ActivityAutoLin
 
 
     public void add(View view) {
-        ArrayList<String> datas = ArrayListUtils.newArrayList("科技", "社会", "生活", "男性生活", "女性生活", "两性生活", "电影", "小说", "恐怖电影", "歌曲", "太空", "机械制造", "软件", "小说");
+        datas = ArrayListUtils.newArrayList("科技", "社会", "生活", "男性生活", "女性生活", "两性生活", "电影", "小说", "恐怖电影", "歌曲", "太空", "机械制造", "软件", "小说");
         baseAdapter.addMoreData(datas.get(RandomUtils.getRandomDuringTwoNum(0, datas.size())));
     }
 }

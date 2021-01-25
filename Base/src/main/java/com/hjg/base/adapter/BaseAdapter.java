@@ -50,7 +50,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
                     public void onClick(View v) {
                         if (mOnItemClickListener != null) {
                             int position = getPosition(viewHolder);
-                            mOnItemClickListener.onItemClick(parent, v, mDatas.get(position), position);
+                           try{
+                               mOnItemClickListener.onItemClick(parent, v, mDatas.get(position), position);
+                           }catch (Exception e){
+
+                           }
                         }
                     }
                 });

@@ -1,5 +1,7 @@
 package com.hjg.base.util;
 
+import com.hjg.base.util.log.androidlog.L;
+
 import java.util.Random;
 
 public class RandomUtils {
@@ -80,6 +82,10 @@ public class RandomUtils {
      * @return
      */
     public static int getRandomDuringTwoNum(int min, int max) {
+        //校正
+        if (max < min) {
+            max = min;
+        }
         Random random = new Random();
         int i = random.nextInt(max) % (max - min + 1) + min;
         return i;
