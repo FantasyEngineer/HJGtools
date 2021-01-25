@@ -75,6 +75,22 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
         notifyDataSetChanged();
     }
 
+    /**
+     * 插入数据
+     *
+     * @param t
+     */
+    public void addMoreData(T t) {
+        mDatas.add(t);
+        notifyItemChanged(mDatas.size() - 1);
+    }
+
+    public void removeData(int pos) {
+        mDatas.remove(pos);
+        notifyItemRangeChanged(pos, mDatas.size() + 1);
+    }
+
+
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.updatePosition(position);

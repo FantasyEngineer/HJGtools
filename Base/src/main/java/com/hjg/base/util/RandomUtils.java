@@ -10,6 +10,7 @@ public class RandomUtils {
 
     /**
      * 获取定长的随机数，包含大小写、数字
+     *
      * @param length 随机数长度
      * @return
      */
@@ -24,6 +25,7 @@ public class RandomUtils {
 
     /**
      * 获取定长的随机数,包含大小写字母
+     *
      * @param length 随机数长度
      * @return
      */
@@ -38,6 +40,7 @@ public class RandomUtils {
 
     /**
      * 获取定长的随机数，只包含小写字母
+     *
      * @param length 随机数长度
      * @return
      */
@@ -47,6 +50,7 @@ public class RandomUtils {
 
     /**
      * 获取定长的随机数,只包含大写字母
+     *
      * @param length 随机数长度
      * @return
      */
@@ -56,10 +60,11 @@ public class RandomUtils {
 
     /**
      * 获取定长的随机数,只包含数字
+     *
      * @param length 随机数长度
      * @return
      */
-    public static String generateNumberString(int length){
+    public static String generateNumberString(int length) {
         StringBuffer sb = new StringBuffer();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
@@ -67,4 +72,17 @@ public class RandomUtils {
         }
         return sb.toString();
     }
+
+    /**
+     * 获取两个数之间的随机数
+     * 包前不包后。0-10，随机，能随机到0，不能随机到10
+     *
+     * @return
+     */
+    public static int getRandomDuringTwoNum(int min, int max) {
+        Random random = new Random();
+        int i = random.nextInt(max) % (max - min + 1) + min;
+        return i;
+    }
+
 }

@@ -5,6 +5,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -179,7 +180,6 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
                 //这里的设置是滑动到了哪里，可以dismiss窗口
                 BottomSheetBehavior<View> mDialogBehavior = BottomSheetBehavior.from((View) inflate.getParent());
                 mDialogBehavior.setPeekHeight(getWindowHeight());
-
                 bottomSheetDialog.show();
 
                 break;
