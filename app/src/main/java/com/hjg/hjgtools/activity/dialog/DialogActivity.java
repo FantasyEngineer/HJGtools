@@ -1,12 +1,18 @@
 package com.hjg.hjgtools.activity.dialog;
 
-import android.graphics.Color;
-import android.view.Gravity;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.hjg.base.adapter.BaseAdapter;
+import com.hjg.base.adapter.BaseViewHolder;
 import com.hjg.base.util.ArrayListUtils;
-import com.hjg.base.util.ArrayUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.view.dialog.CustomBaseDialog;
@@ -25,6 +31,7 @@ import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 import com.hjg.hjgtools.view.dialog.SelectBottomDialog;
+import com.hjg.hjgtools.view.roundview.RoundTextView;
 
 import java.util.ArrayList;
 
@@ -36,6 +43,9 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         dialogMenuItems.add(new DialogMenuItem("版本更新", R.drawable.ic_dialog));
         dialogMenuItems.add(new DialogMenuItem("帮助与反馈", R.drawable.ic_dialog));
         dialogMenuItems.add(new DialogMenuItem("退出", R.drawable.ic_dialog));
+
+        ArrayList options = ArrayListUtils.newArrayList("选择1", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4");
+
         switch (recyclerListBean.getTitle()) {
             case "NormalDialog默认双按钮居中":
                 NormalDialog normalDialog = new NormalDialog(activity);
@@ -141,24 +151,49 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
 
             case "SelectBottomDialog":
                 SelectBottomDialog selectBottomDialog = new SelectBottomDialog(activity);
-                ArrayList options = ArrayListUtils.newArrayList("选择1", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4", "选择2", "选择3", "选择4");
                 selectBottomDialog.setOptions(options);
                 selectBottomDialog.show();
                 break;
 
-            case "BottomSheetDialog可以下拉消失，上拉更多":
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(activity);
-                View view1 = getLayoutInflater().inflate(R.layout.dialog_bottom_sheet_new, null);
-                bottomSheetDialog.setContentView(view1);
-                bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundColor(Color.TRANSPARENT);
+            case "系统的BottomSheetDialog可以下拉消失":
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(activity, R.style.BottomSheetDialog);//这个样式可以保证背景透明
+                View inflate = getLayoutInflater().inflate(R.layout.dialog_select_bottom, null, false);
+                RecyclerView recyclerViewBottom = inflate.findViewById(R.id.recyclerView);
+                recyclerViewBottom.setLayoutManager(new LinearLayoutManager(activity));
+                recyclerViewBottom.setAdapter(new BaseAdapter<String>(activity, R.layout.item_select, options) {
+
+                    @Override
+                    public void convert(BaseViewHolder holder, String s, int position) {
+                        RoundTextView rtvName = holder.getView(R.id.rtvName);
+                        rtvName.setText(s);
+                        holder.setOnClickListener(R.id.rtvName, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.showShort(s);
+                            }
+                        });
+                    }
+                });
+
+                bottomSheetDialog.setContentView(inflate);
+                //这里的设置是滑动到了哪里，可以dismiss窗口
+                BottomSheetBehavior<View> mDialogBehavior = BottomSheetBehavior.from((View) inflate.getParent());
+                mDialogBehavior.setPeekHeight(getWindowHeight());
+
                 bottomSheetDialog.show();
+
                 break;
 
+            case "自定义SpringBackBottomSheetDialog":
+
+
+                break;
 
             case "LoadingDialog":
                 LoadingDialog loadingDialog = new LoadingDialog(activity);
                 loadingDialog.show();
                 break;
+
             case "HorizontalLoadingDialog":
                 HorizontalLoadingDialog horizontalLoadingDialog = new HorizontalLoadingDialog(activity);
                 horizontalLoadingDialog.show();
@@ -198,7 +233,7 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareBottomDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "ShareTopDialog"));
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "SelectBottomDialog"));
-        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "BottomSheetDialog可以下拉消失，上拉更多"));
+        listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "系统的BottomSheetDialog可以下拉消失"));
 
 
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "自定义等待层"));
@@ -207,4 +242,24 @@ public class DialogActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_FUNCTION, "SpecialHorizontalLoadingDialog"));
         return listBeans;
     }
+
+
+    /**
+     * 弹窗高度，默认为屏幕高度的四分之三
+     * 子类可重写该方法返回peekHeight
+     *
+     * @return height
+     */
+    protected int getPeekHeight() {
+        int peekHeight = getResources().getDisplayMetrics().heightPixels;
+        //设置弹窗高度为屏幕高度的3/4
+        return peekHeight - peekHeight / 3;
+    }
+
+    private int getWindowHeight() {
+        Resources res = getResources();
+        DisplayMetrics displayMetrics = res.getDisplayMetrics();
+        return displayMetrics.heightPixels;
+    }
+
 }
