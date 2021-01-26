@@ -32,6 +32,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
     private ArrayList<RecyclerListBean> recyclerListBeans;
     protected LinearLayoutManager linearLayoutManager;
     protected FloatingActionButton fab;
+    protected MulRecyclerViewAdapter mulRecyclerViewAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
         } else {
             recyclerListBeans = structureData();
         }
-        MulRecyclerViewAdapter mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, recyclerListBeans);
+        mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, recyclerListBeans);
         mulRecyclerViewAdapter.setOnItemClickListener((OnEasyItemClickListener<RecyclerListBean>) (view, recyclerListBean, position) -> {
             onActivityItemClick(position, recyclerListBean);
 

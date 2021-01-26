@@ -47,7 +47,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.widget.ButtonActivity"></activity>
+        <activity android:name=".activity.rx.RxActivity"></activity>
+        <activity android:name=".activity.widget.ButtonActivity" />
         <activity android:name=".activity.widget.recyclerVIew.AutoLineActivity" />
         <activity
             android:name=".activity.touchtest.TouchActivity"

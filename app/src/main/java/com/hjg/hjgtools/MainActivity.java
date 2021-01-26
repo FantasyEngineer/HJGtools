@@ -17,6 +17,7 @@ import com.hjg.hjgtools.activity.fragment.FragmentActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
+import com.hjg.hjgtools.activity.rx.RxActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
 import com.hjg.hjgtools.activity.task.TaskActivity;
@@ -62,7 +63,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         });
 
 
-        ActivityUtils.startActivity(TouchActivity.class);
+//        ActivityUtils.startActivity(TouchActivity.class);
     }
 
     @Override
@@ -82,6 +83,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("碎片化Fragment", FragmentActivity.class, "fragment的用法", R.drawable.ic_icon_fragment));
         listBeans.add(new RecyclerListBean("动画", FragmentActivity.class, "各种动画的使用", R.drawable.ic_icon_animation));
         listBeans.add(new RecyclerListBean("任务", TaskActivity.class, "定时任务，后台job任务等等", R.drawable.ic_icon_task));
+        listBeans.add(new RecyclerListBean("RxJava", RxActivity.class, "一些api的用法", R.drawable.ic_icon_task));
         return listBeans;
     }
 

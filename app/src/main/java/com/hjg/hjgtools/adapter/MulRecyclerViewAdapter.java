@@ -152,4 +152,37 @@ public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
 
+    public void setNewData(List<RecyclerListBean> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+
+    /**
+     * 插入数据
+     *
+     * @param t
+     */
+    public void addMoreData(RecyclerListBean t) {
+        list.add(t);
+        notifyItemChanged(list.size() - 1);
+    }
+
+    /**
+     * 删除数据
+     *
+     * @param pos
+     */
+    public void removeData(int pos) {
+        list.remove(pos);
+        notifyItemRangeChanged(pos, list.size() + 1);
+    }
+
+
+    public void modifyData(int pos, RecyclerListBean t) {
+        list.add(pos, t);
+        list.remove(pos + 1);
+        notifyItemChanged(pos);
+    }
+
 }
