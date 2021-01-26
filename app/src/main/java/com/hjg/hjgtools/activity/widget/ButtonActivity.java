@@ -3,10 +3,13 @@ package com.hjg.hjgtools.activity.widget;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.D;
+import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityButtonBinding;
@@ -24,7 +27,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBinding> {
+public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBinding> implements HandlerUtils.OnReceiveMessageListener {
 
     @Override
     protected int getContentID() {
@@ -33,16 +36,26 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
 
     int count = 0;
 
+    HandlerUtils.HandlerHolder handler;
+
     @Override
     protected void initViewAction() {
+        handler = new HandlerUtils.HandlerHolder(this);
+//        RxView.clicks(databinding.btnDuringTimeClickCount).buffer(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Object>>() {
+//            @Override
+//            public void accept(List<Object> objects) throws Exception {
+//                if (objects.size() > 0) {
+//                    D.showShort("5s内共点击了" + objects.size() + "次");
+//                }
+//            }
+//        });
 
 
-        RxView.clicks(databinding.btnDuringTimeClickCount).buffer(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Object>>() {
+        RxView.clicks(databinding.btnDuringTimeClickCount)
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Object>() {
             @Override
-            public void accept(List<Object> objects) throws Exception {
-                if (objects.size() > 0) {
-                    D.showShort("5s内共点击了" + objects.size() + "次");
-                }
+            public void accept(Object o) throws Exception {
+                handler.sendEmptyMessage(1);
             }
         });
 
@@ -63,4 +76,12 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
 
     }
 
+    @Override
+    public void handlerMessage(Message msg) {
+        switch (msg.what){
+            case 1:
+                break;
+        }
+
+    }
 }
