@@ -27,7 +27,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBinding> implements HandlerUtils.OnReceiveMessageListener {
+public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBinding> {
 
     @Override
     protected int getContentID() {
@@ -35,12 +35,10 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
     }
 
     int count = 0;
-
-    HandlerUtils.HandlerHolder handler;
+    boolean startCheck = true;
 
     @Override
     protected void initViewAction() {
-        handler = new HandlerUtils.HandlerHolder(this);
 //        RxView.clicks(databinding.btnDuringTimeClickCount).buffer(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Object>>() {
 //            @Override
 //            public void accept(List<Object> objects) throws Exception {
@@ -55,7 +53,8 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Object>() {
             @Override
             public void accept(Object o) throws Exception {
-                handler.sendEmptyMessage(1);
+                ++count;
+                calcuClickNumDuringTime(2);
             }
         });
 
@@ -72,16 +71,25 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
                 D.showShort("接收到操作函数5s内的最后一个数据" + (++count));
             }
         });
-
-
     }
 
-    @Override
-    public void handlerMessage(Message msg) {
-        switch (msg.what){
-            case 1:
-                break;
+    /**
+     * 计算时间内点击了多少次
+     *
+     * @param second 单位时间秒
+     */
+    public void calcuClickNumDuringTime(long second) {
+        if (!startCheck) {
+            return;
         }
-
+        startCheck = false;
+        Observable.timer(second, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+            @Override
+            public void accept(Long aLong) throws Exception {
+                D.showShort("5s内共点击了" + count + "次");
+                startCheck = true;
+                count = 0;
+            }
+        });
     }
 }
