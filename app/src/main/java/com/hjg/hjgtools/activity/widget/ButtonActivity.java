@@ -26,6 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBinding> {
 
@@ -39,24 +40,52 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
 
     @Override
     protected void initViewAction() {
-//        RxView.clicks(databinding.btnDuringTimeClickCount).buffer(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Object>>() {
+
+        //单位时间获取
+        RxView.clicks(databinding.btnDuringTimeClickCount)
+                .map(new Function<Object, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Object o) throws Exception {
+                        L.d("？？？？？");
+                        return ++count;
+                    }
+                })
+                .debounce(5, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Integer integer) {
+                        L.d(integer);
+                        count = 0;//重置
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        L.d(e.getMessage());
+                        count = 0;//重置
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+
+                    }
+                });
+
+
+//        RxView.clicks(databinding.btnDuringTimeClickCount)
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Object>() {
 //            @Override
-//            public void accept(List<Object> objects) throws Exception {
-//                if (objects.size() > 0) {
-//                    D.showShort("5s内共点击了" + objects.size() + "次");
-//                }
+//            public void accept(Object o) throws Exception {
+//                ++count;
+//                calcuClickNumDuringTime(2);
 //            }
 //        });
-
-
-        RxView.clicks(databinding.btnDuringTimeClickCount)
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Object>() {
-            @Override
-            public void accept(Object o) throws Exception {
-                ++count;
-                calcuClickNumDuringTime(2);
-            }
-        });
 
         RxView.clicks(databinding.btnPreventMulClick).throttleFirst(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Object>() {
             @Override

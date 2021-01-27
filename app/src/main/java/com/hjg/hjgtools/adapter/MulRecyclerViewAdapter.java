@@ -83,11 +83,21 @@ public class MulRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
         } else if (holder instanceof FunctionViewHolder) {//功能布局
             FunctionViewHolder functionViewHolder = (FunctionViewHolder) holder;
-            RxView.clicks(functionViewHolder.itemView).throttleFirst(1500, TimeUnit.MILLISECONDS).subscribe(new Consumer<Object>() {
+            //点击事件
+            RxView.clicks(functionViewHolder.itemView).debounce(1000, TimeUnit.MILLISECONDS).subscribe(new Consumer<Object>() {
                 @Override
                 public void accept(Object o) throws Exception {
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(functionViewHolder.itemView, recyclerListBean, position);
+                    }
+                }
+            });
+            //长按事件
+            RxView.longClicks(functionViewHolder.itemView).subscribe(new Consumer<Object>() {
+                @Override
+                public void accept(Object o) throws Exception {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemLongClick(functionViewHolder.itemView, recyclerListBean, position);
                     }
                 }
             });

@@ -58,20 +58,30 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
             recyclerListBeans = structureData();
         }
         mulRecyclerViewAdapter = new MulRecyclerViewAdapter(activity, recyclerListBeans);
-        mulRecyclerViewAdapter.setOnItemClickListener((OnEasyItemClickListener<RecyclerListBean>) (view, recyclerListBean, position) -> {
-            onActivityItemClick(position, recyclerListBean);
+        mulRecyclerViewAdapter.setOnItemClickListener(new OnEasyItemClickListener<RecyclerListBean>() {
+            @Override
+            public void onItemClick(View view, RecyclerListBean recyclerListBean, int position) {
+                onActivityItemClick(position, recyclerListBean);
 
-            //将title复制到粘贴板上
-            if (null != recyclerListBean.getSpannableStringBuilderTitle()) {
-                ClipboardUtils.copyText(recyclerListBean.getSpannableStringBuilderTitle().toString());
-            } else {
-                ClipboardUtils.copyText(recyclerListBean.getTitle());
+                //当class不为空，默认单击要跳转的。
+                if (recyclerListBean.getaClass() != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(TITLE, recyclerListBean.getTitle());
+                    ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
+                }
             }
 
-            if (recyclerListBean.getaClass() != null) {
-                Bundle bundle = new Bundle();
-                bundle.putString(TITLE, recyclerListBean.getTitle());
-                ActivityUtils.startActivity(recyclerListBean.getaClass(), bundle);
+            @Override
+            public void onItemLongClick(View view, RecyclerListBean recyclerListBean, int position) {
+                onActivityItemLongClick(position, recyclerListBean);
+                //将title复制到粘贴板上
+                if (null != recyclerListBean.getSpannableStringBuilderTitle()) {
+                    ClipboardUtils.copyText(recyclerListBean.getSpannableStringBuilderTitle().toString());
+                } else {
+                    ClipboardUtils.copyText(recyclerListBean.getTitle());
+                }
+
+
             }
         });
         recyclerView.setAdapter(mulRecyclerViewAdapter);
@@ -96,6 +106,10 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
     }
 
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
+
+    }
+
+    protected void onActivityItemLongClick(int position, RecyclerListBean recyclerListBean) {
 
     }
 
