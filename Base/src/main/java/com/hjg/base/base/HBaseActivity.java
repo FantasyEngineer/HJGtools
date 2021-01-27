@@ -15,7 +15,10 @@ import com.hjg.base.R;
 import com.hjg.base.manager.ActivityManager;
 import com.hjg.base.receiver.NetworkChangeReceiver;
 import com.hjg.base.util.BarUtils;
+import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.ScreenUtils;
+import com.hjg.base.view.flyco.dialog.listener.OnBtnClickL;
+import com.hjg.base.view.flyco.dialog.widget.MaterialDialog;
 
 public abstract class HBaseActivity extends AppCompatActivity {
 
@@ -133,4 +136,26 @@ public abstract class HBaseActivity extends AppCompatActivity {
         networkChangeReceiver = new NetworkChangeReceiver();
         registerReceiver(networkChangeReceiver, intentFilter);
     }
+
+    /**
+     * 展示dialog
+     *
+     * @param content
+     */
+    public void showDialog(String content) {
+        showDialog(content, null);
+    }
+
+    public void showDialog(String content, OnBtnClickL onBtnClickL) {
+        MaterialDialog materialDialog = new MaterialDialog(activity);
+        materialDialog.setCanceledOnTouchOutside(true);
+        materialDialog.setCancelable(true);
+        materialDialog.titleTextColor(ResUtils.getColor(R.color.black));
+        materialDialog.btnNum(1);
+        materialDialog.setOnBtnClickL(onBtnClickL);
+        materialDialog.content(content);
+        materialDialog.setTitle("说明：");
+        materialDialog.show();
+    }
+
 }

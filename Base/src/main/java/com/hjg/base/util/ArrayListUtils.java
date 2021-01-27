@@ -11,6 +11,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class ArrayListUtils<T> {
 
@@ -96,7 +99,37 @@ public class ArrayListUtils<T> {
         String[] strings = new String[list.size()];
         list.toArray(strings);
         return strings;
+    }
 
+    /**
+     * 将list转为数组
+     *
+     * @param list
+     * @return
+     */
+    public static Integer[] list2IntegerArray(Collection<Integer> list) {
+        Integer[] strings = new Integer[list.size()];
+        list.toArray(strings);
+        return strings;
+    }
+
+    /**
+     * list转string
+     *
+     * @param list
+     * @param separator
+     * @return
+     */
+    public static String listToString(List list, char separator) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i)).append(separator);
+        }
+        return sb.toString().substring(0, sb.toString().length() - 1);
+    }
+
+    public static String listToString(List list) {
+        return listToString(list, ',');
     }
 
 }
