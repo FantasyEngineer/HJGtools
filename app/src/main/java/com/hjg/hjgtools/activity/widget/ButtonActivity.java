@@ -46,7 +46,6 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
                 .map(new Function<Object, Integer>() {
                     @Override
                     public Integer apply(@NonNull Object o) throws Exception {
-                        L.d("？？？？？");
                         return ++count;
                     }
                 })
