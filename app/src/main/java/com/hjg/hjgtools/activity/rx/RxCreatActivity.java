@@ -41,6 +41,7 @@ public class RxCreatActivity extends HJGBaseRecyclerMulItemActivity {
         recyclerListBeans.add(new RecyclerListBean("Create", "使用一个函数从头开始创建一个Observable"));
         recyclerListBeans.add(new RecyclerListBean("Swith", ""));
         recyclerListBeans.add(new RecyclerListBean("Just", "创建一个发射指定值的Observable"));
+        recyclerListBeans.add(new RecyclerListBean("Repeat", "2.0中rxjava中被删除，创建一个发射特定数据重复多次的Observable"));
 
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "Range操作符"));
         recyclerListBeans.add(new RecyclerListBean("Range", "创建一个发射特定整数序列的Observable"));
@@ -117,6 +118,7 @@ public class RxCreatActivity extends HJGBaseRecyclerMulItemActivity {
                         showOrAddBottomSheet("Just操作符执行结果：" + integer);
                     }
                 });
+
                 break;
 
             case "Range":
