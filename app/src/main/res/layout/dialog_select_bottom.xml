@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="分享到:"
+        android:text="输出数据:"
         android:textColor="#383838"
         android:textSize="18sp"
         android:textStyle="bold" />

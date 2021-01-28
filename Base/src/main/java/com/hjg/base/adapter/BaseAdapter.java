@@ -13,6 +13,7 @@ import java.util.List;
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     protected Context mContext;
     protected int mLayoutId;
+    protected RecyclerView recyclerView;
 
     protected List<T> mDatas;
 
@@ -50,11 +51,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
                     public void onClick(View v) {
                         if (mOnItemClickListener != null) {
                             int position = getPosition(viewHolder);
-                           try{
-                               mOnItemClickListener.onItemClick(parent, v, mDatas.get(position), position);
-                           }catch (Exception e){
+                            try {
+                                mOnItemClickListener.onItemClick(parent, v, mDatas.get(position), position);
+                            } catch (Exception e) {
 
-                           }
+                            }
                         }
                     }
                 });
@@ -87,6 +88,9 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     public void addMoreData(T t) {
         mDatas.add(t);
         notifyItemChanged(mDatas.size() - 1);
+//      if (recyclerView != null) {//自动滑动到底部
+//            recyclerView.scrollToPosition(mDatas.size());
+//        }
     }
 
     public void removeData(int pos) {
@@ -106,6 +110,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     @Override
     public int getItemCount() {
         return mDatas.size();
+    }
+
+
+    public void bindRecyclerView(RecyclerView recyclerView) {
+        this.recyclerView = recyclerView;
     }
 
 }

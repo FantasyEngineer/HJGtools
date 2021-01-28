@@ -38,13 +38,28 @@ public class RxActivity extends HJGBaseRecyclerMulItemActivity {
     public ArrayList<RecyclerListBean> structureData() {
 
         ArrayList<RecyclerListBean> recyclerListBeans = new ArrayList<>();
+
+        recyclerListBeans.add(new RecyclerListBean("创建操作", RxCreatActivity.class));
+        recyclerListBeans.add(new RecyclerListBean("变换操作"));
+        recyclerListBeans.add(new RecyclerListBean("过滤操作"));
+        recyclerListBeans.add(new RecyclerListBean("结合操作"));
+
+
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "创建操作"));
+
+
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "变换操作"));
         recyclerListBeans.add(new RecyclerListBean("map", "Map一般用于对原始的参数进行加工处理，返回值还是基本的类型，可以在subscribe中使用(适用)的类型"));
         recyclerListBeans.add(new RecyclerListBean("flatMap", "一般用于输出一个Observable，而其随后的subscribe中的参数也跟Observable中的参数一样，是无序的"));
         recyclerListBeans.add(new RecyclerListBean("concatMap", "一般用于输出一个Observable，与flatmap相同，返回的是有序的"));
+
+
         recyclerListBeans.add(new RecyclerListBean("throttleFirst", "节流，允许设置一个时间长度，之后它会发送固定时间长度内的第一个事件，而屏蔽其它事件，在间隔达到设置的时间后，可以再发送下一个事件。"));
+        recyclerListBeans.add(new RecyclerListBean("throttleLatest", "节流，单位时间取最后一个"));
+
+        recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "过滤操作"));
         recyclerListBeans.add(new RecyclerListBean("Sample", "定时查看一个Observable，然后发射自上次采样以来它最近发射的数据。在某些实现中，有一个 ThrottleFirst 操作符的功能类似，但不是发射采样期间的最近的数据，而是发射在那段时间内的第一项数据。" +
                 "RxJava将这个操作符实现为 sample 和 throttleLast"));
-        recyclerListBeans.add(new RecyclerListBean("throttleLatest", "节流，单位时间取最后一个"));
         recyclerListBeans.add(new RecyclerListBean("debounce", "防抖,当一定时间内没有触发再这个事件时，才真正去触发事件"));
         recyclerListBeans.add(new RecyclerListBean("Distinct", "去重,所有重复的数据都会被过滤掉"));
         recyclerListBeans.add(new RecyclerListBean("distinctUntilChanged", "去重,连续重复的去除"));
