@@ -40,7 +40,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
     protected RecyclerView recyclerView;
     protected TextView tvDes;
-    private ArrayList<RecyclerListBean> recyclerListBeans;
+    protected ArrayList<RecyclerListBean> recyclerListBeans;
     protected LinearLayoutManager linearLayoutManager;
     protected FloatingActionButton fab;
     protected MulRecyclerViewAdapter mulRecyclerViewAdapter;
