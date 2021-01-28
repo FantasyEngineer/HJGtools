@@ -96,6 +96,14 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
                 D.showShort("接收到操作函数5s内的最后一个数据" + (++count));
             }
         });
+
+
+
+
+
+
+
+
     }
 
 
