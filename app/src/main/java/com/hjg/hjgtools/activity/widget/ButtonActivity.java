@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.D;
+import com.hjg.base.util.DateUtils;
 import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.R;
@@ -35,7 +36,7 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
         return R.layout.activity_button;
     }
 
-    int count = 0;
+    int count = 1;
 
     @Override
     protected void initViewAction() {
@@ -98,13 +99,24 @@ public class ButtonActivity extends HJGDatabindingBaseActivity<ActivityButtonBin
         });
 
 
-
-
-
-
+        //连击功能
+        RxView.clicks(databinding.btnContinueClick).subscribe(new Consumer<Object>() {
+            @Override
+            public void accept(Object o) throws Exception {
+                if (DateUtils.getCurrentMillis() - preClickTime[0] < 2000) {
+                    ++count;//每点击一次加一次
+                } else {
+                    count = 1;
+                }
+                D.showShort("连击" + count + "次");
+                preClickTime[0] = DateUtils.getCurrentMillis();
+            }
+        });
 
 
     }
+
+    final long[] preClickTime = {0};
 
 
 //        RxView.clicks(databinding.btnDuringTimeClickCount)
