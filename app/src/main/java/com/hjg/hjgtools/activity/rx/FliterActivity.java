@@ -45,6 +45,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
         recyclerListBeans.add(new RecyclerListBean("Take", "只取前n项"));
         recyclerListBeans.add(new RecyclerListBean("takeUntil", "只取符合条件的数据。与Filter类似"));
         recyclerListBeans.add(new RecyclerListBean("takeLast", "只取后n项"));
+
         return recyclerListBeans;
     }
 
@@ -72,7 +73,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                         .subscribeOn(Schedulers.computation())
                         .throttleLast(1000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(integer -> showDialog("Sample：" + integer));
+                        .subscribe(integer -> showOrAddBottomSheet("Sample：" + integer));
 
                 break;
             case "debounce":
@@ -82,7 +83,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 1, 2, 1, 3).distinct().toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据1, 1, 2, 1, 3--->" + "Distinct处理" + integers.get(0) + ", " + integers.get(1) + ", " + integers.get(2));
+                        showOrAddBottomSheet("原始数据1, 1, 2, 1, 3--->" + "Distinct处理" + integers.get(0) + ", " + integers.get(1) + ", " + integers.get(2));
                     }
                 });
                 break;
@@ -90,7 +91,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 1, 1, 2, 1, 3).distinctUntilChanged().toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据1, 1, 1,2, 1, 3--->" + "distinctUntilChanged处理" + integers.get(0) + ", " + integers.get(1) + ", " + integers.get(2) + ", " + integers.get(3));
+                        showOrAddBottomSheet("原始数据1, 1, 1,2, 1, 3--->" + "distinctUntilChanged处理" + integers.get(0) + ", " + integers.get(1) + ", " + integers.get(2) + ", " + integers.get(3));
                     }
                 });
                 break;
@@ -106,7 +107,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 }).toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据111213，Filter规则处理大于1的输出为：" + ArrayListUtils.listToString(integers, ','));
+                        showOrAddBottomSheet("原始数据111213，Filter规则处理大于1的输出为：" + ArrayListUtils.listToString(integers, ','));
                     }
                 });
                 break;
@@ -115,7 +116,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).elementAt(2).subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        showDialog("原始数据123456，elementAt获取index为2的数据：" + integer);
+                        showOrAddBottomSheet("原始数据123456，elementAt获取index为2的数据：" + integer);
                     }
                 });
                 break;
@@ -123,7 +124,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).first(7).subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        showDialog("原始数据123456，默认数据为7，First操作符取第一个数据：" + integer + "; \n发送数据如果为空的话，" +
+                        showOrAddBottomSheet("原始数据123456，默认数据为7，First操作符取第一个数据：" + integer + "; \n发送数据如果为空的话，" +
                                 "返回first函数填入的默认参数7");
                     }
                 });
@@ -132,19 +133,19 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).firstElement().subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        showDialog("原始数据123456，默认数据为7，firstElement操作符取第一个数据：" + integer);
+                        showOrAddBottomSheet("原始数据123456，默认数据为7，firstElement操作符取第一个数据：" + integer);
                     }
                 });
                 break;
             case "blockingFirst":
-                showDialog("原始数据123456，blockingFirst获取到第一个数据之后，数据流发送停止--->" + Observable.just(1, 2, 3, 4, 5, 6).blockingFirst().intValue() + "");
+                showOrAddBottomSheet("原始数据123456，blockingFirst获取到第一个数据之后，数据流发送停止--->" + Observable.just(1, 2, 3, 4, 5, 6).blockingFirst().intValue() + "");
                 break;
 
             case "Last":
                 Observable.just(1, 2, 3, 4, 5, 6).last(7).subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        showDialog("原始数据123456，默认数据为7，last操作符取最后一个数据：" + integer + "; \n发送数据如果为空的话，" +
+                        showOrAddBottomSheet("原始数据123456，默认数据为7，last操作符取最后一个数据：" + integer + "; \n发送数据如果为空的话，" +
                                 "返回last函数填入的默认参数7");
                     }
                 });
@@ -154,7 +155,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).lastElement().subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        showDialog("原始数据123456，默认数据为7，lastElement操作符取最后一个数据：" + integer);
+                        showOrAddBottomSheet("原始数据123456，默认数据为7，lastElement操作符取最后一个数据：" + integer);
                     }
                 });
                 break;
@@ -163,7 +164,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).skip(2).toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据123456，Skip跳过2项之后：" + ArrayListUtils.listToString(integers));
+                        showOrAddBottomSheet("原始数据123456，Skip跳过2项之后：" + ArrayListUtils.listToString(integers));
 
                     }
                 });
@@ -172,7 +173,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).take(2).toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据123456，take取前两项数据：" + ArrayListUtils.listToString(integers));
+                        showOrAddBottomSheet("原始数据123456，take取前两项数据：" + ArrayListUtils.listToString(integers));
 
                     }
                 });
@@ -181,7 +182,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 Observable.just(1, 2, 3, 4, 5, 6).take(2).toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据123456，takeLast取最后两项数据：" + ArrayListUtils.listToString(integers));
+                        showOrAddBottomSheet("原始数据123456，takeLast取最后两项数据：" + ArrayListUtils.listToString(integers));
 
                     }
                 });
@@ -198,7 +199,7 @@ public class FliterActivity extends HJGBaseRecyclerMulItemActivity {
                 }).toList().subscribe(new Consumer<List<Integer>>() {
                     @Override
                     public void accept(List<Integer> integers) throws Exception {
-                        showDialog("原始数据123456，takeUntil小于3的数据：" + ArrayListUtils.listToString(integers));
+                        showOrAddBottomSheet("原始数据123456，takeUntil小于3的数据：" + ArrayListUtils.listToString(integers));
 
                     }
                 });

@@ -77,7 +77,7 @@ public class RxActivity extends HJGBaseRecyclerMulItemActivity {
                 }).subscribeOn(Schedulers.computation())
                         .throttleFirst(1000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(integer -> showDialog("throttleFirst处理后：" + integer));
+                        .subscribe(integer -> showOrAddBottomSheet("throttleFirst处理后：" + integer));
                 break;
 
             case "throttleLatest":
@@ -100,7 +100,7 @@ public class RxActivity extends HJGBaseRecyclerMulItemActivity {
                         .subscribeOn(Schedulers.computation())
                         .throttleLast(1000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(integer -> showDialog("throttleLatest：" + integer));
+                        .subscribe(integer -> showOrAddBottomSheet("throttleLatest：" + integer));
 
                 break;
 
