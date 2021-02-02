@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <!--智能输入框-->
+    <declare-styleable name="SmartEditText">
+        <attr name="input_type_smart" format="enum">
+            <enum name="type_phone" value="0" /><!--开始位置可以输入多个0-->
+            <enum name="type_number" value="1" />
+            <enum name="type_english" value="2" />
+            <enum name="type_english_and_num" value="6" />
+            <enum name="type_english_capital" value="3" />
+            <enum name="type_english_lowcase" value="4" />
+            <enum name="type_chinese" value="5" />
+        </attr>
+        <attr name="del_icon" format="reference" />
+        <attr name="del_icon_show" format="boolean" />
+        <attr name="del_icon_size" format="dimension" />
+
+    </declare-styleable>
     <declare-styleable name="FloatingActionButton">
         <attr name="fab_colorNormal" format="color" />
         <attr name="fab_colorPressed" format="color" />
@@ -123,7 +141,6 @@
         <!--the max length of hint content-->
         <attr name="npv_AlternativeHint" format="reference|string" />
     </declare-styleable>
-
 
 
     <!-- 以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->

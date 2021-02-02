@@ -481,4 +481,22 @@ public class StrUtil {
     }
 
 
+    /**
+     * 删除一个字符串前面连续的0
+     */
+    public String deleteContinuous0(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+        if (s.startsWith("0.")) {
+            return s;
+        }
+        while (s.charAt(0) == '0') {
+            s = s.substring(1, s.length());
+            deleteContinuous0(s);
+        }
+        return s;
+    }
+
+
 }

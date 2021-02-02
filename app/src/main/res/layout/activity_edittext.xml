@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
-        tools:context=".activity.widget.EdittextActivity">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/tvDes"
@@ -134,6 +133,36 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_password_tip" />
 
+                <com.hjg.base.view.SmartEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:hint="这里能输入数字，随意搭配输入"
+                    app:del_icon_show="true"
+                    app:del_icon_size="20dp"
+                    app:input_type_smart="type_phone">
+
+                </com.hjg.base.view.SmartEditText>
+
+                <com.hjg.base.view.SmartEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:hint="这里能输入整数"
+                    app:del_icon_show="true"
+                    app:del_icon_size="20dp"
+                    app:input_type_smart="type_number">
+
+                </com.hjg.base.view.SmartEditText>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp">
+
+                </com.google.android.material.button.MaterialButton>
 
             </LinearLayout>
 
