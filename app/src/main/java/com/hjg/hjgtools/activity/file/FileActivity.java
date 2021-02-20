@@ -1,21 +1,44 @@
 package com.hjg.hjgtools.activity.file;
 
-import com.hjg.base.base.HJGDatabindingBaseActivity;
-import com.hjg.hjgtools.R;
-import com.hjg.hjgtools.databinding.ActivityFileBinding;
+import android.os.Bundle;
 
-public class FileActivity extends HJGDatabindingBaseActivity<ActivityFileBinding> {
+import androidx.annotation.Nullable;
 
+import com.hjg.base.util.D;
+import com.hjg.base.util.FileUtils;
+import com.hjg.base.util.TextSpanUtils;
+import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
+import com.hjg.hjgtools.entity.RecyclerListBean;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class FileActivity extends HJGBaseRecyclerMulItemActivity {
     @Override
-    protected int getContentID() {
-        return R.layout.activity_file;
+    protected CharSequence setDesString() {
+        return new TextSpanUtils.Builder("<provider\n" +
+                "            android:name=\"androidx.core.content.FileProvider\"\n" +
+                "            android:authorities=\"${applicationId}.provider\"\n" +
+                "            android:exported=\"false\"\n" +
+                "            android:grantUriPermissions=\"true\"><!--是否授予临时权限-->\n" +
+                "            <meta-data\n" +
+                "                android:name=\"android.support.FILE_PROVIDER_PATHS\"\n" +
+                "                android:resource=\"@xml/file_paths\" />\n" +
+                "</provider>")
+                .appendNewLine()
+                .append("<paths xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+                        "    <files-path\n" +
+                        "        name=\"my_images" +
+                        "        path=\"images/\" />\n" +
+                        "    <cache-path\n" +
+                        "        name=\"apkfile" +
+                        "        path=\"apkfile/\">\n" +
+                        "    </cache-path>\n" +
+                        "</paths>").create();
     }
 
-    @Override
-    protected void initViewAction() {
 
-
-//
+    //
 //    private LinearLayoutManager layoutManager;
 //
 //    private ArrayList dataList = ArrayListUtils.newArrayList();
@@ -268,5 +291,26 @@ public class FileActivity extends HJGDatabindingBaseActivity<ActivityFileBinding
 //    }
 
 
+    @Override
+    public ArrayList<RecyclerListBean> structureData() {
+        ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
+        listBeans.add(new RecyclerListBean("获取内置存储卡缓存目录", "不需要权限，只需要在filepath中配置"));
+        return listBeans;
     }
+
+    @Override
+    protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
+        super.onActivityItemClick(position, recyclerListBean);
+        switch (recyclerListBean.getTitle()) {
+
+
+            case "创建内置存储卡缓存目录":
+                File cache = getCacheDir();
+                D.showShort(cache.getAbsolutePath());
+                break;
+
+        }
+    }
+
+
 }
