@@ -71,6 +71,9 @@ dependencies {
     implementation 'com.github.FantasyEngineer:HJGHttp:1.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
+//    implementation 'com.zhihu.android:matisse:0.5.2'//没有适配安卓q
+    implementation 'me.iwf.photopicker:PhotoPicker:0.9.12@aar'
+
 
 //    implementation 'com.jakewharton:butterknife:7.0.1'
 

@@ -6,7 +6,17 @@
 
     <cache-path
         name="apk"
-        path="apkfile/">
+        path="apkfile/"></cache-path>
 
-    </cache-path>
+    <external-cache-path
+        name="externalcache"
+        path="."></external-cache-path>
+
+    <external-files-path
+        name="externalfile"
+        path="."></external-files-path>
+
+    <external-media-path
+        name="externalmedia"
+        path="."></external-media-path>
 </paths>

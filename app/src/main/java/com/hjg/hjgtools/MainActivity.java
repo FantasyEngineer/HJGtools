@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.hjgtools.activity.bound.BoundActivity;
+import com.hjg.hjgtools.activity.camera.CameraActivity;
 import com.hjg.hjgtools.activity.conflict.ConflictActivity;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
 import com.hjg.hjgtools.activity.encrytion.EncryptionActivity;
@@ -84,6 +85,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("动画", FragmentActivity.class, "各种动画的使用", R.drawable.ic_icon_animation));
         listBeans.add(new RecyclerListBean("任务", TaskActivity.class, "定时任务，后台job任务等等", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("RxJava", RxActivity.class, "一些api的用法", R.drawable.ic_icon_task));
+        listBeans.add(new RecyclerListBean("相机与相册", CameraActivity.class, "相机及其相册的功能", R.drawable.ic_icon_task));
         return listBeans;
     }
 
