@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
 
@@ -11,6 +13,7 @@ import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.base.util.AppUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.DeviceUtils;
+import com.hjg.base.util.IntentUtils;
 import com.hjg.base.util.NetUtil;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.ScreenUtils;
@@ -69,6 +72,7 @@ public class SystemActivity extends HJGBaseRecyclerMulItemActivity {
         recyclerListBeans.add(strucData("手机是否wifi连接", NetUtil.isWifiConnected() + ""));
         recyclerListBeans.add(strucData("手机连接wifi的名称", NetUtil.getCurWIFIName(activity) + ""));
         recyclerListBeans.add(strucData("手机是否数据连接", NetUtil.isMobileConnected() + ""));
+        recyclerListBeans.add(strucData("卸载", "卸载自身"));
 
         recyclerListBeans.add(new RecyclerListBean(RecyclerListBean.TYPE_LABER, "APP相关"));
         recyclerListBeans.add(strucData("应用名称", AppUtils.getAppInfo(activity).getName() + ""));
@@ -85,6 +89,15 @@ public class SystemActivity extends HJGBaseRecyclerMulItemActivity {
 
 
         return recyclerListBeans;
+    }
+
+    @Override
+    protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
+        super.onActivityItemClick(position, recyclerListBean);
+        if (recyclerListBean.getSpannableStringBuilderTitle().toString().contains("卸载")) {
+            D.showShort("卸载");
+            startActivity(IntentUtils.getUninstallAppIntent(activity.getPackageName()));
+        }
     }
 
     @NotNull

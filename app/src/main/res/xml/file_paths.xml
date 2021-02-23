@@ -5,7 +5,7 @@
         path="images/" />
 
     <cache-path
-        name="apkfile"
+        name="apk"
         path="apkfile/">
 
     </cache-path>

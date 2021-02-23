@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +45,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
     protected LinearLayoutManager linearLayoutManager;
     protected FloatingActionButton fab;
     protected MulRecyclerViewAdapter mulRecyclerViewAdapter;
+    protected CoordinatorLayout coordinator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
 
         fab = findViewById(R.id.fab);
+        coordinator = findViewById(R.id.coordinator);
 
         recyclerView = findViewById(R.id.recyclerView);
         tvDes = findViewById(R.id.tv_des);
@@ -124,8 +127,18 @@ public abstract class HJGBaseRecyclerMulItemActivity extends HTitleActivity {
 
     }
 
+    /**
+     * 构造数据
+     *
+     * @return
+     */
     public abstract ArrayList<RecyclerListBean> structureData();
 
+    /**
+     * 如果没有填充数据，那么添加测试数据
+     *
+     * @return
+     */
     public ArrayList<RecyclerListBean> buildData() {
         ArrayList<RecyclerListBean> recyclerListBeans = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

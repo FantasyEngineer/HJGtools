@@ -65,6 +65,8 @@ public class IntentUtils {
 
     /**
      * 获取卸载App的意图
+     * 9。0以上的应用必须申请权限
+     * 报错：UninstallerActivity: Uid 10474 does not have android.permission.REQUEST_DELETE_PACKAGES or android.permission.DELETE_PACKAGES
      *
      * @param packageName 包名
      * @return intent
