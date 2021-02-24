@@ -19,7 +19,9 @@ import com.hjg.base.util.DateUtils;
 import com.hjg.base.util.DeviceUtils;
 import com.hjg.base.util.FileUtils;
 import com.hjg.base.util.IntentUtils;
+import com.hjg.base.util.UriUtils;
 import com.hjg.base.util.log.androidlog.L;
+import com.hjg.base.util.log.utils.Utils;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
 import com.hjg.hjgtools.view.dialog.ImageViewDialog;
@@ -109,34 +111,38 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
         } else if (requestCode == 11 && data != null) {//打开相机拍照
 //            DataString = content://media/external_primary/images/media/16918
 //            data.getDataString();
-            Bundle bundle = data.getExtras();
-            Bitmap bitmap = (Bitmap) bundle.get("data");
+            //使用bitmap,这里的bitmap不清晰
+//            Bundle bundle = data.getExtras();
+//            Bitmap bitmap = (Bitmap) bundle.get("data");
+//            ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(bitmap);
 
-            ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(bitmap);
+//            使用uri
+            Uri uri = data.getData(); //获取系统返回的照片的Uri,glide可以直接加载
+            String path = UriUtils.getFilePathByUri(uri);
+            L.d("path--" + path);
+
+            ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(uri);
             imageViewDialog.show();
+
         } else if (requestCode == 12) {//打开相册
             try {
-
                 Uri uri = data.getData(); //获取系统返回的照片的Uri,glide可以直接加载
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(uri,
-                        filePathColumn, null, null, null);//从系统表中查询指定Uri对应的照片
-                cursor.moveToFirst();
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String path = cursor.getString(columnIndex);  //获取照片路径
-                cursor.close();
+                String path = UriUtils.getFilePathByUri(uri);
 
                 //这里的path获取的之后，需要对应的读写权限才能使用图片
                 L.d("path---" + path);
                 File file = new File(path);
-                L.d(file);
-                L.d(FileUtils.getFileSize(file));
-
-                ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(new File(path));
+                //使用文件打开
+                ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(file);
                 imageViewDialog.show();
 
-                Bitmap bitmap = BitmapFactory.decodeFile(path);
-                L.d("bitmap---" + bitmap);
+                //直接使用uri
+//                ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(uri);
+//                imageViewDialog.show();
+
+                //使用bitmap
+//                Bitmap bitmap = BitmapFactory.decodeFile(path);
+//                L.d("bitmap---" + bitmap);
             } catch (Exception e) {
                 e.printStackTrace();
             }
