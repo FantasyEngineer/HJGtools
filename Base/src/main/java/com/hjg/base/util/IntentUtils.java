@@ -113,4 +113,27 @@ public class IntentUtils {
     }
 
 
+    /**
+     * 获取打开相册的intent
+     *
+     * @return
+     */
+    public static Intent getAlbumIntent(Context context) {
+        Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
+        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//判断是否为Android N版本
+            albumIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            uri = FileProvider.getUriForFile(context, "com.hjg.hjgtools" + ".fileProvider", new File(context.getExternalCacheDir() + File.separator + "1.jpg"));
+        }
+        albumIntent.setDataAndType(uri, "image/*");
+        return albumIntent;
+    }
+
+    public static Intent getCaremaIntent() {
+        Intent intent1 = new Intent();
+        intent1.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        return intent1;
+    }
+
+
 }

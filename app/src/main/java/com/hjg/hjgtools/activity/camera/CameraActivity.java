@@ -2,7 +2,9 @@ package com.hjg.hjgtools.activity.camera;
 
 import android.Manifest;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,12 +13,16 @@ import android.provider.MediaStore;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
+import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.D;
 import com.hjg.base.util.DateUtils;
 import com.hjg.base.util.DeviceUtils;
+import com.hjg.base.util.FileUtils;
+import com.hjg.base.util.IntentUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;
+import com.hjg.hjgtools.view.dialog.ImageViewDialog;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
@@ -32,7 +38,7 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new RxPermissions(this).request(Manifest.permission.CAMERA).subscribe(new Consumer<Boolean>() {
+        new RxPermissions(this).request(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean aBoolean) throws Exception {
                 if (!aBoolean) {
@@ -40,6 +46,11 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected CharSequence setDesString() {
+        return "当版本大于29时，即使你申请了动态权限，也是不能操作除了自身沙盒之外的文件夹，需要在androidmanifest.xml的application的标签下加入requestLegacyExternalStorage=true。29以下的默认加了";
     }
 
     @Override
@@ -64,7 +75,7 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
                 if (DeviceUtils.getSDKVersion() >= Build.VERSION_CODES.N) {
                     // 将文件转换成content://Uri的形式
                     Uri photoURI = FileProvider.getUriForFile(activity,
-                            activity.getPackageName() + ".provider",
+                            "com.hjg.hjgtools.fileProvider",
                             new File(photoPath));
 
                     // 申请临时访问权限
@@ -80,33 +91,11 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
                 activity.startActivityForResult(intent, 10);
                 break;
             case "打开相机拍照":
-                Intent intent1 = new Intent();
-                intent1.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                activity.startActivityForResult(intent1, 11);
+                activity.startActivityForResult(IntentUtils.getCaremaIntent(), 11);
                 break;
 
             case "打开相册":
-//                Matisse.from(this)
-//                        .choose(MimeType.ofImage(), false)
-//                        .countable(true)
-//                        .capture(true)
-//                        .captureStrategy(
-//                                new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider", "test"))
-//                        .maxSelectable(9)
-//                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-//                        .thumbnailScale(0.85f)
-//                        .imageEngine(new GlideEngine())
-//                        .setOnSelectedListener((uriList, pathList) -> {
-//                            Log.e("onSelected", "onSelected: pathList=" + pathList);
-//                        })
-//                        .showSingleMediaType(true)
-//                        .originalEnable(true)
-//                        .maxOriginalSize(10)
-//                        .autoHideToolbarOnSingleTap(true)
-//                        .setOnCheckedListener(isChecked -> {
-//                            Log.e("isChecked", "onCheck: isChecked=" + isChecked);
-//                        })
-//                        .forResult(10);
+                activity.startActivityForResult(IntentUtils.getAlbumIntent(activity), 12);
                 break;
         }
 
@@ -117,13 +106,45 @@ public class CameraActivity extends HJGBaseRecyclerMulItemActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10) {
             L.d(data);//空值
-        } else if (requestCode == 11) {
+        } else if (requestCode == 11 && data != null) {//打开相机拍照
 //            DataString = content://media/external_primary/images/media/16918
 //            data.getDataString();
             Bundle bundle = data.getExtras();
             Bitmap bitmap = (Bitmap) bundle.get("data");
 
+            ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(bitmap);
+            imageViewDialog.show();
+        } else if (requestCode == 12) {//打开相册
+            try {
 
+                Uri uri = data.getData(); //获取系统返回的照片的Uri,glide可以直接加载
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getContentResolver().query(uri,
+                        filePathColumn, null, null, null);//从系统表中查询指定Uri对应的照片
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String path = cursor.getString(columnIndex);  //获取照片路径
+                cursor.close();
+
+                //这里的path获取的之后，需要对应的读写权限才能使用图片
+                L.d("path---" + path);
+                File file = new File(path);
+                L.d(file);
+                L.d(FileUtils.getFileSize(file));
+
+                ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(new File(path));
+                imageViewDialog.show();
+
+                Bitmap bitmap = BitmapFactory.decodeFile(path);
+                L.d("bitmap---" + bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            Bundle bundle = data.getExtras();
+//            Bitmap bitmap = (Bitmap) bundle.get("data");
+//
+//            ImageViewDialog imageViewDialog = new ImageViewDialog(activity).setImageURL(bitmap);
+//            imageViewDialog.show();
         }
     }
 }
