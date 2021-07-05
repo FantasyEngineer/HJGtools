@@ -1,0 +1,4 @@
+include ':aidlclient'
+include ':Base'
+include ':app'
+rootProject.name = "HJGTools"

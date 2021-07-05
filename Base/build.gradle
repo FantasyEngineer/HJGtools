@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //开启databinding
+//    dataBinding {//已被替换
+//        enabled = true
+//    }
+    android.buildFeatures.dataBinding true
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.fragment:fragment:1.2.5'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    api 'com.github.svga:SVGAPlayer-Android:2.0.0'
+
+}

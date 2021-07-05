@@ -1,0 +1,3 @@
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardRelease/x86/CMakeFiles/rebuild_cache.dir
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardRelease/x86/CMakeFiles/edit_cache.dir
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardRelease/x86/CMakeFiles/Native-lib.dir

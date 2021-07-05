@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.hjg.base.util.StrUtil"></import><!--使用其中的静态方法-->
+
+        <import type="com.hjg.hjgtools.activity.databinding.ProductBean"></import>
+
+        <variable
+            name="product"
+            type="ProductBean" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+        <variable
+            name="onclickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onclickListener}"
+            android:text="databinding中的按钮点击实现1"></Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动态改变数据,字符串拼接，以及设置默认值判空">
+
+        </TextView>
+
+        <!--默认值-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{product.name,default =`默认是超级大码`}"
+            android:textColor="@color/black" />
+
+        <!--三目运算符-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/product_name(product.name!=null?product.name:``)}"
+            android:textColor="@color/black">
+
+        </TextView>
+
+        <!--三目运算符简化版-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/product_size+ (product.size ?? ``) }"
+            android:textColor="@color/black"></TextView>
+
+        <!--字符串拼接-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`字符串拼接:`+ product.size }"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="反向修改数据,修改Size"></TextView>
+
+        <!--反向修改数据-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入size"
+            android:text="@={product.size}"
+            android:textSize="13dp"></EditText>
+
+
+        <!--使用方法进行判定-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`尺码与名称是否一致：`+String.valueOf(StrUtil.equals(product.size,product.name))}"></TextView>
+
+        <!--使用运算法>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{2>=1?`使用> >=对的`:`使用> >=错的`}">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`等于号的用法：`+String.valueOf(2==1)}">
+
+        </TextView>
+
+        <!--控件的显示与隐藏-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示和隐藏"
+            android:visibility="@{StrUtil.isEmpty(product.name)?view.VISIBLE:view.GONE}">
+
+        </Button>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+</layout>

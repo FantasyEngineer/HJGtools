@@ -1,0 +1,3 @@
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardDebug/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardDebug/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardDebug/arm64-v8a/CMakeFiles/Native-lib.dir

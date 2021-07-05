@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/jimmy/Desktop/HJGTools/app/src/main/jni/CMakeLists.txt",
+    "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
+    "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestDebug/x86\" clean"
+  ],
+  "buildTargetsCommand": "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestDebug/x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "Native-lib-Debug-x86": {
+      "artifactName": "Native-lib",
+      "buildCommand": "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestDebug/x86\" Native-lib",
+      "abi": "x86",
+      "output": "/Users/jimmy/Desktop/HJGTools/app/build/intermediates/cmake/TestDebug/obj/x86/libNative-lib.so",
+      "runtimeFiles": []
+    }
+  }
+}

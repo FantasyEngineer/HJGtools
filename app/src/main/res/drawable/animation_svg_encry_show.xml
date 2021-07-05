@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_icon_encryption">
+
+    <target
+        android:name="a1"
+        android:animation="@animator/object_animator_svg" />
+    <target
+        android:name="a2"
+        android:animation="@animator/object_animator_svg" />
+
+</animated-vector>

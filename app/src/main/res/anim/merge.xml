@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fillAfter="true">
+    <translate
+        android:fromXDelta="-100%"
+        android:toXDelta="100%"></translate>
+
+    <!--这里绕圈的位置，是在两点之间的中心位置，不是在控件的中心位置。-->
+    <!--    <rotate-->
+    <!--        android:fromDegrees="0"-->
+    <!--        android:pivotX="50%"-->
+    <!--        android:pivotY="50%"-->
+    <!--        android:toDegrees="1080"></rotate>-->
+
+    <scale
+        android:fromXScale="100%"
+        android:fromYScale="100%"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toXScale="150%"
+        android:toYScale="150%"></scale>
+
+    <alpha
+        android:fromAlpha="1"
+        android:toAlpha="0"></alpha>
+
+</set>

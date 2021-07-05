@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.handler.HandlerTestActivity">
+
+        <Button
+            android:id="@+id/testWeakRefrence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="71dp"
+            android:layout_y="270dp"
+            android:text="发送延时消息，测试软引用"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="56dp" />
+
+        <Button
+            android:id="@+id/destory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="129dp"
+            android:layout_y="479dp"
+            android:text="销毁页面"
+            tools:layout_editor_absoluteX="235dp"
+            tools:layout_editor_absoluteY="442dp" />
+    </AbsoluteLayout>
+</layout>

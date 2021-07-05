@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出现在帧动画当中，当图片数量较多并且图片较大时就容易出现OOM(App拥有的内存已经装不下图片了)。所以，尽量避免使用帧动画。"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="AnimationDrawable，帧动画，由一组图片集合而成，是一种具有动画效果的图片资源，对应的xml标签是animation-list">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/animation_list">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal">
+
+            </ImageView>
+
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/useXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="是否使用xml形式">
+
+        </Switch>
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="开始">
+
+        </Button>
+
+        <Button
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="停止">
+
+        </Button>
+
+
+    </LinearLayout>
+
+
+</layout>

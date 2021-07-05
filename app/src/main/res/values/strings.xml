@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">工具集合</string>
+
+    <string name="splash_jump">跳过&#160; %1$s</string>
+
+
+    <string name="product_name">这里是产品：%s</string>
+    <string name="product_size">这里是产品大小:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources> 

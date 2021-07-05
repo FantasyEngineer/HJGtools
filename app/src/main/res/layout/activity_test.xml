@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <EditText
+                android:id="@+id/etCustom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="url地址"
+                android:text="https://dragonsoftbravo.oss-cn-shanghai.aliyuncs.com/727app/ecommerce.html">
+
+            </EditText>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="jumpUrl"
+                android:text="跳转到上面的url" />
+
+            <EditText
+                android:id="@+id/etApply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入申请的url"
+                android:text="https://cofdev.csmc-cloud.com/marchevapp/727evapp.html#/">
+
+            </EditText>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="apply"
+                android:text="申请" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="check"
+                android:text="测试h端拍照功能" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="notPass"
+                android:text="原生与H5的交互能力" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</layout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hjg.hjgtools">
+    <!-- 网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- wifi状态 -->
+    <!-- 前台服务 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 悬浮权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 开机自启权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /> <!-- 电话权限 拨打电话 读取通话记录 读取电话状态  修改通话记录 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" /> <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" /> <!-- 联系人权限 6.0以下 以及6.0以上 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 内存卡权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 传感器 -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" /> <!-- 位置权限 通过gps获取定位权限 通过wifi和移动基站获取定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" /> <!-- 日历权限 读取日历 修改日历 -->
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 手机系统状态查询权限 -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+
+    <permission android:name="android.permission.DELETE_PACKAGES" /> <!-- 卸载 -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:name=".base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HJGTools"
+        tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
+        <activity android:name=".activity.handler.HandlerTestActivity"></activity>
+        <activity android:name=".activity.animation.translate.trans.result.TransResultActivity" />
+        <activity android:name=".CommonFragmentActivity" />
+        <activity android:name=".activity.animation.translate.ViewTransActivity" />
+        <activity android:name=".activity.animation.AnimationActivity" />
+        <activity android:name=".activity.databinding.twoway.TwoWayActivity" />
+        <activity android:name=".activity.widget.TextViewActivity" />
+        <activity
+            android:name=".activity.titleBar.TitleBarActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.webview.WebViewActivity" />
+        <activity android:name=".activity.databinding.DatabindingActivity" />
+        <activity android:name=".activity.jetpack.JetPackActivity" />
+        <activity android:name=".activity.compress.CompressActivity" />
+        <activity android:name=".activity.handler.HandlerThreadActivity" />
+        <activity android:name=".activity.mvvm.MvvmActivity" />
+        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.camera.CameraActivity" />
+        <activity android:name=".activity.rx.FliterActivity" />
+        <activity android:name=".activity.rx.RxTransformActivity" />
+        <activity android:name=".activity.thread.ThreadActivity" />
+        <activity android:name=".activity.rx.RxCreatActivity" />
+        <activity android:name=".activity.rx.RxActivity" />
+        <activity android:name=".activity.widget.ButtonActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.AutoLineActivity" />
+        <activity
+            android:name=".activity.touchtest.TouchActivity"
+            android:theme="@style/Theme.HJGTools.trans" />
+        <activity android:name=".activity.widget.recyclerVIew.StickyActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.TabActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.HorizontalRecyclerViewActivity" />
+        <activity android:name=".activity.task.JobSchedulerActivity" />
+        <activity android:name=".activity.task.TaskActivity" />
+        <activity android:name=".activity.system.SystemActivity" />
+        <activity android:name=".activity.widget.WidgetActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewScrollActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewUpwardDownActivity" />
+        <activity android:name=".activity.widget.FAQActivity" />
+        <activity android:name=".activity.fragment.FragmentActivity" />
+        <activity android:name=".activity.permission.PermissionActivity" />
+        <activity android:name=".activity.widget.recyclerVIew.RecyclerViewActivity" />
+        <activity android:name=".activity.conflict.ScrollViewRecyclerViewActivity" />
+        <activity android:name=".activity.conflict.ConflictActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.bound.BoundScrollViewActivity" />
+        <activity android:name=".activity.bound.BoundActivity" />
+        <activity android:name=".activity.share.ShareActivity" />
+        <activity android:name=".activity.file.FileActivity" />
+        <activity android:name=".activity.widget.EdittextActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".activity.encrytion.EncryptionActivity" />
+        <activity android:name=".activity.notification.NotificationActivity" />
+        <activity android:name=".activity.receiver.ReceiverActivity" />
+        <activity android:name=".activity.dialog.DialogActivity" />
+        <activity android:name=".activity.handler.HandlerActivity" />
+        <activity android:name=".activity.ipc.aidl.AIdlServerActivity" />
+        <activity android:name=".activity.jni.JniActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+
+        <service
+            android:name=".testBgServiceNotification.NetService"
+            android:priority="1000" /> <!-- 静态广播接收器 -->
+        <receiver android:name=".activity.receiver.StaticReceiver">
+            <intent-filter>
+                <action android:name="com.hjg.static.action" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".activity.task.JobSchedulerService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.hjg.hjgtools.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"> <!-- 是否授予临时权限 -->
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> <!-- //将本地服务设置成远程服务 -->
+        <service
+            android:name=".activity.ipc.aidl.AidlService"
+            android:exported="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="myAidlService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="1024" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="359" />
+    </application>
+
+</manifest>

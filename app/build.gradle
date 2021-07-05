@@ -1,0 +1,151 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.hjg.hjgtools"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //多dex打包，防止65535方法数过多
+        multiDexEnabled true
+        //开启databinding
+        android.buildFeatures.dataBinding true
+
+
+        // 增加cmake控制属性
+        externalNativeBuild {
+            cmake {
+                // 指定编译架构 可以省略
+                abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+                // cpp 编译时的额外选项 可以省略
+                cppFlags ""
+            }
+        }
+    }
+
+    // 在android节点下
+    // 指定CMakeLists.txt路径
+    externalNativeBuild {
+        cmake {
+            path "src/main/jni/CMakeLists.txt"
+        }
+    }
+    ndkVersion "21.0.6113669"
+
+    signingConfigs {
+        release {
+            storeFile file('../keystore/keystore')
+            storePassword 'houjiguo'
+            keyAlias 'key0'
+            keyPassword 'houjiguo'
+        }
+        debug {
+            storeFile file('../keystore/keystore')
+            storePassword 'houjiguo'
+            keyAlias 'key0'
+            keyPassword 'houjiguo'
+        }
+    }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            //不提供混淆文件，下面两个属性不能为true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled false
+            signingConfig signingConfigs.release// 配置release包的签名
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+    }
+
+    //使用java8 lamda表达式
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    //多渠道必须配置，名字随意
+    flavorDimensions 'asuwish'
+    productFlavors {
+        Test {
+            applicationIdSuffix '.test'
+            buildConfigField "String", "BASE_SAFE_URL", "\"https://gitee.com/\""
+        }
+        Stardard {
+            buildConfigField "String", "BASE_SAFE_URL", "\"https://gitee.com/\""
+        }
+    }
+
+}
+
+dependencies {
+    //workmanger的使用
+    implementation 'androidx.work:work-runtime:2.3.4'
+
+    //tablayout的使用
+    implementation 'com.android.support:design:27.1.1'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //recyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation files('lib\\lite-orm-1.9.1.jar')
+//
+//    //今日头条适配
+//    implementation 'me.jessyan:autosize:1.1.2'
+
+
+    /*使用jetpack组件*/
+    def lifecycle_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':Base')
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // RxJava
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.2'
+    //请求框架
+    implementation 'com.github.FantasyEngineer:HJGHttp:1.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+//    implementation 'com.zhihu.android:matisse:0.5.2'//没有适配安卓q
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+//    implementation 'com.github.FantasyEngineer:HJGTools:1.3'
+
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+
+    /*内存泄露检测*/
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
+
+}

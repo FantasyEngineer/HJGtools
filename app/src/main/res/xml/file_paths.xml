@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <files-path
+        name="my_images"
+        path="images/" />
+
+    <!--代表外部存储区域的根目录下的文件 Environment.getExternalStorageDirectory()/DCIM/camerademo目录,.代表根目录-->
+    <!--/storage/emulated/0/DCIM/camerademo-->
+    <external-path
+        name="external_path"
+        path="." />
+
+    <cache-path
+        name="apk"
+        path="apkfile/"></cache-path>
+
+    <external-cache-path
+        name="externalcache"
+        path="."></external-cache-path>
+
+    <external-files-path
+        name="externalfile"
+        path="."></external-files-path>
+
+    <external-media-path
+        name="externalmedia"
+        path="."></external-media-path>
+</paths>

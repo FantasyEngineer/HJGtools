@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+
+        <ImageView
+            android:id="@+id/bgHead"
+            android:layout_width="match_parent"
+            android:layout_height="359dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_head_car">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:letterSpacing="0.1"
+            android:text="福特金融车贷申请"
+            android:textColor="@color/white"
+            android:textSize="27dp">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="221dp"
+            android:layout_height="41.5dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/icon_logo">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="95dp"
+            android:text="车型选择"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+        <com.hjg.base.view.ClipViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="553dp"
+            android:layout_height="227.5dp"
+            android:layout_alignBottom="@+id/bgHead"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-80.5dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="65dp"
+            android:layout_alignTop="@+id/viewPager"
+            android:layout_marginLeft="22.5dp"
+            android:layout_marginTop="68dp"
+            android:src="@mipmap/icon_left_car">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="65dp"
+            android:layout_alignTop="@+id/viewPager"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="68dp"
+            android:layout_marginRight="22.5dp"
+            android:src="@mipmap/icon_right_car">
+
+        </ImageView>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPager"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:background="@color/translucent"
+            app:tabIndicatorColor="#2894CC"
+            app:tabPaddingBottom="15dp"
+            app:tabPaddingEnd="30dp"
+            app:tabPaddingStart="30dp"
+            app:tabPaddingTop="15dp"
+            app:tabSelectedTextColor="#2894CC"
+            app:tabTextAppearance="@style/TabTextSize"
+            app:tabTextColor="#515151">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerFragmet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tabLayout"
+            android:layout_alignParentBottom="true"
+            android:background="#F6F6F6">
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </RelativeLayout>
+
+
+</layout>

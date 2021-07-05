@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:overScrollMode="never"
+            app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/tvHorizontalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="HorizontalScrollView下recyclerView显示不全"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+
+        </TextView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:overScrollMode="never"
+            app:layout_constraintTop_toBottomOf="@+id/tvHorizontalTitle">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/horizontalRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+
+
+        </HorizontalScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

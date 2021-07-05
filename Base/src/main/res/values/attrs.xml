@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--智能输入框-->
+    <declare-styleable name="SmartEditText">
+        <attr name="input_type_smart" format="enum">
+            <enum name="type_phone" value="0" /><!--开始位置可以输入多个0-->
+            <enum name="type_number" value="1" />
+            <enum name="type_english" value="2" />
+            <enum name="type_english_and_num" value="6" />
+            <enum name="type_english_capital" value="3" />
+            <enum name="type_english_lowcase" value="4" />
+            <enum name="type_chinese" value="5" />
+        </attr>
+        <attr name="del_icon" format="reference" />
+        <attr name="del_icon_show" format="boolean" />
+        <attr name="del_icon_size" format="dimension" />
+
+    </declare-styleable>
+    <declare-styleable name="FloatingActionButton">
+        <attr name="fab_colorNormal" format="color" />
+        <attr name="fab_colorPressed" format="color" />
+        <attr name="fab_colorDisabled" format="color" />
+        <attr name="fab_colorRipple" format="color" />
+        <attr name="fab_showShadow" format="boolean" />
+        <attr name="fab_shadowColor" format="color" />
+        <attr name="fab_shadowRadius" format="dimension" />
+        <attr name="fab_shadowXOffset" format="dimension" />
+        <attr name="fab_shadowYOffset" format="dimension" />
+        <attr name="fab_size" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="mini" value="1" />
+        </attr>
+        <attr name="fab_showAnimation" format="reference" />
+        <attr name="fab_hideAnimation" format="reference" />
+        <attr name="fab_label" format="string" />
+        <attr name="fab_elevationCompat" format="dimension" />
+        <attr name="fab_progress_color" format="color" />
+        <attr name="fab_progress_backgroundColor" format="color" />
+        <attr name="fab_progress_indeterminate" format="boolean" />
+        <attr name="fab_progress_max" format="integer" />
+        <attr name="fab_progress" format="integer" />
+        <attr name="fab_progress_showBackground" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FloatingActionMenu">
+        <attr name="menu_showShadow" format="boolean" />
+        <attr name="menu_buttonSpacing" format="dimension" />
+        <attr name="menu_labels_margin" format="dimension" />
+        <attr name="menu_labels_showAnimation" format="reference" />
+        <attr name="menu_labels_hideAnimation" format="reference" />
+        <attr name="menu_labels_paddingTop" format="dimension" />
+        <attr name="menu_labels_paddingLeft" format="dimension" />
+        <attr name="menu_labels_paddingRight" format="dimension" />
+        <attr name="menu_labels_paddingBottom" format="dimension" />
+        <attr name="menu_labels_padding" format="dimension" />
+        <attr name="menu_labels_textColor" format="reference|color" />
+        <attr name="menu_labels_textSize" format="dimension" />
+        <attr name="menu_labels_cornerRadius" format="dimension" />
+        <attr name="menu_labels_showShadow" format="boolean" />
+        <attr name="menu_labels_colorNormal" format="color" />
+        <attr name="menu_labels_colorPressed" format="color" />
+        <attr name="menu_labels_colorRipple" format="color" />
+        <attr name="menu_labels_position" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="menu_icon" format="reference" />
+        <attr name="menu_animationDelayPerItem" format="integer" />
+        <attr name="menu_buttonToggleAnimation" format="reference" />
+        <attr name="menu_labels_singleLine" format="boolean" />
+        <attr name="menu_labels_ellipsize" format="enum">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+        <attr name="menu_labels_maxLines" format="integer" />
+        <attr name="menu_fab_size" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="mini" value="1" />
+        </attr>
+        <attr name="menu_labels_style" format="reference" />
+        <attr name="menu_labels_customFont" format="string" />
+        <attr name="menu_shadowColor" format="color" />
+        <attr name="menu_shadowRadius" format="dimension" />
+        <attr name="menu_shadowXOffset" format="dimension" />
+        <attr name="menu_shadowYOffset" format="dimension" />
+        <attr name="menu_colorNormal" format="color" />
+        <attr name="menu_colorPressed" format="color" />
+        <attr name="menu_colorRipple" format="color" />
+        <attr name="menu_openDirection" format="enum">
+            <enum name="up" value="0" />
+            <enum name="down" value="1" />
+        </attr>
+        <attr name="menu_backgroundColor" format="color" />
+        <attr name="menu_fab_label" format="string" />
+        <attr name="menu_fab_show_animation" format="reference" />
+        <attr name="menu_fab_hide_animation" format="reference" />
+    </declare-styleable>
+
+
+    <declare-styleable name="NumberPickerView">
+        <!--set number of item displayed, default is 3-->
+        <attr name="npv_ShownCount" format="reference|integer" />
+        <!--set if show divider, default is true-->
+        <attr name="npv_ShowDivider" format="reference|boolean" />
+        <attr name="npv_DividerColor" format="reference|color" />
+        <attr name="npv_DividerMarginLeft" format="reference|dimension" />
+        <attr name="npv_DividerMarginRight" format="reference|dimension" />
+        <attr name="npv_DividerHeight" format="reference|dimension" />
+        <attr name="npv_TextColorNormal" format="reference|color" />
+        <attr name="npv_TextColorSelected" format="reference|color" />
+        <attr name="npv_TextColorHint" format="reference|color" />
+        <attr name="npv_TextSizeNormal" format="reference|dimension" />
+        <attr name="npv_TextSizeSelected" format="reference|dimension" />
+        <attr name="npv_TextSizeHint" format="reference|dimension" />
+        <attr name="npv_TextArray" format="reference" />
+        <attr name="npv_MinValue" format="reference|integer" />
+        <attr name="npv_MaxValue" format="reference|integer" />
+        <attr name="npv_WrapSelectorWheel" format="reference|boolean" />
+        <attr name="npv_RespondChangeOnDetached" format="reference|boolean" />
+        <attr name="npv_HintText" format="reference|string" />
+        <attr name="npv_EmptyItemHint" format="reference|string" />
+        <attr name="npv_MarginStartOfHint" format="reference|dimension" />
+        <attr name="npv_MarginEndOfHint" format="reference|dimension" />
+        <attr name="npv_ItemPaddingHorizontal" format="reference|dimension" />
+        <attr name="npv_ItemPaddingVertical" format="reference|dimension" />
+        <attr name="npv_RespondChangeInMainThread" format="reference|boolean" />
+        <attr name="npv_TextEllipsize" format="reference|string" />
+        <attr name="npv_TextGravity" format="reference|integer" />
+
+        <!--just used to measure maxWidth for wrap_content without hint,
+            the string array will never be displayed.
+            you can set this attr if you want to keep the wraped numberpickerview
+            width unchanged when alter the content list-->
+        <attr name="npv_AlternativeTextArrayWithMeasureHint" format="reference" />
+        <attr name="npv_AlternativeTextArrayWithoutMeasureHint" format="reference" />
+        <!--the max length of hint content-->
+        <attr name="npv_AlternativeHint" format="reference|string" />
+    </declare-styleable>
+
+
+    <!-- 以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->
+    <!-- 圆角矩形背景色 -->
+    <attr name="rv_backgroundColor" format="color" />
+    <!-- 圆角矩形背景色press -->
+    <attr name="rv_backgroundPressColor" format="color" />
+    <!-- 圆角矩形背景色select -->
+    <attr name="rv_backgroundSelectedColor" format="color" />
+    <attr name="rv_backgroundEnableColor" format="color" />
+    <attr name="rv_backgroundFocusColor" format="color" />
+    <!-- 圆角弧度,单位dp-->
+    <attr name="rv_cornerRadius" format="dimension" />
+    <!-- 圆角弧度,单位dp-->
+    <attr name="rv_strokeWidth" format="dimension" />
+    <!-- 圆角边框颜色-->
+    <attr name="rv_strokeColor" format="color" />
+    <!-- 圆角边框颜色press -->
+    <attr name="rv_strokePressColor" format="color" />
+    <!-- 圆角边框颜色press -->
+    <attr name="rv_strokeSelectedColor" format="color" />
+    <!-- 文字颜色press-->
+    <attr name="rv_textPressColor" format="color" />
+    <!-- 文字颜色selected-->
+    <attr name="rv_textSelectedColor" format="color" />
+    <attr name="rv_textEnableColor" format="color" />
+    <attr name="rv_strokeEnableColor" format="color" />
+    <!-- 圆角弧度是高度一半-->
+    <attr name="rv_isRadiusHalfHeight" format="boolean" />
+    <!-- 圆角矩形宽高相等,取较宽高中大值-->
+    <attr name="rv_isWidthHeightEqual" format="boolean" />
+    <!-- 圆角弧度,单位dp,TopLeft-->
+    <attr name="rv_cornerRadius_TL" format="dimension" />
+    <!-- 圆角弧度,单位dp,TopRight-->
+    <attr name="rv_cornerRadius_TR" format="dimension" />
+    <!-- 圆角弧度,单位dp,BottomLeft-->
+    <attr name="rv_cornerRadius_BL" format="dimension" />
+    <!-- 圆角弧度,单位dp,BottomRight-->
+    <attr name="rv_cornerRadius_BR" format="dimension" />
+    <!-- 是否有Ripple效果,api21+有效-->
+    <attr name="rv_isRippleEnable" format="boolean" />
+
+    <declare-styleable name="RoundTextView">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundEnableColor" />
+        <attr name="rv_backgroundFocusColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeEnableColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_textPressColor" />
+        <attr name="rv_textSelectedColor" />
+        <attr name="rv_textEnableColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundLinearLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundEnableColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeEnableColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRelativeLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundEnableColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeEnableColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundFrameLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundEnableColor" />
+        <attr name="rv_strokeEnableColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+
+</resources>

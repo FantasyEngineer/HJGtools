@@ -1,0 +1,23 @@
+# ninja log v5
+0	11	0	clean	d02f16c014958197
+0	9	0	clean	d02f16c014958197
+0	12	0	clean	d02f16c014958197
+0	11	0	clean	d02f16c014958197
+0	7	0	clean	d02f16c014958197
+0	11	0	clean	d02f16c014958197
+0	437	1618206761	CMakeFiles/Native-lib.dir/Native-lib.cpp.o	c563335bcb563a27
+438	565	1618206761	/Users/jimmy/Desktop/HJGTools/app/build/intermediates/cmake/TestDebug/obj/arm64-v8a/libNative-lib.so	da300ef63e398def
+0	14	0	clean	d02f16c014958197
+0	6	0	clean	d02f16c014958197
+0	6	0	clean	d02f16c014958197
+0	6	0	clean	d02f16c014958197
+0	9	0	clean	d02f16c014958197
+0	7	0	clean	d02f16c014958197
+0	8	0	clean	d02f16c014958197
+0	6	0	clean	d02f16c014958197
+0	11	0	clean	d02f16c014958197
+0	6	0	clean	d02f16c014958197
+0	5	0	clean	d02f16c014958197
+0	5	0	clean	d02f16c014958197
+2	739	1618984048	CMakeFiles/Native-lib.dir/Native-lib.cpp.o	c563335bcb563a27
+739	916	1618984048	/Users/jimmy/Desktop/HJGTools/app/build/intermediates/cmake/TestDebug/obj/arm64-v8a/libNative-lib.so	da300ef63e398def

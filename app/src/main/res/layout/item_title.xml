@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llFunction"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/tvIcon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="这里是标题"
+        android:textColor="@color/black"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/tvIcon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="这里是叙述"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/content_text_size"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
+        app:layout_constraintRight_toRightOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

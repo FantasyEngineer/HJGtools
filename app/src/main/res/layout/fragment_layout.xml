@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hjg.hjgtools.activity.animation.translate.trans.view.LayoutView
+        android:id="@+id/transView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/red"
+        android:padding="10dp"
+        android:text="layout可以移动的view，推荐使用" />
+
+    <com.hjg.hjgtools.activity.animation.translate.trans.view.ParamstView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/palegoldenrod"
+        android:padding="10dp"
+        android:text="paramView可以移动，会导致页面重绘"></com.hjg.hjgtools.activity.animation.translate.trans.view.ParamstView>
+
+
+    <com.hjg.hjgtools.activity.animation.translate.trans.view.OffsetView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/blue"
+        android:padding="10dp"
+        android:text="offset可以移动的view，推荐使用" />
+
+    <com.hjg.hjgtools.activity.animation.translate.trans.view.ScrollCustomView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@color/pink"
+        android:padding="10dp"
+        android:text="ScrollCustomView可以移动整个父布局中的内容" />
+
+
+</FrameLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="侯继国\n自用工具库"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2"></TextView>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_bg_cornor_all"
+            android:gravity="center_vertical"
+            android:hint="请填写客户姓名"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="hjg"
+            android:textColor="@color/purple_500"
+            android:textCursorDrawable="@drawable/edit_cursor_color"
+            android:textSize="@dimen/edittext_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintWidth_percent="0.8" />
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_bg_cornor_all"
+            android:gravity="center_vertical"
+            android:hint="请填写客户密码"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="123456"
+            android:textCursorDrawable="@drawable/edit_cursor_color"
+            android:textSize="@dimen/edittext_size"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/username"
+            app:layout_constraintRight_toRightOf="@+id/username"
+            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintWidth_percent="0.8"
+            app:rv_cornerRadius="5dp"
+            app:rv_isRippleEnable="true"
+            app:rv_strokeColor="@color/gray"
+            app:rv_strokePressColor="@color/purple_500"
+            app:rv_strokeSelectedColor="@color/purple_500"
+            app:rv_strokeWidth="1dp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="  登录  "
+            android:textSize="@dimen/btn_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

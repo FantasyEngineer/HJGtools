@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjg.hjgtools.activity.animation.translate.trans.view.ScrollToFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点一下屏幕空白位置，\n你会变现scroll to的作用"
+            android:textColor="@color/black">
+
+        </TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="这是紧靠屏幕左侧的" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="但是父布局调用scroll to" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注意scroll to函数中的坐标正负" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:srcCompat="@tools:sample/avatars" />
+</com.hjg.hjgtools.activity.animation.translate.trans.view.ScrollToFrameLayout>

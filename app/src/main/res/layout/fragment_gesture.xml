@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:text="有bug，gestureDetector无法检测拖动停止时，手指抬起\n所以贴边出现了问题"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <com.hjg.hjgtools.activity.animation.translate.trans.view.GestureDetectorView
+        android:id="@+id/gestureDetectorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/red"
+        android:padding="10dp"
+        android:text="layout可以移动的view" />
+
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+package com.hjg.hjgtools.activity.animation.translate.trans.result;
+
+import android.view.View;
+import android.widget.TextView;
+
+import com.hjg.base.base.HJGBaseFragment;
+import com.hjg.base.view.GeneralNestScrollView;
+import com.hjg.hjgtools.R;
+
+
+/**
+ *
+ */
+public class TransTopFragmentScroller extends HJGBaseFragment {
+
+    private TextView tvTitle2;
+    private boolean isShow = true;
+
+    @Override
+    protected int getContentID() {
+        return R.layout.fragment_tran_result_scroller;
+    }
+
+    int lHeight = 150;
+
+    @Override
+    protected void initViewAction(View view) {
+        GeneralNestScrollView nestedScrollView = view.findViewById(R.id.scrollView);
+        tvTitle2 = view.findViewById(R.id.tvTitle2);
+        /*activity中获取宽高的方式*/
+        tvTitle2.post(() -> lHeight = tvTitle2.getMeasuredHeight());
+        nestedScrollView.setOnGeneralScrollChangedListener(new GeneralNestScrollView.OnGeneralScrollChangedListener() {
+            @Override
+            public void onScrollChanged(int l, int t, int oldl, int oldt) {
+                nestedScrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+
+        });
+    }
+}

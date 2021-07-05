@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View动画是对View的影像做动画，不是真的改变View的布局属性和状态，所以，有时会出现：动画完成后View无法隐藏的情况，即setVisibility(View.GONE);失效。解决方法：调用view.clearAnimation()清除View动画即可。"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="现在xml中动画被严格控制，如果尽量将translate，rotata，scale，alpha写在set
+标签下，这样会有输入提示，同样的如果想做动画的重复往复执行，那么请注意，往复运动针对的是具体的动画，而不是
+set集合，所以android:repeatCount=2
+        android:repeatMode=reverse应该写在具体动画上，这里软件不给提示，有点恶心！code编写的代码同样试用\n
+该动画不能改编控件的具体大小以及具体位置，可以运行动画点击一下`点我`按钮，测试"
+                android:textColor="@color/red">
+
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvTarget"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:text="点我"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/useXml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="是否使用xml方式创建动画"></androidx.appcompat.widget.SwitchCompat>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/transRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="位移右">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/transLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="位移左">
+
+                </Button>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/scaleBig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+
+                    android:layout_weight="1"
+
+                    android:text="放大">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/scaleSmall"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="缩小">
+
+                </Button>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/rotateRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="旋转右">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/rotateLeft"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="旋转左">
+
+                </Button>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/alphaTo0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="逐渐变淡">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/alphaTo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="逐渐变清晰">
+
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/transMerge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="组合">
+
+                </Button>
+
+
+                <Button
+                    android:id="@+id/test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="测试大范围使用是否卡顿">
+
+                </Button>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
