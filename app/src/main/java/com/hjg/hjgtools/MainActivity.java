@@ -48,6 +48,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         fab.setVisibility(View.VISIBLE);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
