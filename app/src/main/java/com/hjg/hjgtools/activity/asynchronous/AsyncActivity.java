@@ -1,16 +1,8 @@
 package com.hjg.hjgtools.activity.asynchronous;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import com.hjg.hjgtools.R;
-import com.hjg.hjgtools.activity.animation.AnimationActivity;
-import com.hjg.hjgtools.activity.coin.BiRepsActivity;
 import com.hjg.hjgtools.activity.handler.HandlerActivity;
-import com.hjg.hjgtools.activity.handler.HandlerTestActivity;
 import com.hjg.hjgtools.activity.ipc.aidl.AIdlServerActivity;
-import com.hjg.hjgtools.activity.jetpack.JetPackActivity;
 import com.hjg.hjgtools.activity.rx.RxActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;

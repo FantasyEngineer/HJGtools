@@ -1,6 +1,7 @@
 package com.hjg.hjgtools;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -8,16 +9,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.util.ActivityUtils;
-import com.hjg.hjgtools.activity.animation.translate.ViewTransActivity;
 import com.hjg.hjgtools.activity.asynchronous.AsyncActivity;
 import com.hjg.hjgtools.activity.coin.BiRepsActivity;
 import com.hjg.hjgtools.activity.animation.AnimationActivity;
-import com.hjg.hjgtools.activity.handler.HandlerTestActivity;
 import com.hjg.hjgtools.activity.titleBar.TitleBarActivity;
 import com.hjg.hjgtools.activity.compress.CompressActivity;
-import com.hjg.hjgtools.activity.handler.HandlerActivity;
 import com.hjg.hjgtools.activity.TestActivity;
-import com.hjg.hjgtools.activity.ipc.aidl.AIdlServerActivity;
 import com.hjg.hjgtools.activity.bound.BoundActivity;
 import com.hjg.hjgtools.activity.camera.CameraActivity;
 import com.hjg.hjgtools.activity.conflict.ConflictActivity;
@@ -31,7 +28,6 @@ import com.hjg.hjgtools.activity.mvvm.MvvmActivity;
 import com.hjg.hjgtools.activity.notification.NotificationActivity;
 import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
-import com.hjg.hjgtools.activity.rx.RxActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
 import com.hjg.hjgtools.activity.task.TaskActivity;
@@ -84,12 +80,12 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
 //        ActivityUtils.startActivity(ViewTransActivity.class);
 //        ActivityUtils.startActivity(AnimationActivity.class);
 
+
     }
 
     @Override
     public ArrayList<RecyclerListBean> structureData() {
         ArrayList<RecyclerListBean> listBeans = new ArrayList<>();
-        listBeans.add(new RecyclerListBean("原理测试", HandlerTestActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("动画", AnimationActivity.class, "各种动画的使用", R.drawable.ic_icon_animation));
         listBeans.add(new RecyclerListBean("币圈仓库", BiRepsActivity.class, "", R.drawable.ic_icon_dialog));
         listBeans.add(new RecyclerListBean("JetPack", JetPackActivity.class, "", R.drawable.ic_icon_dialog));
@@ -113,7 +109,7 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("JNI调用", JniActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("WebView测试", TestActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("标题栏", TitleBarActivity.class, "", R.drawable.ic_icon_task));
-        listBeans.add(new RecyclerListBean("跨进程线程通信", AsyncActivity.class, "aidl，handler，rxjava", R.drawable.ic_icon_task));
+        listBeans.add(new RecyclerListBean("异步，跨进程，线程通信", AsyncActivity.class, "aidl，handler，rxjava", R.drawable.ic_icon_task));
         return listBeans;
     }
 

@@ -1,7 +1,0 @@
-Executable : /Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
-arguments : 
--C
-/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardDebug/armeabi-v7a
-Native-lib
-jvmArgs : 
-

@@ -5,9 +5,9 @@
     "environmentVariables": []
   },
   "cmake": {
-    "cmakeArtifactsBaseFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/x86_64",
-    "cmakeServerLogFile": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/x86_64/cmake_server_log.txt",
-    "cmakeWrappingBaseFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cxx/TestRelease/x86_64",
+    "cmakeArtifactsBaseFolder": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86_64",
+    "cmakeServerLogFile": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86_64/cmake_server_log.txt",
+    "cmakeWrappingBaseFolder": "/Users/jimmy/hjgtool/app/.cxx/cxx/TestRelease/x86_64",
     "effectiveConfiguration": {
       "name": "traditional-android-studio-cmake-environment",
       "description": "Composite reified CMakeSettings configuration",
@@ -15,13 +15,13 @@
       "inheritEnvironments": [
         "ndk"
       ],
-      "buildRoot": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/x86_64",
+      "buildRoot": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86_64",
       "cmakeToolchain": "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
       "cmakeExecutable": "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake",
       "variables": [
         {
           "name": "CMAKE_FIND_ROOT_PATH",
-          "value": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/prefab/x86_64/prefab"
+          "value": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/prefab/x86_64/prefab"
         },
         {
           "name": "CMAKE_BUILD_TYPE",
@@ -57,7 +57,7 @@
         },
         {
           "name": "CMAKE_LIBRARY_OUTPUT_DIRECTORY",
-          "value": "/Users/jimmy/Desktop/HJGTools/app/build/intermediates/cmake/TestRelease/obj/x86_64"
+          "value": "/Users/jimmy/hjgtool/app/build/intermediates/cmake/TestRelease/obj/x86_64"
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
@@ -74,14 +74,14 @@
       ]
     }
   },
-  "cxxBuildFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/x86_64",
+  "cxxBuildFolder": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86_64",
   "info": {
     "abi": "X86_64",
     "bitness": 64,
     "deprecated": false,
     "default": true
   },
-  "originalCxxBuildFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/x86_64",
+  "originalCxxBuildFolder": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86_64",
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
@@ -100,12 +100,12 @@
         "ninjaExe": "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja"
       },
       "cmakeToolchainFile": "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
-      "cxxFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx",
+      "cxxFolder": "/Users/jimmy/hjgtool/app/.cxx",
       "gradleModulePathName": ":app",
-      "intermediatesFolder": "/Users/jimmy/Desktop/HJGTools/app/build/intermediates",
-      "makeFile": "/Users/jimmy/Desktop/HJGTools/app/src/main/jni/CMakeLists.txt",
-      "moduleBuildFile": "/Users/jimmy/Desktop/HJGTools/app/build.gradle",
-      "moduleRootFolder": "/Users/jimmy/Desktop/HJGTools/app",
+      "intermediatesFolder": "/Users/jimmy/hjgtool/app/build/intermediates",
+      "makeFile": "/Users/jimmy/hjgtool/app/src/main/jni/CMakeLists.txt",
+      "moduleBuildFile": "/Users/jimmy/hjgtool/app/build.gradle",
+      "moduleRootFolder": "/Users/jimmy/hjgtool/app",
       "ndkDefaultAbiList": [
         "ARMEABI_V7A",
         "ARM64_V8A",
@@ -169,12 +169,12 @@
       "ndkDefaultStl": "LIBCXX_STATIC",
       "ndkVersion": "21.0.6113669",
       "project": {
-        "compilerSettingsCacheFolder": "/Users/jimmy/Desktop/HJGTools/.cxx",
-        "cxxFolder": "/Users/jimmy/Desktop/HJGTools/.cxx",
+        "compilerSettingsCacheFolder": "/Users/jimmy/hjgtool/.cxx",
+        "cxxFolder": "/Users/jimmy/hjgtool/.cxx",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
-        "rootBuildGradleFolder": "/Users/jimmy/Desktop/HJGTools",
+        "rootBuildGradleFolder": "/Users/jimmy/hjgtool",
         "sdkFolder": "/Users/jimmy/Library/Android/sdk",
         "isPrefabEnabled": false
       },
@@ -191,7 +191,7 @@
         "SYSTEM": {}
       }
     },
-    "objFolder": "/Users/jimmy/Desktop/HJGTools/app/build/intermediates/cmake/TestRelease/obj",
+    "objFolder": "/Users/jimmy/hjgtool/app/build/intermediates/cmake/TestRelease/obj",
     "variantName": "TestRelease",
     "validAbiList": [
       "ARMEABI_V7A",
@@ -199,8 +199,8 @@
       "X86",
       "X86_64"
     ],
-    "prefabDirectory": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/prefab",
+    "prefabDirectory": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/prefab",
     "prefabPackageDirectoryList": []
   },
-  "prefabFolder": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/prefab/x86_64"
+  "prefabFolder": "/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/prefab/x86_64"
 }

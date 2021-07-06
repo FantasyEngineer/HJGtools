@@ -21,12 +21,6 @@
             android:text="发送一个延时消息，退出页面后不会内存泄漏" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handlerThread"
-            android:text="HandlerThread" />
-
-        <Button
             android:id="@+id/destory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

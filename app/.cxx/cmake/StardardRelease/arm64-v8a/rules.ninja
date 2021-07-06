@@ -42,7 +42,7 @@ rule CXX_SHARED_LIBRARY_LINKER__Native-lib
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake -H/Users/jimmy/Desktop/HJGTools/app/src/main/jni -B/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardRelease/arm64-v8a
+  command = /Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake -H/Users/jimmy/hjgtool/app/src/main/jni -B/Users/jimmy/hjgtool/app/.cxx/cmake/StardardRelease/arm64-v8a
   description = Re-running CMake...
   generator = 1
 

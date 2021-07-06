@@ -1,2 +1,0 @@
-ninja: Entering directory `/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/TestRelease/armeabi-v7a'
-ninja: no work to do.

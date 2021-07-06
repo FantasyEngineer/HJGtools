@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/Users/jimmy/Desktop/HJGTools/app/.cxx/cmake/StardardDebug/armeabi-v7a",
-  "command": "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -DNative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/Native-lib.dir/Native-lib.cpp.o -c /Users/jimmy/Desktop/HJGTools/app/src/main/jni/Native-lib.cpp",
-  "file": "/Users/jimmy/Desktop/HJGTools/app/src/main/jni/Native-lib.cpp"
+  "directory": "/Users/jimmy/hjgtool/app/.cxx/cmake/StardardDebug/armeabi-v7a",
+  "command": "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -DNative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/Native-lib.dir/Native-lib.cpp.o -c /Users/jimmy/hjgtool/app/src/main/jni/Native-lib.cpp",
+  "file": "/Users/jimmy/hjgtool/app/src/main/jni/Native-lib.cpp"
 }
 ]

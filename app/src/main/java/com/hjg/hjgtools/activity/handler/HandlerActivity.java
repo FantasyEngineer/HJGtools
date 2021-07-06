@@ -6,11 +6,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Toast;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
+import com.hjg.base.util.D;
+import com.hjg.base.util.HandlerUtils;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.R;
@@ -23,8 +26,10 @@ import java.util.stream.Stream;
 /**
  * Handler的内存泄漏的优化
  */
-public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerBinding> implements View.OnClickListener {
+public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerBinding> implements View.OnClickListener, HandlerUtils.OnReceiveMessageListener {
     private H h;
+    HandlerUtils.HandlerHolder handlerHolder;
+    private Thread thread;
 
     @Override
     protected int getContentID() {
@@ -33,13 +38,67 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
     @Override
     protected void initViewAction() {
+        //初始化Handler
         h = new H(this);
         databinding.btnStartThread.setOnClickListener(this);
+        databinding.destory.setOnClickListener(this);
+
+        //一般情况下我们使用Handler的utils来进行这块的书写
+        handlerHolder = new HandlerUtils.HandlerHolder(this);
+
     }
 
     @Override
     public void onClick(View v) {
-        h.sendEmptyMessageDelayed(0, 3000);
+        switch (v.getId()) {
+            case R.id.btnStartThread:
+                Message message = Message.obtain();
+                h.sendEmptyMessageDelayed(0, 3000);
+
+                break;
+            case R.id.destory:
+//                handlerHolder.sendEmptyMessageDelayed(0, 3000);
+//                finish();
+
+
+                //这个thread要重新创建一个继承Thread
+//                thread = new Thread(new Runnable() {
+//                    public Handler handler;
+//
+//                    @Override
+//                    public void run() {
+//                        Looper.prepare();
+//
+//                        handler = new Handler() {
+//
+//                            @Override
+//                            public void handleMessage(@NonNull Message msg) {
+//                                super.handleMessage(msg);
+//                                L.d("msg.what" + msg.what);
+//                                D.showShort("12312");
+//                            }
+//                        };
+//
+//                        Looper.loop();
+//                    }
+//
+//                    public Handler getHandler() {
+//                        return handler;
+//                    }
+//                });
+//                thread.start();
+                break;
+        }
+    }
+
+
+    /*Handlerutils的处理方案*/
+    @Override
+    public void handlerMessage(Message msg) {
+        L.d("handler-handleMessage");
+        //页面销毁的过后这句话不执行，但是代码会继续往下执行。
+        databinding.destory.setBackground(ResUtils.getDrawable(R.drawable.ic_icon_encryption));
+        L.d("handler2-handleMessage");
     }
 
 
