@@ -29,7 +29,7 @@ import java.util.stream.Stream;
 public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerBinding> implements View.OnClickListener, HandlerUtils.OnReceiveMessageListener {
     private H h;
     HandlerUtils.HandlerHolder handlerHolder;
-    private Thread thread;
+    private MyThread thread;
 
     @Override
     protected int getContentID() {
@@ -42,10 +42,13 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
         h = new H(this);
         databinding.btnStartThread.setOnClickListener(this);
         databinding.destory.setOnClickListener(this);
+        databinding.btnSendThreadMessage.setOnClickListener(this);
 
         //一般情况下我们使用Handler的utils来进行这块的书写
         handlerHolder = new HandlerUtils.HandlerHolder(this);
 
+        thread = new MyThread();
+        thread.start();
     }
 
     @Override
@@ -57,36 +60,12 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
                 break;
             case R.id.destory:
-//                handlerHolder.sendEmptyMessageDelayed(0, 3000);
-//                finish();
+                handlerHolder.sendEmptyMessageDelayed(0, 3000);
+                finish();
 
-
-                //这个thread要重新创建一个继承Thread
-//                thread = new Thread(new Runnable() {
-//                    public Handler handler;
-//
-//                    @Override
-//                    public void run() {
-//                        Looper.prepare();
-//
-//                        handler = new Handler() {
-//
-//                            @Override
-//                            public void handleMessage(@NonNull Message msg) {
-//                                super.handleMessage(msg);
-//                                L.d("msg.what" + msg.what);
-//                                D.showShort("12312");
-//                            }
-//                        };
-//
-//                        Looper.loop();
-//                    }
-//
-//                    public Handler getHandler() {
-//                        return handler;
-//                    }
-//                });
-//                thread.start();
+                break;
+            case R.id.btnSendThreadMessage:
+                thread.getHandler().sendEmptyMessage(1);
                 break;
         }
     }
