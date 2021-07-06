@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hjg.base.util.ActivityUtils;
 import com.hjg.hjgtools.activity.animation.translate.ViewTransActivity;
+import com.hjg.hjgtools.activity.asynchronous.AsyncActivity;
 import com.hjg.hjgtools.activity.coin.BiRepsActivity;
 import com.hjg.hjgtools.activity.animation.AnimationActivity;
 import com.hjg.hjgtools.activity.handler.HandlerTestActivity;
@@ -106,15 +107,13 @@ public class MainActivity extends HJGBaseRecyclerMulItemActivity {
         listBeans.add(new RecyclerListBean("权限申请", PermissionActivity.class, "各种权限申请", R.drawable.ic_icon_permission));
         listBeans.add(new RecyclerListBean("碎片化Fragment", FragmentActivity.class, "fragment的用法", R.drawable.ic_icon_fragment));
         listBeans.add(new RecyclerListBean("任务", TaskActivity.class, "定时任务，后台job任务等等", R.drawable.ic_icon_task));
-        listBeans.add(new RecyclerListBean("RxJava", RxActivity.class, "一些api的用法", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("相机与相册", CameraActivity.class, "相机及其相册的功能", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("测试", TestActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("Mvvm架构", MvvmActivity.class, "", R.drawable.ic_icon_task));
-        listBeans.add(new RecyclerListBean("HandlerActivity", HandlerActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("JNI调用", JniActivity.class, "", R.drawable.ic_icon_task));
-        listBeans.add(new RecyclerListBean("AIDL", AIdlServerActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("WebView测试", TestActivity.class, "", R.drawable.ic_icon_task));
         listBeans.add(new RecyclerListBean("标题栏", TitleBarActivity.class, "", R.drawable.ic_icon_task));
+        listBeans.add(new RecyclerListBean("跨进程线程通信", AsyncActivity.class, "aidl，handler，rxjava", R.drawable.ic_icon_task));
         return listBeans;
     }
 

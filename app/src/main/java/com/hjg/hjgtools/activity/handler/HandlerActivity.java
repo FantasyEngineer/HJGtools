@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
+import com.hjg.base.util.ResUtils;
+import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityHandlerBinding;
 
@@ -37,12 +39,16 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
     @Override
     public void onClick(View v) {
-        h.sendEmptyMessageDelayed(0, 10000);
+        h.sendEmptyMessageDelayed(0, 3000);
     }
 
 
     /**
      * 静态内部类中弱引用
+     * 这里不能使用非静态内部类形式，因为java中非静态内部类默认会持有外部类引用。你写了等于没写
+     * 这种方式实现的好处是：
+     * 执行了页面的ondestory之后，handler不持有activity的引用，activity被回收，消息依旧在进行，到时间后会
+     * 回调到handleMessage中，有关于activity弱引用的形式执行的代码都不会执行，其他逻辑照常使用
      */
     public static class H extends Handler {
         private WeakReference<Activity> activityWeakReference;
@@ -56,7 +62,10 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            Toast.makeText(activityWeakReference.get(), "activity被删除了，我也可以toast", Toast.LENGTH_SHORT).show();
+            L.d("handler-handleMessage");
+            //页面销毁的过后这句话不执行，但是代码会继续往下执行。
+            ((HandlerActivity) activityWeakReference.get()).databinding.destory.setBackground(ResUtils.getDrawable(R.drawable.ic_icon_encryption));
+            L.d("handler2-handleMessage");
         }
     }
 

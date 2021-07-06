@@ -52,7 +52,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HJGTools"
         tools:replace="android:allowBackup,android:icon,android:label,android:roundIcon,android:theme">
-        <activity android:name=".activity.handler.HandlerTestActivity"></activity>
+        <activity android:name=".activity.asynchronous.AsyncActivity"></activity>
+        <activity android:name=".activity.handler.HandlerTestActivity" />
         <activity android:name=".activity.animation.translate.trans.result.TransResultActivity" />
         <activity android:name=".CommonFragmentActivity" />
         <activity android:name=".activity.animation.translate.ViewTransActivity" />

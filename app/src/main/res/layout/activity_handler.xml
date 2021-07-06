@@ -26,5 +26,15 @@
             android:onClick="handlerThread"
             android:text="HandlerThread" />
 
+        <Button
+            android:id="@+id/destory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="129dp"
+            android:layout_y="479dp"
+            android:text="销毁页面"
+            tools:layout_editor_absoluteX="235dp"
+            tools:layout_editor_absoluteY="442dp" />
+
     </LinearLayout>
 </layout>
