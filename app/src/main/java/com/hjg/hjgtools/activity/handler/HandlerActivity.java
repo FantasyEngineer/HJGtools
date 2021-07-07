@@ -30,6 +30,7 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
     private H h;
     HandlerUtils.HandlerHolder handlerHolder;
     private MyThread thread;
+    private MyThread thread2;
 
     @Override
     protected int getContentID() {
@@ -49,6 +50,9 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
         thread = new MyThread();
         thread.start();
+        thread2 = new MyThread();
+        thread.start();
+
     }
 
     @Override

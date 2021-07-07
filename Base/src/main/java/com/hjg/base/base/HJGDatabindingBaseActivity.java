@@ -21,7 +21,7 @@ public abstract class HJGDatabindingBaseActivity<T> extends HTitleActivity {
         try {
             initViewAction();
         } catch (Exception e) {
-            D.showShort(e.getMessage());
+//            D.showShort(e.getMessage());
             L.d(e.getMessage());
         }
     }
