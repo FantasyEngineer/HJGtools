@@ -30,7 +30,8 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
     private H h;
     HandlerUtils.HandlerHolder handlerHolder;
     private MyThread thread;
-    private MyThread thread2;
+    private Handler handler;
+    private Handler threadHander;
 
     @Override
     protected int getContentID() {
@@ -50,8 +51,9 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
         thread = new MyThread();
         thread.start();
-        thread2 = new MyThread();
-        thread.start();
+
+        //线程中有同步锁
+        threadHander = thread.getThreadHander();
 
     }
 
@@ -69,7 +71,7 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
                 break;
             case R.id.btnSendThreadMessage:
-                thread.getHandler().sendEmptyMessage(1);
+                threadHander.sendEmptyMessage(1);
                 break;
         }
     }
