@@ -10,17 +10,20 @@ import android.util.Log;
 import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
+import com.hjg.base.util.HandlerUtils;
+import com.hjg.base.util.ResUtils;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityHandlerThreadBinding;
 
 /**
  * 如何往子线程中发送handler消息
  */
-public class HandlerThreadActivity extends HJGDatabindingBaseActivity<ActivityHandlerThreadBinding> {
+public class HandlerThreadActivity extends HJGDatabindingBaseActivity<ActivityHandlerThreadBinding> implements HandlerUtils.OnReceiveMessageListener {
 
     private static final String TAG = "DownloadThread";
-    private Handler mUIhandler;
     private DownloadThread mHandlerThread;
+    private Handler threadHander;
+    HandlerUtils.HandlerHolder uiHandler;
 
     @Override
     protected int getContentID() {
@@ -30,45 +33,38 @@ public class HandlerThreadActivity extends HJGDatabindingBaseActivity<ActivityHa
     @Override
     protected void initViewAction() {
 
+        //创建下载线程
         mHandlerThread = new DownloadThread("DownloadThread");
         mHandlerThread.start();
+        //获取下载线程中的handler
+        threadHander = mHandlerThread.getThreadHander(mHandlerThread.getLooper());
 
-        //初始化Handler，传递mHandlerThread内部的一个looper
-        mUIhandler = new Handler(mHandlerThread.getLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                //判断mHandlerThread里传来的msg，根据msg进行主页面的UI更改
-                switch (msg.what) {
-                    case DownloadThread.TYPE_START:
-                        //不是在这里更改UI哦，只是说在这个时间，你可以去做更改UI这件事情，改UI还是得在主线程。
-                        Log.e(TAG, "4.主线程知道Download线程开始下载了...这时候可以更改主界面UI");
-                        break;
-                    case DownloadThread.TYPE_FINISHED:
-                        Log.e(TAG, "7.主线程知道Download线程下载完成了...这时候可以更改主界面UI，收工");
-                        break;
-                    default:
-                        break;
-                }
-                super.handleMessage(msg);
-            }
-        };
         //子线程注入主线程的mUIhandler，可以在子线程执行任务的时候，随时发送消息回来主线程
-        mHandlerThread.setUIHandler(mUIhandler);
+        uiHandler = new HandlerUtils.HandlerHolder(this);
+        mHandlerThread.setUIHandler(uiHandler);
 
     }
 
-
     /**
-     * 开启子线程
+     * 点击开始下载
      *
      * @param view
      */
-    public void startThread(View view) {
-
-        //子线程开始下载
-        mHandlerThread.startDownload();
-
+    public void startDownLoad(View view) {
+        threadHander.sendEmptyMessage(1);
     }
 
+    /*主线程收到消息序列*/
+    @Override
+    public void handlerMessage(Message msg) {
+        switch (msg.what) {
+            case 3:
+                databinding.proces.setText(String.format(ResUtils.getString(R.string.down_process), msg.arg1));
+                break;
+            case 4:
+                databinding.proces.setText("下载完成");
+                break;
+        }
 
+    }
 }

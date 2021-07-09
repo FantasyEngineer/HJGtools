@@ -2,9 +2,22 @@ package com.hjg.hjgtools.activity.handler;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.hjg.base.util.D;
+import com.hjg.base.util.log.androidlog.L;
+
+/**
+ * HandlerThread
+ * 使用线程为我们创建好的looper，我们就可以创建该线程的handler
+ * 好处:HandlerThread对应的工作线程因为使用了handler机制，所以当message中没有消息的时候，该工作线程会被挂起，完全不占用cpu的时间片，所以我们可以不将HandlerThread退出，这样在一个app进程中就有一个随时待命的工作线程来执行耗时任务
+ * 随需而用。
+ */
 public class DownloadThread extends HandlerThread {
 
     private static final String TAG = "DownloadThread";
@@ -13,45 +26,63 @@ public class DownloadThread extends HandlerThread {
     public static final int TYPE_FINISHED = 3;//通知主线程任务结束
 
     private Handler mUIHandler;//主线程的Handler
-
+    private Handler threadHander;
 
     public DownloadThread(String name) {
         super(name);
     }
 
-    /*
-     * 执行初始化任务
-     * */
-    @Override
-    protected void onLooperPrepared() {
-        Log.e(TAG, "onLooperPrepared: 1.Download线程开始准备");
-        super.onLooperPrepared();
-    }
-
     //注入主线程Handler
     public void setUIHandler(Handler UIhandler) {
         mUIHandler = UIhandler;
-        Log.e(TAG, "setUIHandler: 2.主线程的handler传入到Download线程");
-    }
-
-    /**
-     * Download线程开始下载，消耗时间的方法
-     */
-    public void startDownload() {
-        Log.e(TAG, "startDownload: 3.通知主线程,此时Download线程开始下载");
-        mUIHandler.sendEmptyMessage(TYPE_START);
-
-        //模拟下载
-        Log.e(TAG, "startDownload: 5.Download线程下载中...");
-        SystemClock.sleep(2000);
-
-        Log.e(TAG, "startDownload: 6.通知主线程,此时Download线程下载完成");
-        mUIHandler.sendEmptyMessage(TYPE_FINISHED);
     }
 
 
     @Override
     public synchronized void start() {
         super.start();
+    }
+
+    @Override
+    public void run() {
+        super.run();
+        //这looper已经准备好了。
+    }
+
+
+    /**
+     * 获取子线程handler
+     *
+     * @return
+     */
+    public Handler getThreadHander(Looper looper) {
+        threadHander = new Handler(looper) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:
+                        D.showShort("准备数据+开始下载");
+                        threadHander.sendEmptyMessageDelayed(2, 2000);
+                        break;
+                    case 2:
+                        for (int i = 0; i < 100; i++) {
+                            Message message = Message.obtain();
+                            message.what = 3;
+                            message.arg1 = i;
+                            mUIHandler.sendMessage(message);
+                            try {
+                                sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        mUIHandler.sendEmptyMessage(4);
+                        D.showShort("下载成功");
+                        break;
+                }
+            }
+        };
+        return threadHander;
     }
 }

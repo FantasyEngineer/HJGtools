@@ -15,10 +15,16 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:onClick="startDownLoad"
+            android:layout_height="wrap_content"
+            android:text="开始下载" />
+
+        <Button
+            android:id="@+id/proces"
             android:layout_width="match_parent"
             android:onClick="startThread"
             android:layout_height="wrap_content"
-            android:text="开启子线程" />
+            android:text="@string/down_process" />
     </LinearLayout>
 </layout>

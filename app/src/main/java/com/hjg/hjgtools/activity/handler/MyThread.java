@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import com.hjg.base.util.D;
 import com.hjg.base.util.log.androidlog.L;
 
+/**
+ * 线程中如何使用Handler
+ */
 public class MyThread extends Thread {
     private Handler handler;
 

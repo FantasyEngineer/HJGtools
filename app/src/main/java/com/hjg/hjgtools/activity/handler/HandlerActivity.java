@@ -114,6 +114,5 @@ public class HandlerActivity extends HJGDatabindingBaseActivity<ActivityHandlerB
 
     public void handlerThread(View view) {
         startActivity(new Intent(this, HandlerThreadActivity.class));
-
     }
 }
