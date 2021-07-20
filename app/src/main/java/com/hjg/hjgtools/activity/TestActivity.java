@@ -10,6 +10,10 @@ import com.hjg.hjgtools.activity.webview.WebViewActivity;
 import com.hjg.hjgtools.databinding.ActivityTestBinding;
 import com.hjg.hjgtools.databinding.ActivityWebViewBinding;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+
 /**
  * 给simoncof的测试工具类
  */
@@ -24,6 +28,8 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     protected void initViewAction() {
         //返回按钮隐藏
         actionBar.setDisplayHomeAsUpEnabled(false);
+
+       
     }
 
 

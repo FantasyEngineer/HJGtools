@@ -10,7 +10,7 @@ import com.hjg.hjgtools.entity.RecyclerListBean;
 import java.util.ArrayList;
 
 /**
- * 进程线程
+ * 异步处理
  */
 public class AsyncActivity extends HJGBaseRecyclerMulItemActivity {
 

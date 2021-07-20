@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.activity.bound;
+package com.hjg.hjgtools.activity.widget.bound;
 
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;

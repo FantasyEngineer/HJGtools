@@ -1,4 +1,4 @@
-package com.hjg.hjgtools.activity.bound;
+package com.hjg.hjgtools.activity.widget.bound;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
 import com.hjg.hjgtools.R;

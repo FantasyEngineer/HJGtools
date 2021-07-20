@@ -14,8 +14,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" /> <!-- 网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 相机权限 -->
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- 短信权限 -->
+     <uses-permission android:name="android.permission.CAMERA" /> <!-- 短信权限 -->
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -83,8 +82,8 @@
         <activity android:name=".activity.widget.recyclerVIew.StickyActivity" />
         <activity android:name=".activity.widget.recyclerVIew.TabActivity" />
         <activity android:name=".activity.widget.recyclerVIew.HorizontalRecyclerViewActivity" />
-        <activity android:name=".activity.task.JobSchedulerActivity" />
-        <activity android:name=".activity.task.TaskActivity" />
+        <activity android:name=".activity.jetpack.task.JobSchedulerActivity" />
+        <activity android:name=".activity.jetpack.task.TaskActivity" />
         <activity android:name=".activity.system.SystemActivity" />
         <activity android:name=".activity.widget.WidgetActivity" />
         <activity android:name=".activity.widget.recyclerVIew.RecyclerViewScrollActivity" />
@@ -102,8 +101,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.bound.BoundScrollViewActivity" />
-        <activity android:name=".activity.bound.BoundActivity" />
+        <activity android:name=".activity.widget.bound.BoundScrollViewActivity" />
+        <activity android:name=".activity.widget.bound.BoundActivity" />
         <activity android:name=".activity.share.ShareActivity" />
         <activity android:name=".activity.file.FileActivity" />
         <activity android:name=".activity.widget.EdittextActivity" />
@@ -130,7 +129,7 @@
         </receiver>
 
         <service
-            android:name=".activity.task.JobSchedulerService"
+            android:name=".activity.jetpack.task.JobSchedulerService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 

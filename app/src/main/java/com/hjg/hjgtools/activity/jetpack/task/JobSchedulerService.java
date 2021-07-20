@@ -1,10 +1,8 @@
-package com.hjg.hjgtools.activity.task;
+package com.hjg.hjgtools.activity.jetpack.task;
 
 import android.app.PendingIntent;
 import android.app.job.JobParameters;
-import android.app.job.JobScheduler;
 import android.app.job.JobService;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
@@ -12,7 +10,6 @@ import com.hjg.base.util.D;
 import com.hjg.base.util.DateUtils;
 import com.hjg.base.util.NotificationUtils;
 import com.hjg.base.util.RandomUtils;
-import com.hjg.base.util.StrUtil;
 import com.hjg.base.util.log.androidlog.L;
 import com.hjg.hjgtools.MainActivity;
 import com.hjg.hjgtools.R;

@@ -1,17 +1,13 @@
-package com.hjg.hjgtools.activity.task;
+package com.hjg.hjgtools.activity.jetpack.task;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,15 +22,12 @@ import com.hjg.base.util.MapUtils;
 import com.hjg.base.util.ResUtils;
 import com.hjg.base.util.StrUtil;
 import com.hjg.base.util.TextSpanUtils;
-import com.hjg.base.util.log.androidlog.L;
 import com.hjg.base.view.MyDividerItemDecoration;
-import com.hjg.base.view.flyco.dialog.entity.DialogMenuItem;
 import com.hjg.base.view.flyco.dialog.listener.OnOperItemClickL;
 import com.hjg.base.view.flyco.dialog.widget.ActionSheetDialog;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.databinding.ActivityJobSchedulerBinding;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;

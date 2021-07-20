@@ -1,7 +1,5 @@
-package com.hjg.hjgtools.activity.task;
+package com.hjg.hjgtools.activity.jetpack.task;
 
-
-import android.os.Bundle;
 
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
 import com.hjg.hjgtools.entity.RecyclerListBean;

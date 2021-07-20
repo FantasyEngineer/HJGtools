@@ -1,7 +1,6 @@
 package com.hjg.hjgtools;
 
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,7 @@ import com.hjg.hjgtools.activity.animation.AnimationActivity;
 import com.hjg.hjgtools.activity.titleBar.TitleBarActivity;
 import com.hjg.hjgtools.activity.compress.CompressActivity;
 import com.hjg.hjgtools.activity.TestActivity;
-import com.hjg.hjgtools.activity.bound.BoundActivity;
+import com.hjg.hjgtools.activity.widget.bound.BoundActivity;
 import com.hjg.hjgtools.activity.camera.CameraActivity;
 import com.hjg.hjgtools.activity.conflict.ConflictActivity;
 import com.hjg.hjgtools.activity.dialog.DialogActivity;
@@ -30,7 +29,7 @@ import com.hjg.hjgtools.activity.permission.PermissionActivity;
 import com.hjg.hjgtools.activity.receiver.ReceiverActivity;
 import com.hjg.hjgtools.activity.share.ShareActivity;
 import com.hjg.hjgtools.activity.system.SystemActivity;
-import com.hjg.hjgtools.activity.task.TaskActivity;
+import com.hjg.hjgtools.activity.jetpack.task.TaskActivity;
 import com.hjg.hjgtools.activity.touchtest.TouchActivity;
 import com.hjg.hjgtools.activity.widget.WidgetActivity;
 import com.hjg.hjgtools.base.HJGBaseRecyclerMulItemActivity;
