@@ -24,6 +24,8 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
         return R.layout.activity_test;
     }
 
+
+
     @Override
     protected void initViewAction() {
         //返回按钮隐藏
