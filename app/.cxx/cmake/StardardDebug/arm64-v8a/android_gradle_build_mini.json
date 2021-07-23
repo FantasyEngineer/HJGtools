@@ -1,8 +1,8 @@
 {
   "buildFiles": [
     "/Users/jimmy/hjgtool/app/src/main/jni/CMakeLists.txt",
-    "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
-    "/Users/jimmy/Library/Android/sdk/ndk/21.0.6113669/build/cmake/platforms.cmake"
+    "/Users/jimmy/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/jimmy/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
   ],
   "cleanCommands": [
     "/Users/jimmy/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/jimmy/hjgtool/app/.cxx/cmake/StardardDebug/arm64-v8a\" clean"
