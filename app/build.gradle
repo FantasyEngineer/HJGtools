@@ -12,7 +12,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //多dex打包，防止65535方法数过多
         multiDexEnabled true
         //开启databinding
@@ -37,7 +36,8 @@ android {
             path "src/main/jni/CMakeLists.txt"
         }
     }
-    ndkVersion "21.0.6113669"
+
+//    ndkVersion "21.0.6113669"
 
     signingConfigs {
         release {

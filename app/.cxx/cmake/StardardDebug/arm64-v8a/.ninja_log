@@ -1,3 +1,5 @@
 # ninja log v5
 0	542	1625538832	CMakeFiles/Native-lib.dir/Native-lib.cpp.o	cec1a07a97d32622
 542	656	1625538832	/Users/jimmy/hjgtool/app/build/intermediates/cmake/StardardDebug/obj/arm64-v8a/libNative-lib.so	9f267aeba79b475f
+2	899	1627020416	CMakeFiles/Native-lib.dir/Native-lib.cpp.o	cec1a07a97d32622
+900	1257	1627020416	/Users/jimmy/hjgtool/app/build/intermediates/cmake/StardardDebug/obj/arm64-v8a/libNative-lib.so	9f267aeba79b475f
