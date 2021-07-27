@@ -30,7 +30,7 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     protected void initViewAction() {
         //返回按钮隐藏
         actionBar.setDisplayHomeAsUpEnabled(false);
-
+        //cesih
        
     }
 
