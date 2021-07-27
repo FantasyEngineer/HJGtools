@@ -1,3 +1,0 @@
-/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86/CMakeFiles/rebuild_cache.dir
-/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86/CMakeFiles/edit_cache.dir
-/Users/jimmy/hjgtool/app/.cxx/cmake/TestRelease/x86/CMakeFiles/Native-lib.dir

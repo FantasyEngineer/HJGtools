@@ -1,2 +1,0 @@
-ninja: Entering directory `/Users/jimmy/hjgtool/app/.cxx/cmake/StardardDebug/arm64-v8a'
-ninja: no work to do.
