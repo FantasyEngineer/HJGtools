@@ -1,3 +1,4 @@
+include ':MvcAndMvp'
 include ':aidlclient'
 include ':Base'
 include ':app'

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HJGTools.iml" filepath="$PROJECT_DIR$/.idea/modules/HJGTools.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Base/HJGTools.Base.iml" filepath="$PROJECT_DIR$/.idea/modules/Base/HJGTools.Base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mvc/HJGTools.MvcAndMvp.iml" filepath="$PROJECT_DIR$/.idea/modules/mvc/HJGTools.MvcAndMvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/aidlclient/HJGTools.aidlclient.iml" filepath="$PROJECT_DIR$/.idea/modules/aidlclient/HJGTools.aidlclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HJGTools.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HJGTools.app.iml" />
     </modules>

@@ -351,6 +351,10 @@ public class ConvertUtils {
         }
     }
 
+    public static String inputStream2String(InputStream is) {
+        return inputStream2String(is, "utf-8");
+    }
+
     /**
      * string转inputStream按编码
      *
