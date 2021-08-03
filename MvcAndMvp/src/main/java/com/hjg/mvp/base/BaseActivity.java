@@ -1,12 +1,10 @@
 package com.hjg.mvp.base;
 
 import android.app.Activity;
-import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hjg.base.util.log.androidlog.L;
-import com.hjg.mvp.base.BaseView;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
