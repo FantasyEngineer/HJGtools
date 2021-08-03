@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements OnRequestListener
         }).start();
     }
 
-    //得到返回结果
+    //得到返回结果，这里也会有逻辑部分，比如切换线程，activity的职能不仅仅是view，还有control的功能
     @Override
     public void onSuccess(String data) {
         runOnUiThread(new Runnable() {
