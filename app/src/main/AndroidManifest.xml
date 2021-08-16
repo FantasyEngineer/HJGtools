@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" /> <!-- 网络权限 -->
-     <uses-permission android:name="android.permission.CAMERA" /> <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 短信权限 -->
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -61,7 +61,9 @@
         <activity
             android:name=".activity.titleBar.TitleBarActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.webview.WebViewActivity" />
+        <activity
+            android:name=".activity.webview.WebViewActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.databinding.DatabindingActivity" />
         <activity android:name=".activity.jetpack.JetPackActivity" />
         <activity android:name=".activity.compress.CompressActivity" />

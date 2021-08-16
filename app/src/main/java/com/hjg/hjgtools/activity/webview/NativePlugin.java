@@ -47,6 +47,7 @@ public class NativePlugin {
             @Override
             public void run() {
                 webView.loadUrl("javascript:get(" + ")");
+
             }
         });
     }

@@ -25,13 +25,12 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     }
 
 
-
     @Override
     protected void initViewAction() {
         //返回按钮隐藏
         actionBar.setDisplayHomeAsUpEnabled(false);
         //cesih
-       
+
     }
 
 
@@ -45,7 +44,7 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     }
 
     public void check(View view) {
-        startWeb("file:///android_asset/picChooser.html");
+        startWeb("https://cofdev.csmc-cloud.com/marchemapp/727miniapp.html#/?token=5a682509311649ce85c71af799683359");
     }
 
 
