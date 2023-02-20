@@ -18,6 +18,12 @@
         <attr name="del_icon_size" format="dimension" />
 
     </declare-styleable>
+
+    <declare-styleable name="HTextView">
+        <attr name="width_img" format="dimension" />
+        <attr name="height_img" format="dimension" />
+
+    </declare-styleable>
     <declare-styleable name="FloatingActionButton">
         <attr name="fab_colorNormal" format="color" />
         <attr name="fab_colorPressed" format="color" />

@@ -1,18 +1,23 @@
 package com.hjg.hjgtools.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.view.View;
 
 import com.hjg.base.base.HJGDatabindingBaseActivity;
+import com.hjg.base.util.ActivityUtils;
 import com.hjg.base.util.D;
 import com.hjg.hjgtools.R;
 import com.hjg.hjgtools.activity.webview.WebViewActivity;
 import com.hjg.hjgtools.databinding.ActivityTestBinding;
 import com.hjg.hjgtools.databinding.ActivityWebViewBinding;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * 给simoncof的测试工具类
@@ -24,12 +29,31 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
         return R.layout.activity_test;
     }
 
+    public static final String CAMERA = "相机权限";
+
 
     @Override
     protected void initViewAction() {
         //返回按钮隐藏
         actionBar.setDisplayHomeAsUpEnabled(false);
         //cesih
+
+        requestPermission(CAMERA, Manifest.permission.CAMERA);
+
+    }
+
+    public void requestPermission(String permissionTag, String... permissonName) {
+        new RxPermissions(this).request(permissonName).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    D.showShort(permissionTag + "权限获取----->成功");
+
+                } else {
+                    D.showShort(permissionTag + "权限获取----->失败");
+                }
+            }
+        });
 
     }
 
@@ -44,7 +68,7 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     }
 
     public void check(View view) {
-        startWeb("https://cofdev.csmc-cloud.com/marchemapp/727miniapp.html#/?token=5a682509311649ce85c71af799683359");
+        startWeb("https://busminiapp.csmc-cloud.com/face/index.html");
     }
 
 
@@ -53,7 +77,7 @@ public class TestActivity extends HJGDatabindingBaseActivity<ActivityTestBinding
     }
 
     public void add(View view) {
-        startWeb("https://cofdev.csmc-cloud.com/evapp/727app.html#/");
+        startWeb("https://busminiapp.csmc-cloud.com/face/index.html");
         D.showShort("待补充");
     }
 

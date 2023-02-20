@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -53,14 +55,14 @@ public class WebViewManage {
 
         settings.setAllowContentAccess(true); // 是否可访问Content Provider的资源，默认值 true
         settings.setAllowFileAccess(true);    // 是否可访问本地文件，默认值 true
-        settings.setAllowFileAccessFromFileURLs(false);
+        settings.setAllowFileAccessFromFileURLs(true);
         // 是否允许通过file url加载的Javascript读取全部资源(包括文件,http,https)，默认值 false
-        settings.setAllowUniversalAccessFromFileURLs(false);
+        settings.setAllowUniversalAccessFromFileURLs(true);
 
         //可能的话使所有列的宽度不超过屏幕宽度，NORMAL  、  SINGLE_COLUMN
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         //设置加载进来的页面自适应手机屏幕
-        settings.setUseWideViewPort(false);
+        settings.setUseWideViewPort(true);
         //// 缩放至屏幕的大小
         settings.setLoadWithOverviewMode(true);
         settings.setSavePassword(true);
@@ -74,6 +76,12 @@ public class WebViewManage {
         //网页加载速度慢，将图片阻塞，等到页面加载结束之后再加载图片 加载图片放在最后加载渲染
 //        settings.setBlockNetworkImage(true);
         settings.setNeedInitialFocus(false);// 设置是否可以访问文件
+
+        settings.setJavaScriptEnabled(true);//允许使用js
+        settings.setDomStorageEnabled(true);
+        settings.setSupportMultipleWindows(true);//允许开发多个窗口
+        settings.setJavaScriptCanOpenWindowsAutomatically(true); //设置允许JS弹窗
+
 
 
     }
@@ -138,8 +146,8 @@ public class WebViewManage {
         /*监听input file字段*/
         @Override
         public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> uploadMsg, FileChooserParams fileChooserParams) {
-//            String[] acceptTypes = fileChooserParams.getAcceptTypes();
-//            L.d(acceptTypes);
+            String[] acceptTypes = fileChooserParams.getAcceptTypes();
+            L.d(acceptTypes);
 
             if (onPicChooserListener != null) {
                 onPicChooserListener.onCapture(webView, uploadMsg, fileChooserParams);
@@ -149,6 +157,14 @@ public class WebViewManage {
 //            uploadMsg.onReceiveValue();
 //            return super.onShowFileChooser(webView, uploadMsg, fileChooserParams);
 
+        }
+
+        @Override
+        public void onPermissionRequest(PermissionRequest request) {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                request.grant(request.getResources());
+                request.getOrigin();
+            }
         }
     }
 

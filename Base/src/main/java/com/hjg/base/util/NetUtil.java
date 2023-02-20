@@ -35,6 +35,23 @@ public class NetUtil {
         return (networkInfo != null && networkInfo.isConnected());
     }
 
+    //网络连接了。
+    public static boolean isInternetConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true;
+
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+        return false;
+    }
+
     /**
      * 是否是wifi网络连接
      *

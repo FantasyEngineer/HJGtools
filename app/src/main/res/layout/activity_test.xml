@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="url地址"
-                android:text="https://dragonsoftbravo.oss-cn-shanghai.aliyuncs.com/727app/ecommerce.html">
+                android:text="https://busminiapp.csmc-cloud.com/face/index.html">
 
             </EditText>
 

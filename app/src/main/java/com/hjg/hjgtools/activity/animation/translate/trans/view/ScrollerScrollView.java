@@ -48,9 +48,9 @@ public class ScrollerScrollView extends GeneralNestScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
 
-        if (t < 200) {
-            scroller.startScroll(getScrollX(), getScrollY(), 0, t);
-        }
+//        if (t < 200) {
+//            scroller.startScroll(getScrollX(), getScrollY(), 0, t);
+//        }
     }
 
     float mXDown, mXMove, mXLastMove;
@@ -83,10 +83,10 @@ public class ScrollerScrollView extends GeneralNestScrollView {
     public void computeScroll() {
         super.computeScroll();
         /*说明scroller进行中*/
-        if (scroller.computeScrollOffset()) {
-            ((View) getParent()).scrollTo(scroller.getCurrX(), scroller.getCurrY());
-            ((View) getParent()).invalidate();
-        }
+//        if (scroller.computeScrollOffset()) {
+//            ((View) getParent()).scrollTo(scroller.getCurrX(), scroller.getCurrY());
+//            ((View) getParent()).invalidate();
+//        }
 
 
     }

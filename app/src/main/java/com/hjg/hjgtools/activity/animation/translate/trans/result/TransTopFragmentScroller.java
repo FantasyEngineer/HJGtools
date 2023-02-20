@@ -1,9 +1,13 @@
 package com.hjg.hjgtools.activity.animation.translate.trans.result;
 
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hjg.base.base.HJGBaseFragment;
+import com.hjg.base.util.D;
+import com.hjg.base.util.log.androidlog.L;
 import com.hjg.base.view.GeneralNestScrollView;
 import com.hjg.hjgtools.R;
 
@@ -32,14 +36,38 @@ public class TransTopFragmentScroller extends HJGBaseFragment {
         nestedScrollView.setOnGeneralScrollChangedListener(new GeneralNestScrollView.OnGeneralScrollChangedListener() {
             @Override
             public void onScrollChanged(int l, int t, int oldl, int oldt) {
-                nestedScrollView.post(new Runnable() {
-                    @Override
-                    public void run() {
-
+                nestedScrollView.post(() -> {
+                    int i = t - oldt;
+                    ViewGroup.LayoutParams layoutParams = tvTitle2.getLayoutParams();
+                    if (layoutParams.height < 0) {
+                        tvTitle2.setVisibility(View.GONE);
+                        return;
+                    } else {
+                        tvTitle2.setVisibility(View.VISIBLE);
                     }
+                    layoutParams.height = (int) (layoutParams.height - i / 5);
+                    if (layoutParams.height < 0) {
+                        layoutParams.height = 0;
+                    }
+                    if (layoutParams.height > lHeight) {
+                        layoutParams.height = lHeight;
+                    }
+
+                    tvTitle2.setLayoutParams(layoutParams);
                 });
             }
 
+            @Override
+            public void onUpOpt() {
+                super.onUpOpt();
+                D.showShort("上滑");
+            }
+
+            @Override
+            public void onDownOpt() {
+                super.onDownOpt();
+                D.showShort("下滑");
+            }
         });
     }
 }

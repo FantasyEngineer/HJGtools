@@ -22,6 +22,7 @@ public class PermissionActivity extends HJGBaseRecyclerMulItemActivity {
     public static final String CALL_PHONE = "电话权限";
     public static final String STORAGE = "内存卡读写权限";
     public static final String CONTACTS = "联系人";
+    public static final String VIDEO = "录像";
 
     @Override
     protected void onActivityItemClick(int position, RecyclerListBean recyclerListBean) {
@@ -53,6 +54,7 @@ public class PermissionActivity extends HJGBaseRecyclerMulItemActivity {
         recyclerListBeans.add(new RecyclerListBean(CALL_PHONE));
         recyclerListBeans.add(new RecyclerListBean(STORAGE));
         recyclerListBeans.add(new RecyclerListBean(CONTACTS));
+        recyclerListBeans.add(new RecyclerListBean(VIDEO));
         return recyclerListBeans;
     }
 

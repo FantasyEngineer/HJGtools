@@ -12,14 +12,15 @@
         android:layout_height="50dp"
         android:background="@color/gray_press"
         android:gravity="center"
-        android:text="这里是标题"
+        android:text="这里是标题221221"
         android:textSize="20dp"></TextView>
 
 
     <com.hjg.hjgtools.activity.animation.translate.trans.view.ScrollerScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="false">
 
         <LinearLayout
             android:layout_width="match_parent"

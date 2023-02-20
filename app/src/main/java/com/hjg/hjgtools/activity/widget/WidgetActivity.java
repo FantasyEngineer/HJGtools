@@ -24,6 +24,7 @@ public class WidgetActivity extends HJGBaseRecyclerMulItemActivity {
         recyclerListBeans.add(new RecyclerListBean("九格密码输入", WidgetActivity.class));
         recyclerListBeans.add(new RecyclerListBean("自定义数字键盘", WidgetActivity.class));
         recyclerListBeans.add(new RecyclerListBean("按钮", ButtonActivity.class));
+        recyclerListBeans.add(new RecyclerListBean("TextView", TextViewActivity.class));
         return recyclerListBeans;
     }
 }

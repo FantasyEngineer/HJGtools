@@ -1,42 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <data>
-
-    </data>
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:letterSpacing="1.1"
+        android:text="字間距letterSpacing">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:letterSpacing="1.1"
-            android:text="字間距letterSpacing">
+    </TextView>
 
-        </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="12dp"
+        android:text="你好\n这是行间距\n你看到了吗lineSpacingExtra">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="12dp"
-            android:text="你好\n这是行间距\n你看到了吗lineSpacingExtra">
-
-        </TextView>
+    </TextView>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:text="字体变细">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="字体变细">
 
-        </TextView>
+    </TextView>
 
 
-    </LinearLayout>
-</layout>
+    <com.hjg.base.view.HTextView
+        android:id="@+id/hTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pink"
+        android:drawableLeft="@drawable/fab_add"
+        android:gravity="center"
+        android:text="这是自定义Htextview,但是不会居中了，废弃"
+        app:height_img="20dp"
+        app:width_img="20dp">
+
+    </com.hjg.base.view.HTextView>
+
+    <com.hjg.hjgtools.activity.widget.ImageTextView
+        android:id="@+id/imageTextview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:text="213132131ImageTextView">
+
+    </com.hjg.hjgtools.activity.widget.ImageTextView>
+
+    <com.hjg.hjgtools.activity.widget.ImageTextView2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjg.hjgtools.activity.widget.ImageTextView2>
+
+</LinearLayout>
